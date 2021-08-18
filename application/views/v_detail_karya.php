@@ -12,9 +12,12 @@
           $dir = "assets/img_karya/" . $data_karya['id_karya'];
 
           // Gambar yang paling atas ascending
-          $scandir = scandir($dir);
-          $gambar = $dir . "/" . $scandir[2];
-          if ( !isset( $scandir[2] ) ) {
+          if ( file_exists($dir) ) {
+            $scandir = scandir($dir);
+          }else{
+            $scandir = [];
+          }
+          if ( empty( $scandir ) ) {
             $big_preview = "no_image.jpg";
           }
           else{

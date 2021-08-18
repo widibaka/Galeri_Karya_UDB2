@@ -42,7 +42,7 @@ class KaryaModel extends CI_Model {
 		$this->db->where( 'dihapus', 0 );
 		
 		$this->db->limit( $limit, $limit*($current_page-1) ); //<-- offsetnya = limit * (currentPage - 1)
-		$this->db->select( 'id_karya, id_user, judul, harga, satuan, kota, time, dihapus, published' );
+		$this->db->select( 'id_karya, id_user, judul, time, dihapus, published' );
 		if ( !empty($search) ) {
 			$this->db->like( 'judul', $search );
 			$this->db->or_like( 'kota', $search );
