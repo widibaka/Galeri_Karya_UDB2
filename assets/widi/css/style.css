@@ -1,0 +1,343 @@
+/* Me-reset warna background */
+.dark-mode {
+  background-color: transparent!important;;
+}
+/*.dark-mode .card {
+  background-color: transparent!important;;
+}*/
+/*.dark-mode .navbar-dark {
+  background-color: transparent!important;;
+}*/
+
+
+/* Menerapkan glassmorphism */
+.card {
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 25.0px );
+  -webkit-backdrop-filter: blur( 25.0px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.main-sidebar {
+  background: rgba( 255, 255, 255, 0.1 )!important;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 25.0px );
+  -webkit-backdrop-filter: blur( 25.0px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.navbar {
+  background: rgba( 255, 255, 255, 0.3 )!important;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 6.5px );
+  -webkit-backdrop-filter: blur( 6.5px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.brand-link {
+  background: rgba( 255, 255, 255, 0.3 )!important;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 6.5px );
+  -webkit-backdrop-filter: blur( 6.5px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+
+
+
+/* Login and register page */
+.steps {
+  margin-bottom: 20pt;
+
+}
+.steps .circle {
+  position: relative;
+  background-color: transparent;
+  height: 40pt;
+  width: 40pt;
+  border: solid 2pt #dbdbdb;
+  border-radius: 50%;
+  color: #dbdbdb;
+}
+.steps .dash {
+  position: relative;
+  background-color: transparent;
+  height: 40pt;
+  width: 25pt;
+  border-radius: 50%;
+  color: #dbdbdb;
+}
+.icon_inside_circle {
+  font-size: 20pt;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.step_active {
+  background-color: #fff!important;
+  color: #28a745!important;
+  border-color: #fff!important;
+}
+.dash_active {
+  color: #fff!important;
+}
+
+.login-box .card {
+  background: rgba( 255, 255, 255, 0.35 );
+  backdrop-filter: blur( 25.0px );
+  -webkit-backdrop-filter: blur( 25.0px );
+}
+.register-box .card {
+  background: rgba( 255, 255, 255, 0.35 );
+  backdrop-filter: blur( 25.0px );
+  -webkit-backdrop-filter: blur( 25.0px );
+}
+
+.card .login-card-body {
+  background-color: transparent;
+}
+.card .register-card-body {
+  background-color: transparent;
+}
+
+/* Buat supaya card register box bertumpuk-tumpuk */
+.register-box .card {
+  position: relative;
+}
+
+/* Loader Widi */
+.lds-dual-ring {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #6f42c1;
+  border-color: #6f42c1 transparent #6f42c1 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* CSS LOVE LOADER */
+.lds-dual-ring2 {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  content: " ";
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring2 1.2s linear infinite;
+}
+@keyframes lds-dual-ring2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Hover glass */
+.btn-hover_glass:hover {
+  background-color: rgba(255, 255, 255, .1);
+}
+.btn-hover_glass .fa {
+  opacity: .6;
+}
+.btn-hover_glass:hover .fa {
+  opacity: 1;
+}
+
+/* Modal tapi glassy */
+.modal {
+  background: rgba( 0, 0, 0, 0.15 );
+  backdrop-filter: blur( 7.0px );
+  -webkit-backdrop-filter: blur( 7.0px );
+}
+.modal-chat .modal-content {
+  background: rgba( 255, 255, 255, 0.23 )!important;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  min-height: 500px;
+}
+.modal-chat .modal-header {
+  border: none;
+  padding-bottom: 0rem;
+}
+.modal-chat .modal-body {
+  padding-top: 0rem;
+}
+
+/* Foto profil registrasi */
+.container2 {
+  position: relative;
+}
+
+.profile-register {
+  overflow: hidden;
+}
+
+.overlay2 {
+  height: 142px;
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 142px;
+  transition: .12s ease;
+  opacity:0;
+  color: white;
+  font-size: 35px;
+  padding: 20px;
+  padding-top: 46px;
+  text-align: center;
+}
+
+
+.glassy_thing {
+  background: rgba( 255, 255, 255, 0.35 )!important;
+  backdrop-filter: blur( 25.0px )!important;
+  -webkit-backdrop-filter: blur( 25.0px )!important;
+}
+.bg_transparent {
+  background: transparent!important;
+}
+
+.container2:hover .overlay2 {
+  opacity: 1;
+}
+
+/* Custom Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6610f2; 
+  border-radius: 10px;
+  opacity: .1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6610f2; 
+  opacity: .9;
+}
+
+/* Chat Message diperbesar */
+.direct-chat-messages {
+  height: 55vh!important;
+}
+.direct-chat-text {
+  background-color: #ffffff;
+}
+
+/* Chat Button */
+.chat-button {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+  font-size: 24pt;
+}
+
+/* Notification shaking */
+.shaking {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  20% { transform: translate(2px, 0px) rotate(3deg); }
+  30% { transform: translate(-2px, 0px) rotate(-3deg); }
+  40% { transform: translate(3px, 0px) rotate(3deg); }
+  50% { transform: translate(0px, 0px) rotate(0deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+/* Notification */
+.notification {
+  background-color: #eee;
+}
+.notification_unread {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Table Border */
+.table-bordered {
+  border-color: rgba(0, 0, 0, .1)!important;
+}
+
+.table-bordered td, .table-bordered th {
+  border-color: rgba(0, 0, 0, .1)!important;
+}
+
+
+
+
+
+/* Untuk Tile halaman Iklan Terbaru */
+.tile_item {
+  /*min-width: 230px;*/
+}
+
+/* Thumbnail Produk */
+.product-image-thumb img {
+  height: 50px;
+  /*width: auto!important;*/
+}
+.product-image-thumb {
+  cursor: pointer;
+  max-width: none;
+  padding: 0px;
+  margin-bottom: 5px;
+}
+
+/* Overlay Untuk Upload Gambar Iklan */
+.wadah {
+  position: relative;
+  overflow: hidden;
+}
+.wadah .overlay {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 5px;
+}
+.wadah:hover .overlay {
+  display: visible;
+}

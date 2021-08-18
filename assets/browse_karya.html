@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Dashboard</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+  <link rel="stylesheet" type="text/css" href="widi/css/style.css">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="
+background: url('widi/bg2.png');
+/*background: rgb(106,1,68);
+background: linear-gradient(131deg, rgba(106,1,68,1) 0%, rgba(124,1,105,1) 38%, rgba(0,146,255,1) 100%);*/
+background-size: 100% 100vh;
+background-position: top;
+background-attachment: fixed;
+">
+<!-- Preloader -->
+<div class="preloader flex-column justify-content-center align-items-center">
+  <div class="lds-dual-ring"></div>
+  <p class="text-muted mt-3">Mohon tunggu ...</p>
+</div>
+<div class="wrapper" style="background: transparent;">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link notification_bell shaking" role="button" data-toggle="modal" data-target="#modal-notification">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-danger navbar-badge notification_number">1</span>
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-light-maroon elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.html" class="brand-link">
+      <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+      <span class="brand-text font-weight-light">Galeri Karya UDB</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Ahmad Dahlan</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="./dashboard.html" class="nav-link do_transition">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li> <!-- sidebar item -->
+          <li class="nav-item">
+            <a href="./browse_karya.html" class="nav-link active do_transition">
+              <i class="nav-icon fas fa-search"></i>
+              <p>
+                Browse Karya
+              </p>
+            </a>
+          </li> <!-- sidebar item -->
+          <li class="nav-item">
+            <a href="./home.html" class="nav-link do_transition">
+              <!-- <i class="nav-icon fa fa-snowman"></i> -->
+              <i class="nav-icon fa fa-th-large"></i>
+              <p>
+                Galeri Saya
+              </p>
+            </a>
+          </li> <!-- sidebar item -->
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="background: transparent;">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Browse Karya</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div class="row">
+          <section class="content">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-8 offset-md-2">
+                          <form action="simple-results.html">
+                              <div class="input-group input-group-lg">
+                                  <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here" value="Lorem ipsum">
+                                  <div class="input-group-append">
+                                      <button type="submit" class="btn btn-lg btn-default">
+                                          <i class="fa fa-search"></i>
+                                      </button>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-md-10 offset-md-1">
+                          <div class="list-group glassy_thing">
+                              <div class="list-group-item bg_transparent">
+                                  <a href="#" class="text-dark">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img class="img-fluid" src="dist/img/photo1.png" alt="Photo" style="max-height: 160px;">
+                                        </div>
+                                        <div class="col px-4">
+                                            <div>
+                                                <div class="float-right">2021-04-20 10:14pm</div>
+                                                <h3>Lorem ipsum dolor sit amet</h3>
+                                                <p class="mb-0">consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </a>
+                              </div>
+                              <div class="list-group-item bg_transparent">
+                                  <a href="#" class="text-dark">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img class="img-fluid" src="dist/img/photo1.png" alt="Photo" style="max-height: 160px;">
+                                        </div>
+                                        <div class="col px-4">
+                                            <div>
+                                                <div class="float-right">2021-04-20 10:14pm</div>
+                                                <h3>Lorem ipsum dolor sit amet</h3>
+                                                <p class="mb-0">consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </a>
+                              </div>
+                              <div class="list-group-item bg_transparent">
+                                  <a href="#" class="text-dark">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img class="img-fluid" src="dist/img/photo1.png" alt="Photo" style="max-height: 160px;">
+                                        </div>
+                                        <div class="col px-4">
+                                            <div>
+                                                <div class="float-right">2021-04-20 10:14pm</div>
+                                                <h3>Lorem ipsum dolor sit amet</h3>
+                                                <p class="mb-0">consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </a>
+                              </div>
+                              <div class="list-group-item bg_transparent">
+                                  <a href="#" class="text-dark">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img class="img-fluid" src="dist/img/photo1.png" alt="Photo" style="max-height: 160px;">
+                                        </div>
+                                        <div class="col px-4">
+                                            <div>
+                                                <div class="float-right">2021-04-20 10:14pm</div>
+                                                <h3>Lorem ipsum dolor sit amet</h3>
+                                                <p class="mb-0">consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+  <button class="chat-button btn btn-primary shadow" data-toggle="modal" data-target="#modal-default">
+    <span class="fa fa-comments"></span>
+  </button>
+
+  <div class="modal fade modal-chat" id="modal-default" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="height: 80vh;">
+        <div class="modal-header">
+          <h5 class="modal-title text-white">Chat Dengan Panitia</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="direct-chat direct-chat-primary">
+            <!-- <div class="card-header">
+              <h3 class="card-title">Direct Chat</h3>
+
+              <div class="card-tools">
+                <span title="3 New Messages" class="badge badge-primary">3</span>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
+                  <i class="fas fa-comments"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div> -->
+            <!-- /.card-header -->
+            <div class="card-footer">
+              <form action="#" method="post">
+                <div class="input-group">
+                  <input type="text" name="message" placeholder="Tulis pesan ..." class="form-control" autocomplete="off">
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-primary">Kirim</button>
+                  </span>
+                </div>
+              </form>
+            </div>
+
+            <center>
+              <small class="text-white">
+                Terakhir online 2 jam lalu
+              </small>
+            </center>
+            <hr>
+            <!-- /.card-footer-->
+            <div class="card-body">
+              <!-- Conversations are loaded here -->
+              <div class="direct-chat-messages">
+
+                <!-- Message. Default to the left -->
+                <div class="direct-chat-msg">
+                  <div class="direct-chat-infos clearfix">
+                    <span class="direct-chat-name float-left text-white">Admin</span>
+                    <span class="direct-chat-timestamp float-right text-white">6 Jul 2021 02:03</span>
+                  </div>
+                  <!-- /.direct-chat-infos -->
+                  <img class="direct-chat-img" src="widi/img/user_no_image.jpg" alt="message user image">
+                  <!-- /.direct-chat-img -->
+                  <div class="direct-chat-text">
+                    Menjadi dilahirkan dan hidup memang bukan pilihan, namun berusaha bermanfaat bagi orang adalah pilihan yang membuat hidup kita menjadi lebih berharga :)
+                  </div>
+                  <!-- /.direct-chat-text -->
+                </div>
+                <!-- /.direct-chat-msg -->
+
+                <!-- Message to the right -->
+                <div class="direct-chat-msg right">
+                  <div class="direct-chat-infos clearfix">
+                    <span class="direct-chat-name float-right text-white">Free Woman</span>
+                    <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 02:02</span>
+                  </div>
+                  <!-- /.direct-chat-infos -->
+                  <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                  <!-- /.direct-chat-img -->
+                  <div class="direct-chat-text">
+                    Kenapa saya hidup?
+                  </div>
+                  <!-- /.direct-chat-text -->
+                </div>
+
+                <!-- Message. Default to the left -->
+                <div class="direct-chat-msg">
+                  <div class="direct-chat-infos clearfix">
+                    <span class="direct-chat-name float-left text-white">Admin</span>
+                    <span class="direct-chat-timestamp float-right text-white">6 Jul 2021 02:02</span>
+                  </div>
+                  <!-- /.direct-chat-infos -->
+                  <img class="direct-chat-img" src="widi/img/user_no_image.jpg" alt="message user image">
+                  <!-- /.direct-chat-img -->
+                  <div class="direct-chat-text">
+                    Silakan bertanya apapun kak :)
+                  </div>
+                  <!-- /.direct-chat-text -->
+                </div>
+                <!-- /.direct-chat-msg -->
+
+                <!-- Message to the right -->
+                <div class="direct-chat-msg right">
+                  <div class="direct-chat-infos clearfix">
+                    <span class="direct-chat-name float-right text-white">Free Woman</span>
+                    <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 02:01</span>
+                  </div>
+                  <!-- /.direct-chat-infos -->
+                  <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                  <!-- /.direct-chat-img -->
+                  <div class="direct-chat-text">
+                    Permisi, apa saya boleh bertanya?
+                  </div>
+                  <!-- /.direct-chat-text -->
+                </div>
+
+                <div class="hidden_msg" style="display: none;">
+                  <!-- Message to the right -->
+                  <div class="direct-chat-msg right">
+                    <div class="direct-chat-infos clearfix">
+                      <span class="direct-chat-name float-right text-white">Free Woman</span>
+                      <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 01:01</span>
+                    </div>
+                    <!-- /.direct-chat-infos -->
+                    <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text">
+                      Excepteur sint occaecat cupidatat non
+                      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                    <!-- /.direct-chat-text -->
+                  </div>
+
+                  <!-- Message to the right -->
+                  <div class="direct-chat-msg right">
+                    <div class="direct-chat-infos clearfix">
+                      <span class="direct-chat-name float-right text-white">Free Woman</span>
+                      <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 01:01</span>
+                    </div>
+                    <!-- /.direct-chat-infos -->
+                    <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text">
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur.
+                    </div>
+                    <!-- /.direct-chat-text -->
+                  </div>
+
+                  <!-- Message to the right -->
+                  <div class="direct-chat-msg right">
+                    <div class="direct-chat-infos clearfix">
+                      <span class="direct-chat-name float-right text-white">Free Woman</span>
+                      <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 01:01</span>
+                    </div>
+                    <!-- /.direct-chat-infos -->
+                    <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text">
+                      Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                      consequat.
+                    </div>
+                    <!-- /.direct-chat-text -->
+                  </div>
+
+                  <!-- Message to the right -->
+                  <div class="direct-chat-msg right">
+                    <div class="direct-chat-infos clearfix">
+                      <span class="direct-chat-name float-right text-white">Free Woman</span>
+                      <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 01:01</span>
+                    </div>
+                    <!-- /.direct-chat-infos -->
+                    <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua.
+                    </div>
+                    <!-- /.direct-chat-text -->
+                  </div>
+                </div>
+
+                <a role="button" class="btn btn-block btn-default w-100" onclick="$('.hidden_msg').slideDown(400)">Muat Lebih Banyak</a>
+
+              </div>
+              <!--/.direct-chat-messages-->
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!--/.direct-chat -->
+        </div>
+        <!-- <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <div class="modal fade modal-notification" id="modal-notification" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Notifikasi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-12 rounded py-1 notification notification_unread">
+            <h4 class="mt-2">
+              Dapat 50 Loves Dari Panitia
+            </h4>
+            <p class="text-sm">Anda mendapatkan 50 loves dari panitia berkat donasi yang Anda berikan untuk mendukung event ini.</p>
+            <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 2 Jam Lalu</p>
+          </div>
+          <div class="dropdown-divider"></div>
+          <!-- /.notification -->
+          <div class="col-12 rounded py-1 notification">
+            <h4 class="mt-2">
+              Siapa Saja Bisa Berkarya
+            </h4>
+            <p class="text-sm">Siapa saja warga Universitas Duta Bangsa boleh mendaftar dan memajang karya mereka di Galeri Karya UDB.</p>
+            <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
+          </div>
+          <div class="dropdown-divider"></div>
+          <!-- /.notification -->
+          <div class="col-12 rounded py-1 notification">
+            <h4 class="mt-2">
+              3 Karya Setiap Akun
+            </h4>
+            <p class="text-sm">Setiap akun memiliki kesempatan untuk memajang maksimal 3 karya.</p>
+            <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
+          </div>
+          <div class="dropdown-divider"></div>
+          <!-- /.notification -->
+          <div class="col-12 rounded py-1 notification">
+            <h4 class="mt-2">
+              Selamat Datang
+            </h4>
+            <p class="text-sm">Selamat datang di Galeri Karya Universitas Duta Bangsa Surakarta. Di sini menggunakan Intro JS kami akan membimbing Anda dengan tutorial.</p>
+            <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
+          </div>
+          <div class="dropdown-divider"></div>
+          <!-- /.notification -->
+          <span class="hidden_notif" style="display: none;">
+            <div class="col-12 rounded py-1 notification">
+              <h4 class="mt-2">
+                Siapa Saja Bisa Berkarya
+              </h4>
+              <p class="text-sm">Siapa saja warga Universitas Duta Bangsa boleh mendaftar dan memajang karya mereka di Galeri Karya UDB.</p>
+              <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
+            </div>
+            <div class="dropdown-divider"></div>
+            <!-- /.notification -->
+            <div class="col-12 rounded py-1 notification">
+              <h4 class="mt-2">
+                3 Karya Setiap Akun
+              </h4>
+              <p class="text-sm">Setiap akun memiliki kesempatan untuk memajang maksimal 3 karya.</p>
+              <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
+            </div>
+            <div class="dropdown-divider"></div>
+            <!-- /.notification -->
+            <div class="col-12 rounded py-1 notification">
+              <h4 class="mt-2">
+                Selamat Datang
+              </h4>
+              <p class="text-sm">Selamat datang di Galeri Karya Universitas Duta Bangsa Surakarta. Di sini menggunakan Intro JS kami akan membimbing Anda dengan tutorial.</p>
+              <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
+            </div>
+            <div class="dropdown-divider"></div>
+            <!-- /.notification -->
+          </span>
+          <a role="button" class="btn btn-outline-primary w-100" onclick="$('.hidden_notif').slideDown(400)">Muat Lebih Banyak</a>
+        </div>
+        <!-- <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+  <!-- /.content-wrapper -->
+  <!-- <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
+    </div>
+  </footer> -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="dist/js/pages/dashboard.js"></script> -->
+
+<!-- custom js -->
+<script src="widi/js/main.js"></script>
+
+
+
+<script type="text/javascript">
+
+  $(function () {
+
+    // Clearing notification number
+    $('.notification_bell').click(function () {
+      $(this).removeClass('shaking');
+      $('.notification_number').hide();
+    })
+
+    /* Chart.js Charts */
+    // LOVES chart
+    var LOVESChartCanvas = document.getElementById('LOVES-chart-canvas').getContext('2d')
+
+    // Data dummy untuk labels Chart
+    const d = new Date();
+    const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agus", "Sept", "Okt", "Nov", "Des"];
+    var labelX = []
+
+    var new_index = 0
+    for (var i = 7 - 1; i >= 0; i--) {
+      labelX[new_index] = d.getDate()-i + ' ' + months[d.getMonth()]
+      new_index++
+    }
+
+    var LOVESChartData = {
+      // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: labelX,
+      datasets: [
+        {
+          label: 'Love yang didapat',
+          backgroundColor: 'rgba(60,141,188,0.3)',
+          borderWidth: 2,
+          lineTension: 0,
+          spanGaps: true,
+          borderColor: 'rgba(0,0,0,0.0)',
+          pointRadius: 7,
+          pointHoverRadius: 9,
+          pointColor: '#d81b60',
+          pointBackgroundColor: '#d81b60',
+          data: [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
+    }
+
+    var LOVESChartOptions = {
+      maintainAspectRatio: false,
+      responsive: true,
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: '#343a40'
+          },
+          gridLines: {
+            display: true,
+            color: 'rgba(0,0,0,0.1)',
+            drawBorder: false
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            stepSize: 10,
+            fontColor: '#343a40'
+          },
+          gridLines: {
+            display: true,
+            color: 'rgba(0,0,0,0.1)',
+            drawBorder: false
+          }
+        }]
+      }
+    }
+
+    // This will get the first returned node in the jQuery collection.
+    // eslint-disable-next-line no-unused-vars
+    var LOVESChart = new Chart(LOVESChartCanvas, { // lgtm[js/unused-local-variable]
+      type: 'line',
+      data: LOVESChartData,
+      options: LOVESChartOptions
+    })
+
+
+
+
+
+
+    /* Chart.js Charts */
+    // VIEWS chart
+    var VIEWSChartCanvas = document.getElementById('VIEWS-chart-canvas').getContext('2d')
+
+    // Data dummy untuk labels Chart
+    // const d = new Date();
+    // const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agus", "Sept", "Okt", "Nov", "Des"];
+    // var labelX = []
+
+    var new_index = 0
+    for (var i = 7 - 1; i >= 0; i--) {
+      labelX[new_index] = d.getDate()-i + ' ' + months[d.getMonth()]
+      new_index++
+    }
+
+    var VIEWSChartData = {
+      // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: labelX,
+      datasets: [
+        {
+          label: 'Views yang didapat',
+          backgroundColor: 'rgba(60,141,188,0.3)',
+          borderWidth: 2,
+          lineTension: 0,
+          spanGaps: true,
+          borderColor: 'rgba(0,0,0,0.0)',
+          pointRadius: 7,
+          pointHoverRadius: 9,
+          pointColor: '#007bff',
+          pointBackgroundColor: '#007bff',
+          data: [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
+    }
+
+    var VIEWSChartOptions = {
+      maintainAspectRatio: false,
+      responsive: true,
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: '#343a40'
+          },
+          gridLines: {
+            display: true,
+            color: 'rgba(0,0,0,0.1)',
+            drawBorder: false
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            stepSize: 10,
+            fontColor: '#343a40'
+          },
+          gridLines: {
+            display: true,
+            color: 'rgba(0,0,0,0.1)',
+            drawBorder: false
+          }
+        }]
+      }
+    }
+
+    // This will get the first returned node in the jQuery collection.
+    // eslint-disable-next-line no-unused-vars
+    var VIEWSChart = new Chart(VIEWSChartCanvas, { // lgtm[js/unused-local-variable]
+      type: 'line',
+      data: VIEWSChartData,
+      options: VIEWSChartOptions
+    })
+  })
+</script>
+</body>
+</html>
