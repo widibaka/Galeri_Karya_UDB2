@@ -3,44 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jual Panen App | Login</title>
+  <title>AdminLTE 3 | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css">
-  <!-- SweetAlert2 -->
-  <!-- <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"> -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="../../widi/css/style.css">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="<?php echo base_url() ?>" class="h1"><b>Jual Panen </b>App</a>
-    </div>
-    <div class="card-body">
-      <p class="login-box-msg">Silakan login</p>
+<body class="hold-transition login-page" style="
+background: url('../../widi/vectors/97Z_dec32.jpg');
+/*background: rgb(106,1,68);
+background: linear-gradient(131deg, rgba(106,1,68,1) 0%, rgba(124,1,105,1) 38%, rgba(0,146,255,1) 100%);*/
+background-size: cover;
+background-position: top;
+background-attachment: fixed;
+">
 
-      <form action="" method="post">
+<div class="preloader flex-column justify-content-center align-items-center">
+  <div class="lds-dual-ring"></div>
+  <p class="text-muted mt-3">Mohon tunggu ...</p>
+</div>
+
+<div class="login-box" style="background: transparent;">
+  <div class="login-logo">
+    <a href="#" class="text-white"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg text-white">Sign in to start your session</p>
+
+      <form action="../../index3.html" method="post">
         <div class="input-group mb-3">
-          <input name="email" type="email" class="form-control" placeholder="Email" required="">
+          <input type="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-envelope text-white"></span>
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input name="password" type="password" class="form-control" placeholder="Password" required="">
+          <input type="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <span class="fas fa-lock text-white"></span>
             </div>
           </div>
         </div>
@@ -49,63 +60,39 @@
             <!-- <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
-                Tetap masuk di perangkat ini
+                Remember Me
               </label>
             </div> -->
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" class="btn btn-outline-warning btn-block">Masuk</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-      <center class="text-muted">
-        <p>atau</p>
-      </center>
-      <div class="social-auth-links text-center mt-2 mb-3">
-        <a href="<?php echo $auth_url ?>" class="btn btn-block btn-default">
-          <i class="fab fa-google mr-2"></i> Masuk memakai Google
-        </a>
-      </div>
-      <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <!-- <a href="forgot-password.html">Lupa Password</a> -->
+        <a class="text-warning" href="#" id="pernah_daftar">Saya lupa password</a>
       </p>
       <p class="mb-0">
-        <a href="<?php echo base_url() ?>auth/register" class="text-center">Mendaftar, saya belum punya akun</a>
+        <a class="text-warning do_transition" href="register.html" class="text-center" id="mendaftar_baru">Mendaftar akun baru</a>
       </p>
     </div>
-    <!-- /.card-body -->
+    <!-- /.login-card-body -->
   </div>
-  <!-- /.card -->
 </div>
 <!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- SweetAlert2 -->
-<script src="<?php echo base_url() ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
 
-<script type="text/javascript">
-  <?php if ( $this->session->flashdata('msg') ): ?>
-    <?php 
-      $split = explode('#', $this->session->flashdata('msg'));
-      $code = $split[0];
-      $msg_itself = $split[1];
-    ?>
-    setTimeout(function function_name(argument) {
-      Swal.fire({
-        icon: '<?php echo $code ?>',
-        title: '<?php echo $msg_itself ?>',
-      })
-    }, 100)
-  <?php endif ?>
-</script>
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- custom js -->
+<script src="../../widi/js/main.js"></script>
+
 </body>
-</html>
+</html
