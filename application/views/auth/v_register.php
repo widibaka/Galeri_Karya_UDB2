@@ -72,14 +72,14 @@ background-attachment: fixed;
 
 
 </head>
-<body class="hold-transition register-page">
-<div class="register-box">
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="<?php echo base_url() ?>" class="h1"><b>Geleri Karya UDB </b>App</a>
-    </div>
-    <div class="card-body" id="welcome" style=" margin-bottom: 100px;">
-      <p class="login-box-msg">Halo! Selamat datang di Lomba Karya UDB. Anda diharuskan mengisi form pendaftaran disediakan. <br><br>Untuk lanjut mendaftar, silakan klik tombol di bawah ini.</p>
+<div class="register-box" style="background: transparent; min-height: 200px;">
+  <div class="register-logo">
+    <a class="text-white" href="#"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+  </div>
+
+  <div class="card" id="welcome" style=" margin-bottom: 100px;">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg text-white">Halo! Selamat datang di Lomba Karya UDB. Anda diharuskan mengisi form pendaftaran yang akan disediakan. <br><br>Untuk lanjut mendaftar, silakan klik tombol di bawah ini.</p>
       <center>
         <div class="col-sm-12 col-md-4">
           <button class="btn btn-outline-warning btn-block" onclick="step1_2()">
@@ -87,6 +87,7 @@ background-attachment: fixed;
           </button>
         </div>
       </center>
+      
       <hr>
       <a href="login.html" id="show_login" class="text-center text-warning do_transition">Saya ingin login saja</a>
     </div>
