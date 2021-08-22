@@ -99,7 +99,7 @@ background-attachment: fixed;
       <p class="login-box-msg text-white">Profile</p>
       <p class="login-box-msg text-white">Siapkan nama akun Anda. Jika mau, Anda juga bisa menambahkan gambar profil. Pastikan gunakan email yang aktif agar dapat melakukan validasi email</p> 
       <!-- Memulai form -->
-      <form action="http://localhost/penerima.php" method="post" id="form_registrasi">
+      <form action="" method="post" id="form_registrasi">
       <div class="text-center pb-3">
         <center class="container2">
           <div class="col-12">
