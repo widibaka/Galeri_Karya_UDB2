@@ -168,7 +168,7 @@ background-attachment: fixed;
         </div>
       </div>
       <hr>
-      <a href="login.html" id="show_login" class="text-center text-warning do_transition">Saya ingin login saja</a>
+      <a href="login" id="show_login" class="text-center text-warning do_transition">Saya ingin login saja</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
