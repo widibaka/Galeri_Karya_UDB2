@@ -12,6 +12,14 @@ class AuthModel extends CI_Model {
 		unset( $data_new['password'] );
 		return $data_new;
 	}
+	public function get_user($id_user='')
+	{
+		$this->db->where('id_user', $id_user);
+		$this->db->limit(1);
+		$data_new = $this->db->get( $this->table )->row_array();
+		unset( $data_new['password'] );
+		return $data_new;
+	}
 	public function check_user_without_password($data='')
 	{
 		$this->db->where('email', $data['email']);
@@ -24,7 +32,7 @@ class AuthModel extends CI_Model {
 	public function register($data='')
 	{
 		unset($data['password2']);
-		$data['id_user'] = strval( time() );
+		$data['id_user'] = strval( time() . rand(1,100) );
 		$this->db->insert($this->table, $data);
 	}
 	public function get_HP_by_userID($id_user)
@@ -33,5 +41,14 @@ class AuthModel extends CI_Model {
 		$this->db->where( 'id_user', $id_user );
 		$this->db->limit( 1 );
 		return $this->db->get( $this->table )->row_array()['hp'];
+	}
+	public function edit_profil($id_user='', $data)
+	{
+		$data = [
+			'username' => $data['username'],
+			'hp' => $data['hp'],
+		];
+		$this->db->where('id_user', $id_user);
+		$this->db->update($this->table, $data);
 	}
 }
