@@ -39,13 +39,14 @@ background-attachment: fixed;
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg text-white">Sign in to start your session</p>
+      <p class="login-box-msg text-white">Login untuk memulai sesi</p>
 
-     <form action="" method="post">
+     <!-- <form action="" method="post"> -->
+     <?php echo form_open('', ''); ?>
         <div class="input-group mb-3">
           <input name="email" type="email" class="form-control" placeholder="Email" required="">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div class="input-group-text text-white">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
@@ -53,7 +54,7 @@ background-attachment: fixed;
         <div class="input-group mb-3">
           <input name="password" type="password" class="form-control" placeholder="Password" required="">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div class="input-group-text text-white">
               <span class="fas fa-lock"></span>
             </div>
           </div>
@@ -69,17 +70,17 @@ background-attachment: fixed;
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" class="btn btn-outline-warning btn-block">Login</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-      <center class="text-muted">
+      <center class="text-white">
         <p>atau</p>
       </center>
       <div class="social-auth-links text-center mt-2 mb-3">
-        <a href="<?php echo $auth_url ?>" class="btn btn-block btn-default">
-          <i class="fab fa-google mr-2"></i> Masuk memakai Google
+        <a href="<?php echo $auth_url ?>" class="btn btn-block btn-default do_transition">
+          <img class="mr-1" src="<?php echo base_url() . 'assets/google_api/google.png' ?>" style="width: 22px; height: 22px;"> Login memakai Google
         </a>
       </div>
       <!-- /.social-auth-links -->
@@ -88,7 +89,7 @@ background-attachment: fixed;
         <!-- <a href="forgot-password.html">Lupa Password</a> -->
       </p>
       <p class="mb-0">
-        <a href="<?php echo base_url() ?>auth/register" class="text-center">Mendaftar, saya belum punya akun</a>
+        <a href="<?php echo base_url() ?>auth/register" class="text-center text-warning do_transition">Mendaftar akun baru</a>
       </p>
     </div>
     <!-- /.card-body -->

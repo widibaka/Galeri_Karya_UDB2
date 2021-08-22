@@ -55,7 +55,7 @@
           <li class="nav-header">User</li>
           <?php if ( $this->session->userdata('username') ): ?>
             <li class="nav-item">
-              <a href="#" class="nav-link" onclick="alert('Fitur ini belum ada!')">
+              <a href="<?php echo base_url() ?>ubah_profil" class="nav-link do_transition" menu_title="Ubah Profil">
                 <i class="nav-icon fa fa-user"></i>
                 <p>
                   Ubah Profil

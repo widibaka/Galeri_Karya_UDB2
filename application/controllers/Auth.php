@@ -108,6 +108,7 @@ class Auth extends CI_Controller {
 	{
 		$post = $this->input->post();
 		if ( $post ) {
+		echo '<pre>'; var_dump( $post ); die;
 			$check_result = $this->AuthModel->check_user( $post );
 			if ($check_result) {
 				$this->session->set_flashdata('msg', 'error#Email ini sudah terdaftar');

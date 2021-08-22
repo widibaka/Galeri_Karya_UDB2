@@ -89,7 +89,7 @@ background-attachment: fixed;
       </center>
       
       <hr>
-      <a href="login.html" id="show_login" class="text-center text-warning do_transition">Saya ingin login saja</a>
+      <a href="login" id="show_login" class="text-center text-warning do_transition">Saya ingin login saja</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
@@ -99,7 +99,8 @@ background-attachment: fixed;
       <p class="login-box-msg text-white">Profile</p>
       <p class="login-box-msg text-white">Siapkan nama akun Anda. Jika mau, Anda juga bisa menambahkan gambar profil. Pastikan gunakan email yang aktif agar dapat melakukan validasi email</p> 
       <!-- Memulai form -->
-      <form action="" method="post" id="form_registrasi">
+      <!-- <form action="" method="post" id="form_registrasi"> -->
+      <?php echo form_open('', ' id="form_registrasi"'); ?>
       <div class="text-center pb-3">
         <center class="container2">
           <div class="col-12">
@@ -121,7 +122,7 @@ background-attachment: fixed;
         </center>
       </div> <!-- /.user-panel -->
 
-         <small class="badge badge-danger invalid-warning" id="username_empty" style="display: none;">Mohon isi nama akun</small>
+        <small class="badge badge-danger invalid-warning" id="username_empty" style="display: none;">Mohon isi nama akun</small>
         <div class="input-group mb-3">
           <input name="username" type="text" class="form-control" placeholder="Nama" required="">
           <div class="input-group-append">
@@ -130,9 +131,10 @@ background-attachment: fixed;
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <small class="badge badge-danger invalid-warning" id="email_empty" style="display: none;">Mohon isi email</small>
+
+        <small class="badge badge-danger invalid-warning" id="email_empty" style="display: none;">Mohon isi email</small>
         <small class="badge badge-danger invalid-warning" id="email_invalid" style="display: none;">Alamat email ini tidak valid</small>
+        <div class="input-group mb-3">
           <input name="email" type="email" class="form-control" placeholder="Email" required="">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -141,12 +143,11 @@ background-attachment: fixed;
           </div>
         </div>
 
-
+        <small class="badge badge-danger invalid-warning" id="hp_empty" style="display: none;">Mohon isi nomor HP</small> 
         <div class="input-group mb-3">
-          <small class="badge badge-danger invalid-warning" id="email_empty" style="display: none;">Mohon isi nomor HP</small>      
-          <span class="text-muted mr-1">+62</span> <input name="hp" type="text" class="form-control" placeholder="Nomor HP" required="">
+          <span class="text-white mr-1 badge badge-success" style="font-size: 13pt">+62</span> <input name="hp" type="text" class="form-control" placeholder="812XXXXXXXXX" required="">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div class="input-group-text text-white">
               <span class="fas fa-phone"></span>
             </div>
           </div>
@@ -176,8 +177,8 @@ background-attachment: fixed;
     <div class="card-body register-card-body">
       <p class="login-box-msg text-white">Privasi itu Penting</p>
       <p class="login-box-msg text-white">Anda bisa menerapkan password. Kami tidak akan mengintip, janji!</p>
+        <small class="badge badge-danger invalid-warning" id="password_empty" style="display: none;">Mohon isi password</small>
         <div class="input-group mb-3">
-          <small class="badge badge-danger invalid-warning" id="password_empty" style="display: none;">Mohon isi password</small>
           <input name="password" type="password" class="form-control" placeholder="Password" required="">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -185,9 +186,9 @@ background-attachment: fixed;
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <small class="badge badge-danger invalid-warning" id="password2_empty" style="display: none;">Mohon isi password kedua</small>
+        <small class="badge badge-danger invalid-warning" id="password2_empty" style="display: none;">Mohon isi password kedua</small>
         <small class="badge badge-danger invalid-warning" id="password2_invalid" style="display: none;">Password ini tidak saling cocok</small>
+        <div class="input-group mb-3">
           <input name="password2" type="password" class="form-control" placeholder="Ketik lagi password" required="">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -379,6 +380,11 @@ background-attachment: fixed;
       $('[name="username"]').addClass( 'is-invalid' )
       $("#username_empty").show(400)
     }
+    if ( $('[name="hp"]').val().length < 1 ) {
+      valid = 0;
+      $('[name="hp"]').addClass( 'is-invalid' )
+      $("#hp_empty").show(400)
+    }
     if ( $('[name="email"]').val().length < 1 ) {
       valid = 0;
       $('[name="email"]').addClass( 'is-invalid' )
@@ -462,7 +468,7 @@ background-attachment: fixed;
 
 </script>
 
-<!--<script type="text/javascript">
+<script type="text/javascript">
   <?php if ( $this->session->flashdata('msg') ): ?>
     <?php 
       $split = explode('#', $this->session->flashdata('msg'));
@@ -483,6 +489,6 @@ background-attachment: fixed;
       $(this).val( str.substring(1,str.length) )
     }
   })
-</script>-->
+</script>
 </body>
 </html>

@@ -167,15 +167,17 @@
 }
 
 /* Modal tapi glassy */
-.modal {
+/*.modal {
   background: rgba( 0, 0, 0, 0.15 );
   backdrop-filter: blur( 7.0px );
   -webkit-backdrop-filter: blur( 7.0px );
-}
+}*/
 .modal-chat .modal-content {
   background: rgba( 255, 255, 255, 0.23 )!important;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   min-height: 500px;
+  backdrop-filter: blur( 7.0px );
+  -webkit-backdrop-filter: blur( 7.0px );
 }
 .modal-chat .modal-header {
   border: none;

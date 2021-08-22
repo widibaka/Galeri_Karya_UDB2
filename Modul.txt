@@ -1,0 +1,86 @@
+#Login:
+Input Email
+Input Password
+
+#Registrasi Akun:
+Nama
+Email
+Password
+Password 2 (Pencocokkan)
+Nomor WA harus unique / antara user tidak boleh sama
+Harus upload bukti mahasiswa UDB
+Foto Profil
+
+#Profil:
+Edit Foto Profil
+Edit Nama
+Edit Password
+Edit Nomor WA
+
+#Status Lomba:
+ Tabel Menampilkan Ranking Lomba: Ranking 1,2,3
+  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
+ Tabel Menampilkan Ranking Lomba User
+  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
+
+#Browse Karya:
+  Judul Karya
+  Deskripsi (dibatasi 200 kata)
+  Kategori
+  Tanggal
+  Nama Akun
+
+#Galeri Saya
+ Menampilkan Koleksi => Max 3 Karya per akun
+ Hapus Karya (soft delete)
+
+#Tambah Karya:
+  Judul Karya
+  Tanggal
+  Tombol Like
+  Kategori
+  Deskripsi
+  Tim Penggagas:
+   +Anggota (Pastikan Mengisi dengan benar, karena nama anggota akan dipakai untuk pembuatan sertifikat. Maksimal 5 orang, boleh diisi gambar)modal box
+  +Gambar Karya modal box
+  +Youtube Video (Multiple)modal box
+
+#Sertifikat (Berdasarkan Karya, Anggotanya siapa saja)
+
+#Detil karya:
+ Statistik Karya:
+  Chart views, 
+  Chart loves
+ Judul Karya
+ Tanggal
+ Tombol Like
+ Kategori
+ Deskripsi
+ Tim Penggagas:
+  +Anggota
+ +Gambar Karya
+ +Youtube Video
+
+#Notifikasi dari panitia lomba modal box
+
+#Chat dengan panitia modal box + Jumlah notifikasi + Status online
+
+
+
+==================================================================
+
+#Dashboard
+ Ranking Lomba
+  Judul Karya | Akun | Anggota Tim | Jumlah Love
+Daftar Karya Belum Diulas
+Daftar Karya Sudah Diulas
+Daftar Akun + Chat dengan akun modal box + Jumlah Notifikasi di tabel + Status online
+Tanggal Penetapan Pemenang
+
+Statistik Views
+Statistik Loves
+
+
+========================================
+
+Minta tolong divisi komunikasi bikin desain banner ini
