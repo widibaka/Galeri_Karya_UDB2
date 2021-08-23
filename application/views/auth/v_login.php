@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,6 +125,6 @@ background-attachment: fixed;
       })
     }, 100)
   <?php endif ?>
-
+</script>
 </body>
 </html

@@ -30,7 +30,9 @@ class Galeri_saya extends CI_Controller {
 	public function index($current_page = 1)
 	{
 		$data['title'] = 'Galeri Saya';
-		$data['userdata'] = $this->session->userdata();
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
 
 		$search = $this->input->get('search');
 		$per_page = ( empty($this->input->get('per_page')) ) ? 10 : $this->input->get('per_page') ;

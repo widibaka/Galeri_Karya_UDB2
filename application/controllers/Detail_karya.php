@@ -18,7 +18,9 @@ class Detail_karya extends CI_Controller {
 		if ( $url_mundur ) {
 			$data['url_mundur'] = $url_mundur;
 		}
-		$data['userdata'] = $this->session->userdata();
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
 		$data['title'] = 'Detail Iklan';
 
 		$getKarya = $this->KaryaModel->get_karya_byID( $id_karya );

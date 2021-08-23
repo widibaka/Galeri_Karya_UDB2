@@ -79,10 +79,10 @@
             <?php endif ?>
           </div>
           
-          <a class="btn btn-primary btn-flat" href="<?php echo base_url() . 'karya_saya/edit_karya/' . $val['id_karya'] ?>">
+          <a class="btn btn-primary btn-flat" href="<?php echo base_url() . 'galeri_saya/edit_karya/' . $val['id_karya'] ?>">
             <i class="fa fa-edit"></i> Edit
           </a>
-          <a class="btn btn-danger btn-flat" href="<?php echo base_url() . 'karya_saya/del/' . $val['id_karya'] . '/' . base64_encode( base_url() . $this->uri->uri_string() ) ?>" onclick="return confirm('Anda yakin ingin menghapus?')">
+          <a class="btn btn-danger btn-flat" href="<?php echo base_url() . 'galeri_saya/del/' . $val['id_karya'] . '/' . base64_encode( base_url() . $this->uri->uri_string() ) ?>" onclick="return confirm('Anda yakin ingin menghapus?')">
             <i class="fa fa-trash"></i> Hapus
           </a>
         </div>

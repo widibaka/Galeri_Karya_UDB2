@@ -51,4 +51,24 @@ class AuthModel extends CI_Model {
 		$this->db->where('id_user', $id_user);
 		$this->db->update($this->table, $data);
 	}
+	public function ubah_gambar_profil($id_user, $filename='')
+	{
+		$data = [
+			'photo' => $filename,
+		];
+		$this->db->where('id_user', $id_user);
+		$this->db->update($this->table, $data);
+	}
+	public function hapus_file_gambar_profil($id_user)
+	{
+		$dir = 'assets/uploads/foto_profil/';
+		$filename = $this->get_user( $id_user )['photo'];
+		
+		// kalau tidak ada gambar, maka yaudah
+		if ( !empty($filename) ) {
+			unlink( $dir . $filename );
+			return true;
+		}
+		return false;
+	}
 }

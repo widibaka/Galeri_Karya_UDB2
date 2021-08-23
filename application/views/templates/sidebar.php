@@ -14,7 +14,14 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="<?php echo base_url() ?>assets/custom/img/user_no_image.jpg" class="img-circle elevation-2" alt="User Image">
+            <div class="image img-circle elevation-2" alt="User Image" style="
+              height: 37px;
+              width: 37px;
+              background-size: cover;
+              background-position: center;
+              background-image: url('<?php echo base_url() ?>assets/uploads/foto_profil/<?php echo ( !empty($userdata['photo']) ) ? $userdata['photo'] : 'user_no_image.jpg' ?>');
+            ">
+            </div>
           </div>
           <div class="info">
             <a href="#" class="d-block"><?php echo $userdata['username']; ?></a>

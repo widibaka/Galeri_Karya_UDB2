@@ -409,12 +409,6 @@
       window.location.href = href
     }, 700)
   }
-  // Transisi sebelum pindah halaman
-  $(".do_transition").click(function (event) {
-    event.preventDefault()
-    
-    redirecting( $(this).attr("href") )
-  })
 
   function notification_bell(){
     $('#modal-notification').modal('toggle');
@@ -448,7 +442,8 @@
 
   // Sarankan untuk login kalau iklan saya dan wishlist dibuka
   <?php if ( !$this->session->userdata('id_user') ): ?>
-    $('[menu_title="Iklan Saya"]').click(function (e) {
+    $('[menu_title="Galeri Saya"]').removeClass('do_transition')
+    $('[menu_title="Galeri Saya"]').click(function (e) {
       e.preventDefault();
       Swal.fire({
         icon: 'warning',
@@ -456,14 +451,15 @@
       })
     })
     
-    $('[menu_title="Wishlist"]').click(function (e) {
-      e.preventDefault();
-      Swal.fire({
-        icon: 'warning',
-        title: 'Anda harus login terlebih dahulu!',
-      })
-    })
   <?php endif ?>
+
+
+  // Transisi sebelum pindah halaman (Block kode ini harus di paling akhir ya)
+  $(".do_transition").click(function (event) {
+    event.preventDefault()
+    
+    redirecting( $(this).attr("href") )
+  })
   
 
 </script>

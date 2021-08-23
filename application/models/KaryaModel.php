@@ -45,7 +45,6 @@ class KaryaModel extends CI_Model {
 		$this->db->select( 'id_karya, id_user, judul, time, dihapus, published' );
 		if ( !empty($search) ) {
 			$this->db->like( 'judul', $search );
-			$this->db->or_like( 'kota', $search );
 		}
 		$this->db->where( 'id_user', $id_user );
 		return $this->db->get( $this->table )->result_array();

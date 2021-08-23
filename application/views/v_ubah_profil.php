@@ -13,14 +13,16 @@
                   width: 142px;
                   background-size: cover;
                   background-position: center;
-                  background-image: url('<?php echo base_url() ?>assets/widi/img/user_no_image.jpg');
-                " data-toggle="modal" data-target="#modal-edit-photo" id="preview_gambar">
+                  background-image: url('<?php echo base_url() ?>assets/uploads/foto_profil/<?php echo ( !empty($userdata['photo']) ) ? $userdata['photo'] : 'user_no_image.jpg' ?>');
+                " onclick="modal_edit_photo()" id="preview_gambar">
                   <div class="overlay2">
                     <span class="fa fa-edit"></span>
                   </div>
                 </div>
 
-                <textarea style="display: none;" id="b64" name="image"></textarea>
+                <?php echo form_open('', ' id="image_upload"') ?>
+                  <textarea style="display: none;" id="b64" name="image"></textarea>
+                </form>
                 
               </div>
             </center>
@@ -30,7 +32,7 @@
 
           <p class="text-muted text-center">Orang Keren</p>
 
-          <a href="#" class="btn btn-primary btn-block" id="simpan_perubahan_btn" style="display:none;"><b>Simpan Perubahan</b></a>
+          <a href="#" class="btn btn-primary btn-block" id="simpan_perubahan_btn" onclick="simpan_perubahan()" style="display:none;"><b>Simpan Perubahan</b></a>
 
         </div>
         <!-- /.card-body -->
