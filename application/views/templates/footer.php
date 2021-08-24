@@ -399,6 +399,21 @@
 <!-- Fancybox -->
 <script src="<?php echo base_url() ?>assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
 <script>
+  
+  // Fancybox Options
+  $('[data-fancybox="gallery"]').fancybox({
+    buttons: [
+        "zoom",
+        //"share",
+        // "slideShow",
+        "fullScreen",
+        "download",
+        // "thumbs",
+        "close"
+    ],
+    animationEffect: "fade",
+  });
+
   // Loader for button
   function show_loader(element, caption="Loading...") {
     element.addClass('disabled');

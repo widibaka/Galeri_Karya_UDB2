@@ -21,6 +21,8 @@ Edit Nomor WA
 ==============================================================
 ==============================================================
 
+TOMBOL LOVE MASIH BELUM SEMPURNA!!
+
 #Status Lomba:
  Tabel Menampilkan Ranking Lomba: Ranking 1,2,3
   Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
@@ -83,6 +85,8 @@ Tanggal Penetapan Pemenang
 Statistik Views
 Statistik Loves
 
+Konfirmasi Akun
+Blacklist Akun
 
 ========================================
 

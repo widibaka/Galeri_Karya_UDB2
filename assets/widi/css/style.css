@@ -333,13 +333,28 @@
 .wadah {
   position: relative;
   overflow: hidden;
+  transition: all 200ms ease;
 }
-.wadah .overlay {
+.wadah:hover {
+  opacity: .8;
+}
+
+/* icon-play-vid */
+.youtube-vid{
+  position: relative;
+  transition: all 200ms ease;
+}
+.youtube-vid:hover{
+  opacity: .8;
+}
+.icon-play-vid {
+  opacity: .7;
   position: absolute;
-  right: 5px;
-  bottom: 5px;
-  padding: 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 200ms ease;
 }
-.wadah:hover .overlay {
-  display: visible;
+.youtube-vid:hover .icon-play-vid {
+  opacity: 1;
 }

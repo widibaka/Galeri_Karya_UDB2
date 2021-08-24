@@ -3,6 +3,9 @@
 <!-- Summernote -->
 <script src="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script type="text/javascript">
+
+
+
   $(function () {
     // Summernote
     $('#deskripsi').summernote({
@@ -13,26 +16,15 @@
         // ['fontsize', ['fontsize']],
         // ['color', ['color']],
         ['para', ['ul', 'ol', 'paragraph']],
-        ['height', ['height']]
+        ['height', ['height']],
+        ['insert', ['link']],
       ],
       height: 200,
     });
 
   })
 
-  // Fancybox Options
-  $('[data-fancybox="gallery"]').fancybox({
-    buttons: [
-        "zoom",
-        //"share",
-        // "slideShow",
-        "fullScreen",
-        "download",
-        // "thumbs",
-        "close"
-    ],
-    animationEffect: "fade",
-  });
+  
 
 
   // preview gambar
@@ -52,5 +44,6 @@
     }, 900)
 
   })
+
 
 </script>

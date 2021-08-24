@@ -65,7 +65,7 @@
               <br>
               <small><?php echo substr(strip_tags($val['deskripsi']), 0, 100) ?> ... <strong><a class="text-dark" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">selengkapnya</a></strong></small>
               <br>
-              <small><i class="fa fa-heart text-danger"></i> 89</small>
+              <small><i class="fa fa-heart text-danger"></i> <?php echo $val['loves'] ?></small>
               <br>
               <small><i class="fa fa-clock text-gray"></i> <?php echo date('d M Y, H:i', $val['time']) ?> WIB</small>
               

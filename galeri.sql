@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `karya` (
   `id_karya` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_user` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `deskripsi` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `deskripsi` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `youtube` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `time` int(50) DEFAULT 0,
@@ -62,9 +62,9 @@ CREATE TABLE IF NOT EXISTS `karya` (
 DELETE FROM `karya`;
 /*!40000 ALTER TABLE `karya` DISABLE KEYS */;
 INSERT INTO `karya` (`id_karya`, `id_user`, `judul`, `deskripsi`, `youtube`, `link`, `time`, `dihapus`, `published`, `loves`, `id_kategori`, `tim`) VALUES
-	('1628687548_1629796492', '1628687548', 'Project Android 1', '<ol><li>Satu</li><li>Dua</li><li>Tiga</li></ol>', '', '', 1629817637, 0, 1, 0, 1, 'Aku, Kamu, Dia'),
+	('1628687548_1629796492', '1628687548', 'Project Android 1', '<ol><li>Satu</li><li>Dua</li><li>Tiga</li></ol>', 'https://youtu.be/20ZWyCOFG6g, https://www.youtube.com/embed/tMWkeBIohBs, https://www.youtube.com/watch?v=35WcRmWlHks', 'https://youtu.be/20ZWyCOFG6g', 1629831466, 0, 1, 5, 1, 'Aku, Kamu, Dia'),
 	('1628687548_1629819781', '1628687548', 'Project Android 2', '<p><b>Halo</b></p>', '', '', 1629821124, 1, 0, 0, 1, 'Loa, Lenore, Hector'),
-	('1628687548_1629821550', '1628687548', 'Project Android 2', '<p>1</p>', '', '', 1629821615, 0, 1, 0, 1, '1'),
+	('1628687548_1629821550', '1628687548', 'Project Android 2', '<p>1</p>', '', '', 1629821615, 0, 1, 3, 1, '1'),
 	('1628866787_1628961286', '1628866787', 'Panen Buah Naga Pak ARI', '<p><span style="color: rgb(77, 81, 86); font-family: arial, sans-serif; font-size: 18px;">Buah naga adalah buah dari beb</span><span style="font-size: 18px;">﻿</span><span style="color: rgb(77, 81, 86); font-family: arial, sans-serif; font-size: 18px;">erapa jenis kaktus dari marga Hylocereus dan Selenicereus. Buah ini berasal dari Meksiko, Amerika Tengah dan Amerika Selatan namun sekarang juga dibudidayakan di negara-negara Asia seperti Taiwan, Vietnam, Filipina, Indonesia dan Malaysia.</span><', '', '', 1628961373, 0, 1, 0, 1, ''),
 	('1628866787_1628961375', '1628866787', 'Panen Jambu Air Pak ARI', '<p>Jambu Air Manis. Saya suka</p>', '', '', 1628961421, 0, 1, 0, 1, ''),
 	('1628866787_1628961423', '1628866787', 'Panen Melon Kuning', '<p>Logam berat sangat banyak berada di kali.</p>', '', '', 1628961478, 0, 1, 0, 1, ''),

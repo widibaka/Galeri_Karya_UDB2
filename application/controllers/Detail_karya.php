@@ -15,6 +15,7 @@ class Detail_karya extends CI_Controller {
 	}
 	public function i($id_karya)
 	{
+		
 		$url_mundur = $this->input->get( 'url_mundur' );
 		if ( $url_mundur ) {
 			$data['url_mundur'] = $url_mundur;

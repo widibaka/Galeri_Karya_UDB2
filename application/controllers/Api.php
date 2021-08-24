@@ -12,18 +12,56 @@ class Api extends CI_Controller {
 		// }
 		$this->load->model('KaryaModel');
 	}
-	public function toggle_add_wishlist($id_user, $id_karya)
+	public function create_captcha()
 	{
-		if ( $this->WishlistModel->toggle_add_wishlist($id_user, $id_karya) ) {
-			$data = [
-				'status' => 'added'
-			];
-		}
-		else {
-			$data = [
-				'status' => 'deleted'
-			];
-		}
+		$this->load->library('image_lib');
+		$this->load->helper('captcha');
+
+		$vals = array(
+		        'img_path'      => './assets/captcha/',
+		        'img_url'       => base_url() . 'assets/captcha/',
+		        'img_width'     => '150',
+		        'img_height'    => '30',
+		        'expiration'    => 7200,
+		        'word_length'   => 3,
+		        'font_size'     => 16,
+		        'img_id'        => 'Imageid',
+		        'pool'          => '123456789ABCDEFGHIJKLMNPRSTUVWXYZ',
+
+		        // White background and border, black text and red grid
+		        'colors'        => array(
+		                'background' => array(255, 255, 255),
+		                'border' => array(255, 255, 255),
+		                'text' => array(0, 0, 0),
+		                'grid' => array(48, 144, 247)
+		        )
+		);
+
+		$data['cap'] = create_captcha($vals);
+		unset($data['cap']['image']);
+		unset($data['cap']['time']);
+
+		$data['cap']['img_path'] = base_url() . 'assets/captcha/' . $data['cap']['filename'];
+
+		echo json_encode($data['cap']);
+	}
+	public function remove_love($id_karya)
+	{
+		$this->KaryaModel->remove_love($id_karya);
+
+		$data = [
+			'status' => 'deleted'
+		];
+
+		echo json_encode( $data );
+	}
+	public function add_love($id_karya)
+	{
+		$this->KaryaModel->add_love($id_karya);
+			
+		$data = [
+			'status' => 'added'
+		];
 
 		echo json_encode( $data );
 	}

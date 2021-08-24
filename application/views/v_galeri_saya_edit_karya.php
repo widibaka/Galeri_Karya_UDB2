@@ -14,7 +14,7 @@
 		      </div>
 		      <!-- /.card-header -->
 		      <!-- form start -->
-		      <?php echo form_open() ?>
+		      <?php echo form_open('', ' id="form_data_karya"') ?>
 	      		<input name="id_karya" type="hidden" value="<?php echo $data_karya['id_karya'] ?>" required=""></input>
 	      		<input name="id_user" type="hidden" value="<?php echo $data_karya['id_user'] ?>" required=""></input>
       	  	<div class="card-body">
@@ -38,11 +38,11 @@
       	  	  	<?php endif ?>
       	  	  	<?php foreach ($scandir as $key => $val): ?>
       	  	  		
-      	  	  			<div class="wadah">
+      	  	  			<div class="wadah m-1">
       	  	  				<a data-fancybox="gallery" href="<?php echo base_url() . "assets/img_karya/" . $data_karya['id_karya'] . "/" . $val ?>">
-      	  	  					<img class="m-1" src="<?php echo base_url() . "assets/img_karya/" . $data_karya['id_karya'] . "/thumb/" . $val ?>" style="height: 120px;">
+      	  	  					<img src="<?php echo base_url() . "assets/img_karya/" . $data_karya['id_karya'] . "/thumb/" . $val ?>" style="height: 120px;">
       	  	  				</a>
-      	  	  				<span class="btn btn-default btn-sm overlay hapus_gambar" style="z-index: 100;" onclick="return confirm_box('Anda yakin ingin menghapus?', 'question', 'Ya, hapus!', '<?php echo base_url() . 'api/hapus_gambar/' . $data_karya['id_karya'] . '/' . base64_encode($val) ?>')">
+      	  	  				<span class="btn btn-default btn-sm btn-flat overlay hapus_gambar" onclick="return confirm_box('Anda yakin ingin menghapus?', 'question', 'Ya, hapus!', '<?php echo base_url() . 'api/hapus_gambar/' . $data_karya['id_karya'] . '/' . base64_encode($val) ?>')" style="border-radius: 0;">
       	  	  					<i class="fa fa-trash mr-1"></i> Hapus
       	  	  				</span>
       	  	  			</div>
@@ -51,7 +51,7 @@
       	  	  	<?php endforeach ?>
       	  	  	<span class="btn btn-lg btn-default input-group-text" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus mr-1"></i> Tambah Gambar</span>
       	  	  </div>
-      	  	  <p class="text-muted"><i>Silakan upload gambar-gambar menarik yang menunjang galeri Anda.</i></p>
+      	  	  <p class="text-muted"><i>Silakan upload gambar-gambar menarik yang menunjang galeri Anda. Maksimal 10 gambar</i></p>
       	  	  <hr>
 
       	  	  <div class="form-group">
@@ -68,16 +68,33 @@
       	  	    </select>
       	  	  </div>
       	  	  <div class="form-group">
+      	  	    <label for="youtube">Video Youtube (Opsional)</label>
+      	  	    <textarea class="form-control" name="youtube" id="youtube" placeholder="https://youtu.be/20ZWyCOFG6g, https://www.youtube.com/embed/tMWkeBIohBs, https://www.youtube.com/watch?v=35WcRmWlHks"><?php echo $data_karya['youtube'] ?></textarea>
+      	  	    <p class="text-muted"><i>Isi dengan URL youtube video tentang demo karya Anda / tim. Pisahkan tiap video dengan tanda koma (,)</i></p>
+      	  	  </div>
+      	  	  <div class="form-group">
       	  	    <label for="deskripsi">Deskripsi</label>
       	  	    <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi" required=""><?php echo $data_karya['deskripsi'] ?></textarea>
+      	  	    <p class="text-muted"><i>Isi dengan hal-hal yang mendeskripsikan karya Anda / tim.</i></p>
+      	  	  </div>
+      	  	  <div class="form-group">
+      	  	    <label for="deskripsi">Link (Opsional)</label>
+      	  	    <textarea class="form-control" name="link" id="x" placeholder="Link Google Drive, atau lainnya..." required=""><?php echo $data_karya['link'] ?></textarea>
+      	  	    <p class="text-muted"><i>Isi dengan link utama aplikasi web Anda, atau link download APK Anda, ataupun lainnya juga boleh.</i></p>
       	  	  </div>
 		          <div class="form-group">
 		            <label for="tim">Tim</label>
 		            <textarea class="form-control" name="tim" id="tim" placeholder="Adi Nugroho, Budi Budiman, Onno W Purbo" required=""><?php echo $data_karya['tim'] ?></textarea>
-		            <p class="text-muted"><i>Nama anggota tim pastikan semua benar karena akan dipakai untuk mencetak sertifikat. Jika Anda hanya satu orang (hehe, kasihan), maka isikan nama Anda.</i></p>
+		            <p class="text-muted"><i>Nama anggota tim pastikan semua benar karena akan dipakai untuk mencetak sertifikat. Jika Anda hanya satu orang (hehe kasihan), maka isikan nama Anda.</i></p>
+		            <p class="text-muted"><i><strong class="text-danger">[!Penting]</strong> Anggota yang akan menerima sertifikat hanya 5 (lima) nama dari urutan pertama. Walau begitu, jumlah anggota tim tetap tidak ditentukan.</i></p>
 		          </div>
 		        </div>
 		        <!-- /.card-body -->
+		      </form>
+
+		      <?php echo form_open() ?>
+		      	<input name="id_karya" type="hidden" value="<?php echo $data_karya['id_karya'] ?>" required=""></input>
+		      	<input name="id_user" type="hidden" value="<?php echo $data_karya['id_user'] ?>" required=""></input>
 
 		        <div class="card-footer">
 		          <?php if ( $data_karya['published'] == 1 ): ?>
@@ -87,12 +104,17 @@
 		          	</button>
 		          <?php elseif( $data_karya['published'] == 0 ): ?>
 		          	<input type="hidden" name="published" value="1">
-		          	<button type="submit" class="btn btn-lg btn-primary do_transition">
+		          	<button type="submit" class="btn btn-lg btn-success do_transition">
 		          		<i class="fa fa-eye mr-1"></i> Publikasikan Sekarang
 		          	</button>
 		          <?php endif ?>
-		        </div>
 		      </form>
+
+
+		          <a class="btn btn-lg btn-primary do_transition" onclick="$('#form_data_karya').submit()">
+		          	<i class="fa fa-save mr-1"></i> Simpan Perubahan
+		          </a>
+		        </div>
 		    </div>
 		    <!-- /.card -->
 

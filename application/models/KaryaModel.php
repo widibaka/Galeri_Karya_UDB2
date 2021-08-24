@@ -79,5 +79,27 @@ class KaryaModel extends CI_Model {
 		$this->db->where( 'id_karya', $data['id_karya'] );
 		return $this->db->update( $this->table, $data );
 	}
+
+	// =======================================================
+	public function add_love($id_karya)
+	{
+		$loves_count = $this->get_karya_byID($id_karya)['loves'];
+		$loves_count = $loves_count+1;
+		$data = [
+			'loves' => $loves_count
+		];
+		$this->db->where( 'id_karya', $id_karya );
+		return $this->db->update( $this->table, $data );
+	}
+	public function remove_love($id_karya)
+	{
+		$loves_count = $this->get_karya_byID($id_karya)['loves'];
+		$loves_count = $loves_count-1;
+		$data = [
+			'loves' => $loves_count
+		];
+		$this->db->where( 'id_karya', $id_karya );
+		return $this->db->update( $this->table, $data );
+	}
 	
 }
