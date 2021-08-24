@@ -396,7 +396,39 @@
 <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
 <!-- SweetAlert2 -->
 <script src="<?php echo base_url() ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Fancybox -->
+<script src="<?php echo base_url() ?>assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
 <script>
+  // Loader for button
+  function show_loader(element, caption="Loading...") {
+    element.addClass('disabled');
+    let captionAsli = element.html();
+    element.attr('captionAsli', captionAsli);
+    element.html('<img class="mr-2" src="<?php echo base_url() ?>assets/widi/img/loader.gif"> ' + caption);
+  }
+
+  function hide_loader(element) {
+    element.removeClass('disabled');
+    let captionAsli = element.attr('captionAsli');
+    element.html(captionAsli);
+  }
+
+  // Confirm box
+  function confirm_box(msg, icon, confirm_text, redirect) {
+    Swal.fire({
+      title: msg,
+      icon: icon,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Batal',
+      confirmButtonText: confirm_text
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = redirect;
+      }
+    })
+  }
 
   // Turunkan preloader
   function turunkan_preloader() {
@@ -440,8 +472,9 @@
 
   })
 
-  // Sarankan untuk login kalau iklan saya dan wishlist dibuka
-  <?php if ( !$this->session->userdata('id_user') ): ?>
+  // Sarankan untuk login kalau belum login
+
+  <?php if ( empty($this->session->userdata('id_user')) ): ?>
     $('[menu_title="Galeri Saya"]').removeClass('do_transition')
     $('[menu_title="Galeri Saya"]').click(function (e) {
       e.preventDefault();
@@ -455,10 +488,12 @@
 
 
   // Transisi sebelum pindah halaman (Block kode ini harus di paling akhir ya)
-  $(".do_transition").click(function (event) {
+  $("a.do_transition").click(function (event) {
     event.preventDefault()
-    
     redirecting( $(this).attr("href") )
+  })
+  $("button.do_transition").click(function () {
+    turunkan_preloader()
   })
   
 

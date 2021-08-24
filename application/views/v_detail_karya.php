@@ -6,7 +6,7 @@
   <div class="card-body">
     <div class="row">
       <div class="col-12 col-sm-6">
-        <h3 class="d-inline-block"><?php echo $data_karya['judul'] ?></h3>
+        <!-- <h3 class="d-inline-block"><?php echo $data_karya['judul'] ?></h3> -->
 
         <?php 
           $dir = "assets/img_karya/" . $data_karya['id_karya'];
@@ -39,11 +39,15 @@
         </div>
       </div>
       <div class="col-12 col-sm-6">
+        <h3 class="my-3">Kategori: 
+          <a href="#" title="Lihat karya dengan kategori ini">
+            <?php echo $this->KategoriModel->get_kategori( $data_karya['id_kategori'] ) ?>
+          </a>
+        </h3>
+        <hr>
         <h3 class="my-3">Deskripsi</h3>
         <div class="deskripsi">
-
           <?php echo $data_karya['deskripsi'] ?>
-          
         </div>
 
         <hr>

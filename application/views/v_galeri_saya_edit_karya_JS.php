@@ -20,6 +20,20 @@
 
   })
 
+  // Fancybox Options
+  $('[data-fancybox="gallery"]').fancybox({
+    buttons: [
+        "zoom",
+        //"share",
+        // "slideShow",
+        "fullScreen",
+        "download",
+        // "thumbs",
+        "close"
+    ],
+    animationEffect: "fade",
+  });
+
 
   // preview gambar
   imgInp.onchange = evt => {
@@ -32,13 +46,7 @@
   // Disable upload button
   $('#upload_gambar').click(function (e) {
     e.preventDefault();
-    // Jika button tidak disabled
-    if ( !$(this).hasClass('disabled') ) {
-      // Disable the button first
-      $(this).addClass('disabled');
-      $(this).find('.loader_upload_btn').show()
-      $(this).find('.content_of_upload_btn').hide()
-    }
+    show_loader($(this), 'Uploading...')
     setTimeout(function () {
       $('#upload_gambar').parent().parent().submit();
     }, 900)

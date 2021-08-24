@@ -82,42 +82,61 @@ class Api extends CI_Controller {
 
 	public function upload_gambar()
 	{
-	        $config['upload_path']          = './assets/img_karya/' . $this->input->post()['id_karya'];
-	        $config['allowed_types']        = 'gif|jpg|jpeg|png';
-	        $config['max_size']             = 12000;
+        $config['upload_path']          = './assets/img_karya/' . $this->input->post()['id_karya'] . '/';
+        $config['allowed_types']        = 'gif|jpg|jpeg|png';
+        $config['max_size']             = 12000;
 
-	        $this->load->library('upload', $config);
+        $this->load->library('upload', $config);
 
-	        if ( ! $this->upload->do_upload('userfile'))
-	        {
-	                $error = array('error' => $this->upload->display_errors());
+        if ( ! $this->upload->do_upload('userfile'))
+        {
+            $error = array('error' => $this->upload->display_errors());
 
-	                // echo '<pre>'; var_dump( $error ); die;
+            // echo '<pre>'; var_dump( $error ); die;
 
-	                $this->session->set_flashdata('msg', 'error#'.$error['error']);
+            $this->session->set_flashdata('msg', 'error#'.$error['error']);
 
-	                redirect( base_url() . 'galeri_saya/edit_karya/' . $this->input->post()['id_karya'] ); 
-	        }
-	        else
-	        {
-	                $data = array('upload_data' => $this->upload->data());
+            redirect( base_url() . 'galeri_saya/edit_karya/' . $this->input->post()['id_karya'] ); 
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
 
-	                // Gambar ke Berapa ini?
-	                // $jumlah_gambar = count(scandir($config['upload_path'])) - 2;
-	                // !Gak jadi pakai jumlah gambar, hehe. Nanti teroverwrite soalnya
+            // Gambar ke Berapa ini?
+            // $jumlah_gambar = count(scandir($config['upload_path'])) - 2;
+            // !Gak jadi pakai jumlah gambar, hehe. Nanti teroverwrite soalnya
 
-	                rename(
-	                	$data['upload_data']['full_path'],
-	                	$data['upload_data']['file_path'] . $this->input->post()['id_karya'] . '-' . time() . $data['upload_data']['file_ext']
-	                );
+            $new_filename = $this->input->post()['id_karya'] . '-' . time();
 
-	                redirect( base_url() . 'galeri_saya/edit_karya/' . $this->input->post()['id_karya'] ); 
-	        }
+            rename(
+            	$data['upload_data']['full_path'],
+            	$data['upload_data']['file_path'] . $new_filename . $data['upload_data']['file_ext']
+            );
+
+            // mengecilkan ukuran foto
+            $this->load->model('ResizeImage');
+            $this->ResizeImage->dir( $data['upload_data']['file_path'] . $new_filename . $data['upload_data']['file_ext'] );
+            // Untuk ukuran besar
+            $this->ResizeImage->resizeTo(1200, 1200, 'default');
+            $this->ResizeImage->saveImage( $config['upload_path'] . $new_filename . '_new' . $data['upload_data']['file_ext'] );
+
+            // Untuk yang ukuran thumbnail
+            $this->ResizeImage->resizeTo(300, 300, 'default');
+            $this->ResizeImage->saveImage( $config['upload_path'] . 'thumb/' . $new_filename . '_new' . $data['upload_data']['file_ext'] );
+
+            unlink( $data['upload_data']['file_path'] . $new_filename . $data['upload_data']['file_ext'] ); // delete temporary file
+
+            redirect( base_url() . 'galeri_saya/edit_karya/' . $this->input->post()['id_karya'] ); 
+        }
 	}
 
 	public function hapus_gambar($id_karya, $filename)
 	{
-		if ( unlink( 'assets/img_karya/' . $id_karya . '/' . $filename ) ) {
+		$filename = base64_decode($filename);
+		if ( 
+			unlink( 'assets/img_karya/' . $id_karya . '/' . $filename ) AND
+			unlink( 'assets/img_karya/' . $id_karya . '/thumb/' . $filename )
+		   ) {
 			// $data = [
 			// 	'status' => 'deleted'
 			// ];

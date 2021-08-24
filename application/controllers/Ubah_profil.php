@@ -37,7 +37,7 @@ class Ubah_profil extends CI_Controller {
 					$this->load->model('ResizeImage');
 					$this->ResizeImage->dir( $file['dir'] );
 
-					$this->ResizeImage->resizeTo(800, 800, 'maxwidth');
+					$this->ResizeImage->resizeTo(800, 800, 'default');
 
 					$this->ResizeImage->saveImage( 'assets/uploads/foto_profil/' . $file['filename'] );
 

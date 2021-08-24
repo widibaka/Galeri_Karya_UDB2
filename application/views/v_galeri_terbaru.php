@@ -25,7 +25,7 @@
   <?php if ( !empty($data_karya) ): ?>
     <?php foreach ($data_karya as $key => $val): ?>
       <?php 
-        $dir = "assets/img_karya/" . $val['id_karya'];
+        $dir = "assets/img_karya/" . $val['id_karya'] . '/thumb';
 
         // Gambar yang paling atas ascending
         if ( file_exists($dir) ) {
@@ -42,26 +42,21 @@
       ?>
       <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item">
         <div class="card overflow-hidden">
-          <a href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">
+          <a class="do_transition" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">
             <div class="widget-user-header text-white" style="background: url('<?php echo base_url() . $gambar ?>') center center; height: 130pt; background-repeat: none; background-position: center; background-size: cover;">
             </div>
           </a>
           <div class="card-body text-dark">
-            <a href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>" class="text-dark">
-            
-            <strong><?php echo $val['judul'] ?></strong>
-            <br>
-            <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</small>
-            <br>
-            <small><i class="fa fa-heart text-gray"></i> 89</small>
-            <br>
-            <small><i class="fa fa-clock text-gray"></i> <?php echo date('d M Y, H:i', $val['time']) ?> WIB</small>
+            <a href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>" class="text-dark do_transition">
+              <strong><?php echo $val['judul'] ?></strong>
+              <br>
+              <small><?php echo substr(strip_tags($val['deskripsi']), 0, 100) ?> ... <strong><a class="text-dark" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">selengkapnya</a></strong></small>
+              <br>
+              <small><i class="fa fa-heart text-danger"></i> 89</small>
+              <br>
+              <small><i class="fa fa-clock text-gray"></i> <?php echo date('d M Y, H:i', $val['time']) ?> WIB</small>
             </a>
           </div>
-          
         </div>
       </div> <!-- Ini adalah konten produk -->
     <?php endforeach ?>

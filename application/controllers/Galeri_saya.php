@@ -26,6 +26,7 @@ class Galeri_saya extends CI_Controller {
 			redirect( base_url() . 'auth/login' );
 		}
 		$this->load->model('KaryaModel');
+		$this->load->model('KategoriModel');
 	}
 	public function index($current_page = 1)
 	{
@@ -142,6 +143,7 @@ class Galeri_saya extends CI_Controller {
 
 			// Create directory untuk upload gambar
 			mkdir( 'assets/img_karya/' . $post['id_karya'] );
+			mkdir( 'assets/img_karya/' . $post['id_karya'] . '/thumb' );
 
 			// Masukkan ke database
 			$this->KaryaModel->add($post);
@@ -151,7 +153,10 @@ class Galeri_saya extends CI_Controller {
 		}
 		
 		$data['title'] = 'Galeri Saya';
-		$data['userdata'] = $this->session->userdata();
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
+		$data['kategori'] = $this->KategoriModel->get_all_kategori();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -174,8 +179,6 @@ class Galeri_saya extends CI_Controller {
 			}
 			// Lengkapi dan publikasikan
 			$post['time'] = time();
-			$post['published'] = 1;
-
 			
 			// Entah kenapa ada parameter "files" karena summernote JS. Hapus aja
 			unset($post['files']);
@@ -189,7 +192,10 @@ class Galeri_saya extends CI_Controller {
 		}
 		
 		$data['title'] = 'Iklan Saya';
-		$data['userdata'] = $this->session->userdata();
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
+		$data['kategori'] = $this->KategoriModel->get_all_kategori();
 		$data['data_karya'] = $this->KaryaModel->get_karya_byID( $id_karya );
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);

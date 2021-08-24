@@ -3,6 +3,8 @@
 <!-- Summernote -->
 <script src="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script type="text/javascript">
+
+
 	$(function () {
 	  // Summernote
 	  $('#deskripsi').summernote({

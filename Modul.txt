@@ -17,6 +17,10 @@ Edit Nama
 Edit Password
 Edit Nomor WA
 
+==============================================================
+==============================================================
+==============================================================
+
 #Status Lomba:
  Tabel Menampilkan Ranking Lomba: Ranking 1,2,3
   Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
@@ -37,7 +41,6 @@ Edit Nomor WA
 #Tambah Karya:
   Judul Karya
   Tanggal
-  Tombol Like
   Kategori
   Deskripsi
   Tim Penggagas:

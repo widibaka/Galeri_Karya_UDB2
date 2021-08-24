@@ -25,8 +25,11 @@
 
 
   <div class="mb-3 col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item d-flex justify-content-center overflow-hidden">
-    <a class="w-100 btn btn-primary" href="<?php echo base_url() . 'galeri_saya/add_karya' ?>" title="Tambah Iklan" style="font-size: 30pt;">
-      <i class="fa fa-plus"></i> <br> Tambah Karya
+    <a class="w-100 btn btn-primary p-2 do_transition" href="<?php echo base_url() . 'galeri_saya/add_karya' ?>" title="Tambah Iklan">
+      <div style="margin-top: 50%; margin-bottom: 50%;">
+        <i style="font-size: 30pt;" class="fa fa-plus"></i>
+        <p style="font-size: 24pt;">Tambah Karya</p>
+      </div>
     </a>
   </div>
 
@@ -34,7 +37,7 @@
   <?php if ( !empty($data_karya) ): ?>
     <?php foreach ($data_karya as $key => $val): ?>
       <?php 
-        $dir = "assets/img_karya/" . $val['id_karya'];
+        $dir = "assets/img_karya/" . $val['id_karya'] . '/thumb';
 
         // Gambar yang paling atas ascending
         if ( file_exists($dir) ) {
@@ -52,37 +55,34 @@
       ?>
       <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item">
         <div class="card overflow-hidden">
-          <a href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">
+          <a class="do_transition" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">
             <div class="widget-user-header text-white" style="background: url('<?php echo base_url() . $gambar ?>') center center; height: 130pt; background-repeat: none; background-position: center; background-size: cover;">
             </div>
           </a>
           <div class="card-body text-dark">
-            <a href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>" class="text-dark">
-            <strong><?php echo $val['judul'] ?></strong>
-            <br>
-            <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</small>
-            <br>
-            <small><i class="fa fa-heart text-gray"></i> 89</small>
-            <br>
-            <small><i class="fa fa-clock text-gray"></i> <?php echo date('d M Y, H:i', $val['time']) ?> WIB</small>
+            <a href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>" class="text-dark do_transition">
+              <strong><?php echo $val['judul'] ?></strong>
+              <br>
+              <small><?php echo substr(strip_tags($val['deskripsi']), 0, 100) ?> ... <strong><a class="text-dark" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">selengkapnya</a></strong></small>
+              <br>
+              <small><i class="fa fa-heart text-danger"></i> 89</small>
+              <br>
+              <small><i class="fa fa-clock text-gray"></i> <?php echo date('d M Y, H:i', $val['time']) ?> WIB</small>
+              
+              <?php if ($val['published'] == 1): ?>
+                <br>
+                <small class=" text-success"><i class="fa fa-eye"></i> Dipublikasikan</small>
+              <?php else: ?>
+                <br>
+                <small class=" text-danger"><i class="fa fa-eye-slash"></i> Tidak Dipublikasikan</small>
+              <?php endif ?>
             </a>
-            <?php if ( $val['published'] == 0 ): ?>
-              <br>
-              <small class="text-danger"><i class="fa fa-eye"></i> Belum dipublikasikan</small>
-            <?php endif ?>
-            <?php if ( $val['published'] == 1 ): ?>
-              <br>
-              <small class="text-success"><i class="fa fa-eye"></i> Sedang dipublikasikan</small>
-            <?php endif ?>
           </div>
           
-          <a class="btn btn-primary btn-flat" href="<?php echo base_url() . 'galeri_saya/edit_karya/' . $val['id_karya'] ?>">
+          <a class="btn btn-primary btn-flat do_transition" href="<?php echo base_url() . 'galeri_saya/edit_karya/' . $val['id_karya'] ?>">
             <i class="fa fa-edit"></i> Edit
           </a>
-          <a class="btn btn-danger btn-flat" href="<?php echo base_url() . 'galeri_saya/del/' . $val['id_karya'] . '/' . base64_encode( base_url() . $this->uri->uri_string() ) ?>" onclick="return confirm('Anda yakin ingin menghapus?')">
+          <a class="btn btn-danger btn-flat" href="javascript:void(0)" onclick="return confirm_box('Anda yakin ingin menghapus?', 'question', 'Ya, hapus saja', '<?php echo base_url() . 'galeri_saya/del/' . $val['id_karya'] . '/' . base64_encode( base_url() . $this->uri->uri_string() ) ?>')">
             <i class="fa fa-trash"></i> Hapus
           </a>
         </div>

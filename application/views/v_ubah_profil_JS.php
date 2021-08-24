@@ -7,19 +7,6 @@
 	  bsCustomFileInput.init();
 	});
 
-	function show_loader(element, caption="Loading...") {
-		element.addClass('disabled');
-		let captionAsli = element.html();
-		element.attr('captionAsli', captionAsli);
-		element.html('<img class="mr-2" src="<?php echo base_url() ?>assets/widi/img/loader.gif"> ' + caption);
-	}
-
-	function hide_loader(element) {
-		element.removeClass('disabled');
-		let captionAsli = element.attr('captionAsli');
-		element.html(captionAsli);
-	}
-
 	// SImpan perubahan
 	function simpan_perubahan() {
 		show_loader( $('#simpan_perubahan_btn'), 'Mengunggah...' )
