@@ -10,14 +10,6 @@
 
   $('.btn-hati').click(function (e) {
 
-    <?php if ( !$this->session->userdata('id_user') ): ?>
-      Swal.fire({
-        icon: 'warning',
-        title: 'Anda harus login terlebih dahulu!',
-      })
-      return 0;
-    <?php endif ?>
-
     // Jika button tidak disabled
     if ( !$(this).hasClass('disabled') ) {
       if ( !$(this).find('.hati').hasClass('text-danger') ) {
@@ -82,10 +74,10 @@
         
         setTimeout(function () {
           let htmlContent = `
-            <img class="border" id="img" src="${data.img_path}" ans="${data.word}">
-            <input class="form-control" id="word" style="width:150px;" placeholder="Tulis di sini"><br>
-            <button id="kirim" onclick="check_captcha()" class="btn"><i class="fa fa-paper-plane"></i> Kirim</button><br>
-            <button id="Reload" onclick="get_captcha()" class="btn"><i class="fa fa-exchange-alt"></i> Reload</button><br>
+            <img class="border" id="img" src="${data.img_path}" ans="${data.word}"><br>
+            <input class="" id="word" style="width:150px;" placeholder="Ketik tulisan di atas" autocomplete="off"><br>
+            <button id="kirim" onclick="check_captcha()" class="btn"><i class="fa fa-paper-plane"></i> Submit</button><br>
+            <button id="Reload" onclick="get_captcha()" class="btn"><i class="fa fa-exchange-alt"></i> Reload CAPTCHA</button><br>
           `;
           $('.captha-container').html(htmlContent);
         }, 1400)
@@ -122,6 +114,14 @@
 
             // hilangkan modal box modal-captcha
             $('#modal-captcha').modal('hide')
+
+            // Berikan respon
+            swal.fire({
+              icon: 'success',
+              title: 'Love Terkirim!',
+              text: 'Terima kasih telah menebar cinta pada dunia!',
+            })
+
           }, 1400)
         }
       });

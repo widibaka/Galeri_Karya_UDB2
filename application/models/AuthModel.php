@@ -35,13 +35,6 @@ class AuthModel extends CI_Model {
 		$data['id_user'] = strval( time() . rand(1,100) );
 		$this->db->insert($this->table, $data);
 	}
-	public function get_HP_by_userID($id_user)
-	{
-		$this->db->select( 'hp' );
-		$this->db->where( 'id_user', $id_user );
-		$this->db->limit( 1 );
-		return $this->db->get( $this->table )->row_array()['hp'];
-	}
 	public function edit_profil($id_user='', $data)
 	{
 		$data = [

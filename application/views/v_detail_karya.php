@@ -47,7 +47,7 @@
         ?>
 
         <h5 class="mb-3">Gambar</h5>
-        <div class="border row p-3 glassy_thing rounded-lg">
+        <div class="row p-3 glassy_thing rounded-lg">
           <?php if ( empty($scandir) ): ?>
             <strong class="text-gray w-100">Mohon upload satu atau lebih gambar untuk karya ini!</strong>
           <?php endif ?>
@@ -65,7 +65,7 @@
 
         <?php if ( !empty($data_karya['youtube']) ): ?>
           <h5 class="my-3">Video Youtube</h5>
-          <div class="border row p-3 glassy_thing rounded-lg">
+          <div class="row p-3 glassy_thing rounded-lg">
             
             <?php 
             /**
@@ -120,14 +120,25 @@
         </h5>
         <hr>
 
+        <center class="p-3 glassy_thing rounded-lg">
+          <div class="image mb-2">
+            <div class="image img-circle elevation-2" alt="User Image" style="
+              height: 80px;
+              width: 80px;
+              background-size: cover;
+              background-position: center;
+              background-image: url('<?php echo base_url() . 'assets/uploads/foto_profil/' . $kreator['photo'] ?>');
+            ">
+            </div>
+          </div>
+          <h5>@<?php echo $kreator['username'] ?></h5>
+        </center>
+
         <!-- HP -->
-        <div class="bg-success py-2 px-3 mt-3 text-center">
-          <?php 
-              $hp = $this->AuthModel->get_HP_by_userID( $data_karya['id_user'] );
-          ?>
-          <a style="color: white;" href="tel:+62<?php echo $hp ?>">
+        <div class="bg-success py-2 px-3 mt-3 text-center rounded-lg">
+          <a style="color: white;" href="tel:+62<?php echo $kreator['hp'] ?>">
             <h4 class="mb-0">
-              <i class="fa fa-phone"></i> +62 <?php echo $hp ?>
+              <i class="fa fa-phone"></i> +62 <?php echo $kreator['hp'] ?>
             </h4>
             <h5 class="mt-0">
               <small>Hubungi Kreator</small>
@@ -136,7 +147,7 @@
         </div>
 
         <div class="mt-3">
-          <div class="btn-hati btn btn-default btn-lg btn-flat w-100" style="height: 40pt;">
+          <div class="btn-hati btn btn-default btn-lg w-100 rounded-lg" style="height: 40pt;">
             <center id="loader_wishlist_btn" style="display: none; margin-top: -8px;">
               <div class="lds-dual-ring2" style="
                   height: 27pt!important;

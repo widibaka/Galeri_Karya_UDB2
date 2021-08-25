@@ -39,6 +39,8 @@ class Detail_karya extends CI_Controller {
 
 		$data['title'] = $data['data_karya']['judul'];
 
+		$data['kreator'] = $this->AuthModel->get_user( $data['data_karya']['id_user'] );
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);
 		$this->load->view('templates/sidebar', $data);
