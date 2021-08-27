@@ -54,6 +54,10 @@
               <br>
               <small><i class="fa fa-heart text-danger"></i> <?php echo $val['loves'] ?></small>
               <br>
+              <small><i class="fa fa-tag text-success"></i> <?php echo $this->KategoriModel->get_kategori($val['id_kategori'])  ?></small>
+              <br>
+              <small><i class="fa fa-user text-gray"></i> <?php echo $this->AuthModel->get_user($val['id_user'])['username']  ?></small>
+              <br>
               <small><i class="fa fa-clock text-gray"></i> <?php echo date('d M Y, H:i', $val['time']) ?> WIB</small>
             </a>
           </div>

@@ -17,28 +17,12 @@ Edit Nama
 Edit Password
 Edit Nomor WA
 
-==============================================================
-==============================================================
-==============================================================
-
-TOMBOL LOVE MASIH BELUM SEMPURNA!!
-
-#Status Lomba:
- Tabel Menampilkan Ranking Lomba: Ranking 1,2,3
-  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
- Tabel Menampilkan Ranking Lomba User
-  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
-
 #Browse Karya:
   Judul Karya
   Deskripsi (dibatasi 200 kata)
   Kategori
   Tanggal
   Nama Akun
-
-#Galeri Saya
- Menampilkan Koleksi => Max 3 Karya per akun
- Hapus Karya (soft delete)
 
 #Tambah Karya:
   Judul Karya
@@ -50,7 +34,9 @@ TOMBOL LOVE MASIH BELUM SEMPURNA!!
   +Gambar Karya modal box
   +Youtube Video (Multiple)modal box
 
-#Sertifikat (Berdasarkan Karya, Anggotanya siapa saja)
+#Galeri Saya
+ Menampilkan Koleksi => Max 3 Karya per akun
+ Hapus Karya (soft delete)
 
 #Detil karya:
  Statistik Karya:
@@ -65,12 +51,31 @@ TOMBOL LOVE MASIH BELUM SEMPURNA!!
   +Anggota
  +Gambar Karya
  +Youtube Video
+==============================================================
+==============================================================
+==============================================================
+
+YASIRPEDIA dan MATIN MASUK KE KARYA WEB!!
+#SEarch Karya menurut kategori
+
+#Status Lomba:
+ Tabel Menampilkan Ranking Lomba: Ranking 1,2,3
+  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
+ Tabel Menampilkan Ranking Lomba User
+  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
+
+
 
 #Notifikasi dari panitia lomba modal box
 
 #Chat dengan panitia modal box + Jumlah notifikasi + Status online
 
+KTIKA DIBLOKIR, AKUN AKAN DI-UNPUBLISH SEMUA KARYANYA, DAN DILARANG MENAMBAH KARYA
 
+UNREAD MESSAGE DIHITUNG DARI YANG > timestamp waktu unread sejak waktu logout, yang disimpan di column baru tabel user
+WAKTU LOGOUT DI-SET SAAT LOGIN, MEMAKAI WAKTU TERAKHIR ONLINE YANG TERBARU SEBELUM DIPERBARUI
+
+#ADD ADMIN
 
 ==================================================================
 
@@ -87,6 +92,8 @@ Statistik Loves
 
 Konfirmasi Akun
 Blacklist Akun
+
+#Sertifikat (Berdasarkan Karya, Anggotanya siapa saja)
 
 ========================================
 

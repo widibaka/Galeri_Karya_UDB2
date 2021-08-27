@@ -32,6 +32,7 @@ class AuthModel extends CI_Model {
 	public function register($data='')
 	{
 		unset($data['password2']);
+		$data['waktu_daftar'] = time();
 		$data['id_user'] = strval( time() . rand(1,100) );
 		$this->db->insert($this->table, $data);
 	}
@@ -63,5 +64,15 @@ class AuthModel extends CI_Model {
 			return true;
 		}
 		return false;
+	}
+
+
+	public function set_terakhir_online($id_user)
+	{
+		$data = [
+			'terakhir_online' => time(),
+		];
+		$this->db->where('id_user', $id_user);
+		return $this->db->update($this->table, $data);
 	}
 }

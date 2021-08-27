@@ -8,6 +8,24 @@
     $(this).addClass('active')
   })
 
+
+  /* Button hati */
+    // Check browser support
+    if (typeof(Storage) !== "undefined") {
+          // Retrieve, kalau sudah ada maka btn-hati dibuat merah
+          if ( localStorage.getItem("<?php echo $data_karya['id_karya'] ?>") == "true" ) {
+            $('#content_of_wishlist_btn .hati').addClass('text-danger');
+            // Enable back the button di saat terakhir proses
+            $('.btn-hati').removeClass('disabled');
+          // Kalau tidak ada, just enable the button
+          }else{
+            $('.btn-hati').removeClass('disabled');
+          }
+    } else {
+      alert("Sorry, your browser does not support Web Storage...")
+    }
+  /* Button hati Ends */
+
   $('.btn-hati').click(function (e) {
 
     // Jika button tidak disabled
@@ -29,7 +47,7 @@
       // ================================ Dua Kasus Berbeda ===============================
 
 
-      // Kalau tidak ada text-danger / Love nya merah
+      // Kalau ada .text-danger / Love nya merah
       // Disable the button first
       $(this).addClass('disabled');
       $('#loader_wishlist_btn').show()
@@ -53,6 +71,10 @@
             $('#content_of_wishlist_btn .hati').removeClass('text-danger');
             // Enable back the button di saat terakhir proses
             this_element.removeClass('disabled');
+
+            // Store ke Localstorage, tapi nilainya false
+            localStorage.setItem("<?php echo $data_karya['id_karya'] ?>", "false");
+
           }, 1400)
           
         }
@@ -121,6 +143,9 @@
               title: 'Love Terkirim!',
               text: 'Terima kasih telah menebar cinta pada dunia!',
             })
+
+            // Store ke Localstorage
+            localStorage.setItem("<?php echo $data_karya['id_karya'] ?>", "true");
 
           }, 1400)
         }

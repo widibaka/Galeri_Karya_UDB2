@@ -60,7 +60,7 @@
 	document.getElementById("imgInp").addEventListener("change", readFile);
 
 	$('#hapusGambarProfil').click(function () {
-	  preview_gambar.style.backgroundImage = "url('<?php echo base_url() ?>assets/widi/img/user_no_image.jpg')"
+	  preview_gambar.style.backgroundImage = "url('<?php echo base_url() ?>assets/uploads/foto_profil/user_no_image.jpg')"
 	  b64.value = ""
 	  $('#imgInp').next('label').html('Pilih berkas gambar');
 	  $('#modal-edit-photo').modal('hide')

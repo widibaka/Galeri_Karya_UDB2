@@ -46,7 +46,7 @@ class Ubah_profil extends CI_Controller {
 					$this->AuthModel->ubah_gambar_profil( $this->session->userdata('id_user'), $file['filename'] );
 				}else if ( empty($post['image']) ) {
 					$this->AuthModel->hapus_file_gambar_profil( $this->session->userdata('id_user') );
-					$this->AuthModel->ubah_gambar_profil( $this->session->userdata('id_user'), $file['filename'] );
+					$this->AuthModel->ubah_gambar_profil( $this->session->userdata('id_user'), 'user_no_image.jpg' );
 				}
 				// kembali ke halaman ubah profil
 				redirect( base_url() . $this->uri->uri_string() );

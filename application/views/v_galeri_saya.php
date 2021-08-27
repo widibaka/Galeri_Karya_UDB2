@@ -68,9 +68,11 @@
               <small><i class="fa fa-heart text-danger"></i> <?php echo $val['loves'] ?></small>
               <br>
               <small><i class="fa fa-clock text-gray"></i> <?php echo date('d M Y, H:i', $val['time']) ?> WIB</small>
+              <br>
+              <small><i class="fa fa-tag text-success"></i> <?php echo $this->KategoriModel->get_kategori($val['id_kategori'])  ?></small>
+              <br>
               
               <?php if ($val['published'] == 1): ?>
-                <br>
                 <small class=" text-success"><i class="fa fa-eye"></i> Dipublikasikan</small>
               <?php else: ?>
                 <br>

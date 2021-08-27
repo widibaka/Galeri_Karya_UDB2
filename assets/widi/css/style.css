@@ -173,7 +173,7 @@
   -webkit-backdrop-filter: blur( 7.0px );
 }*/
 .modal-chat .modal-content {
-  background: rgba( 255, 255, 255, 0.23 )!important;
+  background: rgba( 255, 255, 255, 0.9 )!important;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   min-height: 500px;
   backdrop-filter: blur( 7.0px );
@@ -357,4 +357,12 @@
 }
 .youtube-vid:hover .icon-play-vid {
   opacity: 1;
+}
+
+/* Contact di menu chat */
+.contacts-list .contact-item:hover {
+  background-color: rgba(0, 0, 0, .2);
+}
+.contacts-list .active {
+  background-color: rgba(0, 0, 0, .2);
 }

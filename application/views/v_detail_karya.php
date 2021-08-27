@@ -27,14 +27,6 @@
           }
         ?>
 
-        <!-- <div class="col-12">
-          <img src="<?php echo base_url() . "assets/img_karya/" . $big_preview ?>" class="product-image" alt="Product Image">
-        </div>
-        <div class="col-12 row product-image-thumbs">
-          <?php foreach ($scandir as $key => $val): ?>
-            <div class="product-image-thumb <?php echo ($key > 2) ? '' : 'active' ?>"><img src="<?php echo base_url() . "assets/img_karya/" . $data_karya['id_karya'] . "/" . $val ?>" alt="Product Image"></div>
-          <?php endforeach ?>
-        </div> -->
         <?php 
           $dir = "assets/img_karya/" . $data_karya['id_karya'] . "";
 
@@ -49,7 +41,7 @@
         <h5 class="mb-3">Gambar</h5>
         <div class="row p-3 glassy_thing rounded-lg">
           <?php if ( empty($scandir) ): ?>
-            <strong class="text-gray w-100">Mohon upload satu atau lebih gambar untuk karya ini!</strong>
+            <i class="text-muted">Tidak ada gambar</i>
           <?php endif ?>
           <?php foreach ($scandir as $key => $val): ?>
             
@@ -123,8 +115,8 @@
         <center class="p-3 glassy_thing rounded-lg">
           <div class="image mb-2">
             <div class="image img-circle elevation-2" alt="User Image" style="
-              height: 80px;
-              width: 80px;
+              height: 120px;
+              width: 120px;
               background-size: cover;
               background-position: center;
               background-image: url('<?php echo base_url() . 'assets/uploads/foto_profil/' . $kreator['photo'] ?>');
@@ -145,9 +137,10 @@
             </h5>
           </a>
         </div>
+        
 
         <div class="mt-3">
-          <div class="btn-hati btn btn-default btn-lg w-100 rounded-lg" style="height: 40pt;">
+          <div class="btn-hati btn btn-default btn-lg w-100 rounded-lg disabled" style="height: 40pt;">
             <center id="loader_wishlist_btn" style="display: none; margin-top: -8px;">
               <div class="lds-dual-ring2" style="
                   height: 27pt!important;

@@ -12,6 +12,75 @@ class Api extends CI_Controller {
 		// }
 		$this->load->model('KaryaModel');
 	}
+
+	public function set_terakhir_online($id_user='')
+	{
+		$this->load->model('AuthModel');
+		if ( $this->AuthModel->set_terakhir_online($id_user) ) {
+			echo 'true';
+			return;
+		}
+		echo 'false';
+		
+	}
+
+	public function get_chats($id_user, $limit)
+	{
+		// Kalau user id kosong, abikan!
+		if ( empty($id_user) OR $id_user == 'undefined' ) {
+			echo json_encode( ['status' => false] );
+			die();
+		}
+
+		// Nah mari mulai
+		// Mendapatkan semua id_user milik admin
+		$all_id_user_admin = $this->db->get('admin')->result_array();
+
+		// Mendapatkan chats
+		$this->load->model('ChatModel');
+		$data = $this->ChatModel->get_chat($id_user, $all_id_user_admin, $limit);
+		// Buat date format
+		foreach ($data as $key => $val) {
+			$data[$key]['time'] = date('d/m/Y, H:i', $val['time']) . ' WIB';
+			// kalau gak ada foto, kasih PP default
+			if ( empty($data[$key]['photo']) ) {
+				$data[$key]['photo'] = 'user_no_image.jpg';
+			}
+		}
+		echo json_encode($data);
+	}
+	public function get_contact($limit)
+	{
+		$this->load->model('ChatModel');
+		$admin_all = $this->db->get('admin')->result_array();
+		$teratas = $this->ChatModel->get_contact($limit, $admin_all);
+		
+		foreach ($teratas as $key => $val) {
+			$data['contact'][$key] = $this->AuthModel->get_user($val['id_user']);
+			$latest_msg = $this->ChatModel->get_latest_msg($val['id_user']);
+			$data['contact'][$key]['latest_msg'] = substr($latest_msg['msg'], 0, 34).'...';
+			$data['contact'][$key]['latest_msg_time'] = date('d/m/Y', $latest_msg['time']) . ' WIB';
+		}
+
+		
+		echo json_encode($data['contact']);
+
+	}
+	public function send_chat()
+	{
+		$this->load->model('ChatModel');
+		$post = $this->input->post();
+		if ( empty($post['msg']) ) {
+			return;
+		}
+		if ( $this->ChatModel->send_chat($post) ) {
+			$r = [
+				'status' => true
+			];
+			echo json_encode($r);
+		}
+	}
+
 	public function create_captcha()
 	{
 		$this->load->library('image_lib');

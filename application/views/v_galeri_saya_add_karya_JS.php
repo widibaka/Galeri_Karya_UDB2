@@ -4,6 +4,10 @@
 <script src="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script type="text/javascript">
 
+	// Munculkan loader ketika submit
+	$('#form_add_karya').submit(function() {
+		show_loader($('#berikutnya_btn'));
+	})
 
 	$(function () {
 	  // Summernote

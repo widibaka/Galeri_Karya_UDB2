@@ -78,8 +78,8 @@
       	  	    <p class="text-muted"><i>Isi dengan hal-hal yang mendeskripsikan karya Anda / tim.</i></p>
       	  	  </div>
       	  	  <div class="form-group">
-      	  	    <label for="deskripsi">Link (Opsional)</label>
-      	  	    <textarea class="form-control" name="link" id="x" placeholder="Link Google Drive, atau lainnya..." required=""><?php echo $data_karya['link'] ?></textarea>
+      	  	    <label for="link">Link (Opsional)</label>
+      	  	    <textarea class="form-control" name="link" id="x" placeholder="Link Google Drive, atau lainnya..."><?php echo $data_karya['link'] ?></textarea>
       	  	    <p class="text-muted"><i>Isi dengan link utama aplikasi web Anda, atau link download APK Anda, ataupun lainnya juga boleh.</i></p>
       	  	  </div>
 		          <div class="form-group">

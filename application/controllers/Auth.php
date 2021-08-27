@@ -23,6 +23,12 @@ class Auth extends CI_Controller {
 		if ( $this->input->post() ) {
 			$check_result = $this->AuthModel->check_user( $this->input->post() );
 			if ($check_result) {
+
+				// Check apakah ini seornag admin
+				if ( strpos($check_result['email'], '@admin') != false ) {
+					$check_result['admin'] = 'mantap-mantap';
+				}
+				// Memulai session
 				$this->session->set_userdata($check_result);
 				redirect(base_url());
 			}

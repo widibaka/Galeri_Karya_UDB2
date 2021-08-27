@@ -36,6 +36,14 @@ class KaryaModel extends CI_Model {
 	}
 	
 	// ======================================================================
+	public function count_karya_user($id_user = NULL)
+	{
+		$this->db->where( 'dihapus', 0 );
+		$this->db->where( 'id_user', $id_user );
+		$this->db->select( 'id_karya' );
+		$this->db->limit( 3 );
+		return $this->db->get( $this->table )->num_rows();
+	}
 	public function get_karya_by_userID($id_user, $limit, $current_page, $search = NULL )
 	{
 		$this->db->order_by( 'time', 'DESC' );

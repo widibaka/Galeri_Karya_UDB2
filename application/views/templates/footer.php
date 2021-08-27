@@ -19,209 +19,74 @@
 </div>
 <!-- ./wrapper -->
 
-<button class="chat-button btn btn-primary shadow" data-toggle="modal" data-target="#modal-default">
-  <span class="fa fa-comments"></span>
-</button>
+<?php if ( empty($this->session->userdata('admin')) ): ?>
+  <button class="chat-button btn btn-primary shadow" data-toggle="modal" data-target="#modal-default">
+    <span class="fa fa-comments"></span>
+  </button>
 
-<div class="modal fade modal-chat" id="modal-default" data-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="height: 80vh;">
-      <div class="modal-header">
-        <h5 class="modal-title text-white">Chat Dengan Panitia</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="direct-chat direct-chat-primary">
-          <!-- <div class="card-header">
-            <h3 class="card-title">Direct Chat</h3>
-
-            <div class="card-tools">
-              <span title="3 New Messages" class="badge badge-primary">3</span>
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
-                <i class="fas fa-comments"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div> -->
-          <!-- /.card-header -->
-          <div class="card-footer">
-            <form action="#" method="post">
-              <div class="input-group">
-                <input type="text" name="message" placeholder="Tulis pesan ..." class="form-control" autocomplete="off">
-                <span class="input-group-append">
-                  <button type="button" class="btn btn-primary">Kirim</button>
-                </span>
-              </div>
-            </form>
-          </div>
-
-          <center>
-            <small class="text-white">
-              Terakhir online 2 jam lalu
-            </small>
-          </center>
-          <hr>
-          <!-- /.card-footer-->
-          <div class="card-body">
-            <!-- Conversations are loaded here -->
-            <div class="direct-chat-messages">
-
-              <!-- Message. Default to the left -->
-              <div class="direct-chat-msg">
-                <div class="direct-chat-infos clearfix">
-                  <span class="direct-chat-name float-left text-white">Admin</span>
-                  <span class="direct-chat-timestamp float-right text-white">6 Jul 2021 02:03</span>
-                </div>
-                <!-- /.direct-chat-infos -->
-                <img class="direct-chat-img" src="<?php echo base_url() ?>assets/widi/img/user_no_image.jpg" alt="message user image">
-                <!-- /.direct-chat-img -->
-                <div class="direct-chat-text">
-                  Menjadi dilahirkan dan hidup memang bukan pilihan, namun berusaha bermanfaat bagi orang adalah pilihan yang membuat hidup kita menjadi lebih berharga :)
-                </div>
-                <!-- /.direct-chat-text -->
-              </div>
-              <!-- /.direct-chat-msg -->
-
-              <!-- Message to the right -->
-              <div class="direct-chat-msg right">
-                <div class="direct-chat-infos clearfix">
-                  <span class="direct-chat-name float-right text-white">Free Woman</span>
-                  <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 02:02</span>
-                </div>
-                <!-- /.direct-chat-infos -->
-                <img class="direct-chat-img" src="<?php echo base_url() ?>assets/dist/img/user3-128x128.jpg" alt="message user image">
-                <!-- /.direct-chat-img -->
-                <div class="direct-chat-text">
-                  Kenapa saya hidup?
-                </div>
-                <!-- /.direct-chat-text -->
-              </div>
-
-              <!-- Message. Default to the left -->
-              <div class="direct-chat-msg">
-                <div class="direct-chat-infos clearfix">
-                  <span class="direct-chat-name float-left text-white">Admin</span>
-                  <span class="direct-chat-timestamp float-right text-white">6 Jul 2021 02:02</span>
-                </div>
-                <!-- /.direct-chat-infos -->
-                <img class="direct-chat-img" src="<?php echo base_url() ?>assets/widi/img/user_no_image.jpg" alt="message user image">
-                <!-- /.direct-chat-img -->
-                <div class="direct-chat-text">
-                  Silakan bertanya apapun kak :)
-                </div>
-                <!-- /.direct-chat-text -->
-              </div>
-              <!-- /.direct-chat-msg -->
-
-              <!-- Message to the right -->
-              <div class="direct-chat-msg right">
-                <div class="direct-chat-infos clearfix">
-                  <span class="direct-chat-name float-right text-white">Free Woman</span>
-                  <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 02:01</span>
-                </div>
-                <!-- /.direct-chat-infos -->
-                <img class="direct-chat-img" src="<?php echo base_url() ?>assets/dist/img/user3-128x128.jpg" alt="message user image">
-                <!-- /.direct-chat-img -->
-                <div class="direct-chat-text">
-                  Permisi, apa saya boleh bertanya?
-                </div>
-                <!-- /.direct-chat-text -->
-              </div>
-
-              <div class="hidden_msg" style="display: none;">
-                <!-- Message to the right -->
-                <div class="direct-chat-msg right">
-                  <div class="direct-chat-infos clearfix">
-                    <span class="direct-chat-name float-right text-white">Free Woman</span>
-                    <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 01:01</span>
-                  </div>
-                  <!-- /.direct-chat-infos -->
-                  <img class="direct-chat-img" src="<?php echo base_url() ?>assets/dist/img/user3-128x128.jpg" alt="message user image">
-                  <!-- /.direct-chat-img -->
-                  <div class="direct-chat-text">
-                    Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </div>
-                  <!-- /.direct-chat-text -->
-                </div>
-
-                <!-- Message to the right -->
-                <div class="direct-chat-msg right">
-                  <div class="direct-chat-infos clearfix">
-                    <span class="direct-chat-name float-right text-white">Free Woman</span>
-                    <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 01:01</span>
-                  </div>
-                  <!-- /.direct-chat-infos -->
-                  <img class="direct-chat-img" src="<?php echo base_url() ?>assets/dist/img/user3-128x128.jpg" alt="message user image">
-                  <!-- /.direct-chat-img -->
-                  <div class="direct-chat-text">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
-                  </div>
-                  <!-- /.direct-chat-text -->
-                </div>
-
-                <!-- Message to the right -->
-                <div class="direct-chat-msg right">
-                  <div class="direct-chat-infos clearfix">
-                    <span class="direct-chat-name float-right text-white">Free Woman</span>
-                    <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 01:01</span>
-                  </div>
-                  <!-- /.direct-chat-infos -->
-                  <img class="direct-chat-img" src="<?php echo base_url() ?>assets/dist/img/user3-128x128.jpg" alt="message user image">
-                  <!-- /.direct-chat-img -->
-                  <div class="direct-chat-text">
-                    Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat.
-                  </div>
-                  <!-- /.direct-chat-text -->
-                </div>
-
-                <!-- Message to the right -->
-                <div class="direct-chat-msg right">
-                  <div class="direct-chat-infos clearfix">
-                    <span class="direct-chat-name float-right text-white">Free Woman</span>
-                    <span class="direct-chat-timestamp float-left text-white">6 Jul 2021 01:01</span>
-                  </div>
-                  <!-- /.direct-chat-infos -->
-                  <img class="direct-chat-img" src="<?php echo base_url() ?>assets/dist/img/user3-128x128.jpg" alt="message user image">
-                  <!-- /.direct-chat-img -->
-                  <div class="direct-chat-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                  </div>
-                  <!-- /.direct-chat-text -->
-                </div>
-              </div>
-
-              <a role="button" class="btn btn-block btn-default w-100" onclick="$('.hidden_msg').slideDown(400)">Muat Lebih Banyak</a>
-
-            </div>
-            <!--/.direct-chat-messages-->
-
-          </div>
-          <!-- /.card-body -->
+  <div class="modal fade modal-chat" id="modal-default" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="height: 80vh;">
+        <div class="modal-header">
+          <h5 class="modal-title">Chat Dengan Panitia</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!--/.direct-chat -->
+        <div class="modal-body">
+          <div class="direct-chat direct-chat-primary">
+
+            <center class="mt-1 pt-3 pm-3 pl-3">
+              <?php echo form_open('', 'id="form_input_chat"') ?>
+              <input type="hidden" name="id_user_penerima" required="">
+                <div class="input-group">
+                  <input type="text" name="msg" placeholder="Tulis pesan ..." class="form-control" autocomplete="off" required="">
+                  <span class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Kirim</button>
+                  </span>
+                </div>
+              </form>
+              <small class="text-gray">
+                Terakhir online 2 jam lalu
+              </small>
+            </center>
+            <hr>
+            <!-- /.card-footer-->
+            <div class="card-body">
+              <!-- Conversations are loaded here -->
+              <div class="direct-chat-messages">
+
+                <div class="wadah-untuk-chat-messages">
+                  <center class="text-gray">
+                    <i>Pilih kontak untuk chat dengan user.</i>
+                  </center>
+                </div>
+                
+              </div>
+              
+              <!--/.direct-chat-messages-->
+
+            </div>
+            <!-- /.card-body -->
+
+          </div>
+          <!--/.direct-chat -->
+
+        </div>
+        <div class="overlay" style="display: none;">
+          <div class="lds-dual-ring"></div>
+        </div> <!-- /.overlay -->
+        <!-- <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
       </div>
-      <!-- <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
+      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-content -->
+    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
+  <!-- /.modal -->
+<?php endif ?>
 
 <div class="modal fade modal-notification" id="modal-notification" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
@@ -304,79 +169,6 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div> -->
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-<div class="modal fade" id="modal-notification" data-backdrop="static">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Notifikasi</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="font-weight: normal;">
-        <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-          Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-          <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-        </div> <!-- notifikasi -->
-        <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-          Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-          <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-        </div> <!-- notifikasi -->
-        <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-          Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-          <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-        </div> <!-- notifikasi -->
-        <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-          Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-          <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-        </div> <!-- notifikasi -->
-        <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-          Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-          <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-        </div> <!-- notifikasi -->
-        <span class="hidden_notif" style="display: none;">
-          <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-            Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-            <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-          </div> <!-- notifikasi -->
-          <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-            Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-            <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-          </div> <!-- notifikasi -->
-          <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-            Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-            <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-          </div> <!-- notifikasi -->
-          <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-            Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-            <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-          </div> <!-- notifikasi -->
-          <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-            Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-            <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-          </div> <!-- notifikasi -->
-          <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-            Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-            <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-          </div> <!-- notifikasi -->
-          <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-            Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-            <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-          </div> <!-- notifikasi -->
-          <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
-            Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
-            <span class="float-right" style="opacity: .8;"><small>4 Jam Lalu</small></span>
-          </div> <!-- notifikasi -->
-        </span>
-        <button class="btn btn-outline-secondary w-100 mb-2" onclick="$('.hidden_notif').toggle(400);">Muat Lebih Banyak</button>
-      </div>
     </div>
     <!-- /.modal-content -->
   </div>
@@ -510,8 +302,39 @@
   $("button.do_transition").click(function () {
     turunkan_preloader()
   })
+
+
+  // Update waktu online setiap 1 menit
+  function set_terakhir_online() {
+    $.ajax({
+      url: '<?php echo base_url() ?>api/set_terakhir_online/<?php echo $this->session->userdata('id_user') ?>',
+      // error: function(xhr, status, error){
+      //     swal.fire({
+      //       title: "Error! " + error,
+      //       title: "Error! " + error,
+      //       icon: 'warning',
+      //     })
+      // },
+    })
+  }
+
+  setInterval(function () {
+    set_terakhir_online()
+  }, 60000)
   
 
 </script>
+
+<?php 
+    $this->load->view('FUNDAMENTAL_CHAT', $data);
+?>
+
+<!-- WADUH SEMAKIN PUSING INI CHAT INI... JANGAN SAMPAI LUPA YA! -->
+<?php if ( empty($this->session->userdata('admin')) ): ?>
+  <script type="text/javascript">
+    get_chats( '<?php echo $this->session->userdata('id_user'); ?>', GLOBAL_limit_chat );
+  </script>
+<?php endif ?>
+
 </body>
 </html>

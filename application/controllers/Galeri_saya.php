@@ -3,21 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Galeri_saya extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -36,7 +21,7 @@ class Galeri_saya extends CI_Controller {
 		);
 
 		$search = $this->input->get('search');
-		$per_page = ( empty($this->input->get('per_page')) ) ? 10 : $this->input->get('per_page') ;
+		$per_page = ( empty($this->input->get('per_page')) ) ? 10 : $this->input->get('per_page');
 		// $limit di ->get_karya sama dengan $per_page;
 
 		$id_user = $this->session->userdata('id_user');
@@ -128,6 +113,14 @@ class Galeri_saya extends CI_Controller {
 	{
 		$post = [];
 		if ( !empty($this->input->post()) ) {
+
+			// Check apakah lebih dari tiga karya
+			if ( $this->KaryaModel->count_karya_user( $this->session->userdata('id_user') ) >= 3 ) {
+				$this->session->set_flashdata( 'msg', 'error#Maaf, Galeri Anda dibatasi hingga 3 (tiga) karya saja.' );
+				redirect( base_url() . 'galeri_saya' );
+				return 0;
+			}
+
 			foreach ($this->input->post() as $key => $value) {
 				if ( $key != 'deskripsi' ) {
 					$post[$key] = htmlentities($value);

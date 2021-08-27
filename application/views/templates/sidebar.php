@@ -41,15 +41,18 @@
               </p>
             </a>
           </li> <!-- sidebar item -->
-          <li class="nav-item">
-            <a href="<?php echo base_url() ?>galeri_saya" class="nav-link do_transition" menu_title="Galeri Saya">
-              <!-- <i class="nav-icon fa fa-snowman"></i> -->
-              <i class="nav-icon fa fa-th-large"></i>
-              <p>
-                Galeri Saya
-              </p>
-            </a>
-          </li> <!-- sidebar item -->
+          <?php if ( empty($this->session->userdata('admin')) ): ?>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>galeri_saya" class="nav-link do_transition" menu_title="Galeri Saya">
+                <!-- <i class="nav-icon fa fa-snowman"></i> -->
+                <i class="nav-icon fa fa-th-large"></i>
+                <p>
+                  Galeri Saya
+                </p>
+              </a>
+            </li> <!-- sidebar item -->
+          <?php endif ?>
+          
           <!-- <li class="nav-item">
             <a href="<?php echo base_url() ?>wishlist" class="nav-link" menu_title="Wishlist">
               <i class="nav-icon fa fa-heart"></i>
@@ -59,18 +62,64 @@
               </p>
             </a>
           </li> -->
+
+          <?php if ( $this->session->userdata('admin') ): // admin ?>
+          <li class="nav-header">Admin</li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>admin/akun_aktif" class="nav-link do_transition" menu_title="Akun Aktif">
+                <i class="nav-icon fa fa-user-check"></i>
+                <p>
+                  Akun Aktif
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>admin/akun_aktif" class="nav-link do_transition" menu_title="Blacklist Akun">
+                <i class="nav-icon fa fa-user-alt-slash"></i>
+                <p>
+                  Blacklist Akun
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>admin/chats" class="nav-link do_transition" menu_title="Chats">
+                <i class="nav-icon fa fa-comments"></i>
+                <p>
+                  Chats
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>admin/notifikasi" class="nav-link do_transition" menu_title="Notifikasi">
+                <i class="nav-icon fa fa-bell"></i>
+                <p>
+                  Notifikasi
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>admin/admin_manager" class="nav-link do_transition" menu_title="Admin">
+                <!-- <i class="nav-icon fa fa-snowman"></i> -->
+                <i class="nav-icon fa fa-th-large"></i>
+                <p>
+                  Admin
+                </p>
+              </a>
+            </li> <!-- sidebar item -->
+          <?php endif ?>
+
           <li class="nav-header">User</li>
           <?php if ( $this->session->userdata('username') ): ?>
             <li class="nav-item">
               <a href="<?php echo base_url() ?>ubah_profil" class="nav-link do_transition" menu_title="Ubah Profil">
-                <i class="nav-icon fa fa-user"></i>
+                <i class="nav-icon fa fa-user-edit"></i>
                 <p>
                   Ubah Profil
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>auth/logout" onclick="return confirm('Anda yakin ingin logout?')" class="nav-link">
+              <a href="javascript:void(0)" onclick="return confirm_box('Anda yakin ingin logout?', 'question', 'Ya', '<?php echo base_url() ?>auth/logout')" class="nav-link">
                 <i class="nav-icon fa fa-sign-out-alt"></i>
                 <p>
                   Logout
@@ -80,7 +129,7 @@
           <?php endif ?>
           <?php if ( !$this->session->userdata('username') ): ?>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>auth/login" class="nav-link">
+              <a href="<?php echo base_url() ?>auth/login" class="nav-link do_transition">
                 <i class="nav-icon fa fa-sign-in-alt"></i>
                 <p>
                   Login
@@ -88,7 +137,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>auth/register" class="nav-link">
+              <a href="<?php echo base_url() ?>auth/register" class="nav-link do_transition">
                 <i class="nav-icon far fa-user"></i>
                 <p>
                   Daftar
