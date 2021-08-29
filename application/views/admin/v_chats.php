@@ -44,7 +44,7 @@
               </span>
             </div>
           </form>
-          <small class="text-gray">
+          <small class="text-gray" id="terakhir_online">
             Terakhir online 2 jam lalu
           </small>
         </center>

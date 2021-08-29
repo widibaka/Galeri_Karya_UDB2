@@ -28,7 +28,6 @@ class Chats extends CI_Controller {
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('admin/v_chats', $data);
 		$this->load->view('templates/footer', $data);
-		$this->load->view('FUNDAMENTAL_CHAT', $data);
 		$this->load->view('admin/v_chats_JS', $data);
 	}
 

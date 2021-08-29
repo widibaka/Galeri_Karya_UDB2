@@ -257,21 +257,6 @@
   background-color: #ffffff;
 }
 
-/* Chat Button */
-.chat-button {
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 77px;
-  height: 77px;
-  border-radius: 50%;
-  font-size: 24pt;
-}
-
 /* Notification shaking */
 .shaking {
   /* Start the shake animation and make the animation last for 0.5 seconds */
@@ -365,4 +350,26 @@
 }
 .contacts-list .active {
   background-color: rgba(0, 0, 0, .2);
+}
+
+
+/* Chat Button */
+.chat-button {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+  font-size: 24pt;
+}
+.badge-for-chat-btn {
+  font-size: 13pt;
+  position: fixed;
+  bottom: 83px;
+  right: 30px;
 }

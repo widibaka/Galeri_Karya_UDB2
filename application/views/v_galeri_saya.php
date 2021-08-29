@@ -75,7 +75,6 @@
               <?php if ($val['published'] == 1): ?>
                 <small class=" text-success"><i class="fa fa-eye"></i> Dipublikasikan</small>
               <?php else: ?>
-                <br>
                 <small class=" text-danger"><i class="fa fa-eye-slash"></i> Tidak Dipublikasikan</small>
               <?php endif ?>
             </a>

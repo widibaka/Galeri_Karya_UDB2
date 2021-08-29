@@ -75,4 +75,18 @@ class AuthModel extends CI_Model {
 		$this->db->where('id_user', $id_user);
 		return $this->db->update($this->table, $data);
 	}
+
+	public function get_admin_online_terakhir($ids_of_admin)
+	{
+		foreach ($ids_of_admin as $key => $val) {
+			$this->db->or_where('id_user', $val['id_user']);
+		}
+
+		$this->db->order_by("terakhir_online", "DESC");
+		$this->db->limit(1);
+		
+		$data_new = $this->db->get( $this->table )->row_array();
+		unset( $data_new['password'] );
+		return $data_new;
+	}
 }

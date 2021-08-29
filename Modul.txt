@@ -55,8 +55,12 @@ Edit Nomor WA
 ==============================================================
 ==============================================================
 
+#Detail Karya ditambahin *People Also See (other posts)
 YASIRPEDIA dan MATIN MASUK KE KARYA WEB!!
 #SEarch Karya menurut kategori
+#BUAT GALERI PER USER
+
+Notifikasi chat dihitung dari berapa chat yang masuk semenjak waktu offline
 
 #Status Lomba:
  Tabel Menampilkan Ranking Lomba: Ranking 1,2,3

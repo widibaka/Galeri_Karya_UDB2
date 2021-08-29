@@ -234,7 +234,6 @@
               <img class="mr-2" src="<?php echo base_url() ?>assets/widi/img/loader.gif"> Memuat CAPTCHA...
             </div>
           </div>
-        </span>
       </div>
       <!-- <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

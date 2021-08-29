@@ -19,10 +19,14 @@
 </div>
 <!-- ./wrapper -->
 
-<?php if ( empty($this->session->userdata('admin')) ): ?>
-  <button class="chat-button btn btn-primary shadow" data-toggle="modal" data-target="#modal-default">
-    <span class="fa fa-comments"></span>
+<?php if ( 
+    // Fasilitas chat dengan panitia hanya ada untuk member yang sudah login:: Admin dan Tamu tidak bisa
+    empty($this->session->userdata('admin')) AND !empty($this->session->userdata('id_user'))
+ ): // kalau admin, tombol chat dihilangkan ?>
+  <button class="chat-button btn btn-primary shadow" onclick="open_chat_for_user()" data-toggle="modal" data-target="#modal-default">
+    <span class="fa fa-comments"></span> 
   </button>
+  <span class="badge badge-danger badge-for-chat-btn" style="display: none;">...</span>
 
   <div class="modal fade modal-chat" id="modal-default" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
@@ -46,8 +50,8 @@
                   </span>
                 </div>
               </form>
-              <small class="text-gray">
-                Terakhir online 2 jam lalu
+              <small class="text-gray" id="terakhir_online">
+                ...
               </small>
             </center>
             <hr>
@@ -318,23 +322,88 @@
     })
   }
 
+  // Run, and repeat every 60 secs
+  set_terakhir_online();
   setInterval(function () {
     set_terakhir_online()
   }, 60000)
-  
+
 
 </script>
 
 <?php 
-    $this->load->view('FUNDAMENTAL_CHAT', $data);
+    $this->load->view('FUNDAMENTAL_CHAT');
 ?>
 
 <!-- WADUH SEMAKIN PUSING INI CHAT INI... JANGAN SAMPAI LUPA YA! -->
+<!-- Hanya muncul ketika yang login BUKAN admin / member biasa -->
 <?php if ( empty($this->session->userdata('admin')) ): ?>
   <script type="text/javascript">
-    get_chats( '<?php echo $this->session->userdata('id_user'); ?>', GLOBAL_limit_chat );
+
+    // Membedakan chatbox terbuka dan tertutup
+    // Jika tertutup maka badge-for-chat-btn diisi angka,
+    // Jika terbuka maka refresh chat setiap 5 detik
+    var KONDISI_CHATBOX = 'tertutup';
+    function close_chatbox() {
+       KONDISI_CHATBOX = 'tertutup';
+    }
+
+    function open_chat_for_user(){
+      get_chats( '<?php echo $this->session->userdata('id_user'); ?>', GLOBAL_limit_chat );
+      clear_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>' );
+      KONDISI_CHATBOX = 'terbuka';
+    }
+
+    function check_new_chat_msg(unread_msg) {
+      if ( unread_msg != 0 ) {
+        $('.badge-for-chat-btn').html(unread_msg)
+        $('.badge-for-chat-btn').show()
+      }else{
+        $('.badge-for-chat-btn').hide()
+      }
+    }
+
+    // Status online milik admin
+    setInterval(function() {
+      if ( KONDISI_CHATBOX == 'terbuka' ) {
+        // refresh setiap 5 detik
+        get_admin_online_terakhir()
+        count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
+          // Kalau ada pesan baru, maka refresh
+          if ( unread_msg != 0 ) {
+            refresh_chat();
+            clear_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>' );
+          }
+        })
+      }else if ( KONDISI_CHATBOX == 'tertutup' ){
+        // hitung pesan baru
+        count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
+          // Kalau ada pesan baru, maka tambah notifikasi pesan baru
+          check_new_chat_msg(unread_msg);
+        })
+      }
+      
+
+    }, 5000)
+
+
+
+    // hitung pesan baru saat awal load halaman
+    count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
+      // Kalau ada pesan baru, maka refresh
+      check_new_chat_msg(unread_msg)
+    })
+
+
+
+
+    
+
   </script>
 <?php endif ?>
+
+
+
 
 </body>
 </html>

@@ -11,6 +11,7 @@ class Api extends CI_Controller {
 		// 	redirect( base_url() . 'auth/login' );
 		// }
 		$this->load->model('KaryaModel');
+		$this->load->model('UtilModel');
 	}
 
 	public function set_terakhir_online($id_user='')
@@ -24,62 +25,137 @@ class Api extends CI_Controller {
 		
 	}
 
-	public function get_chats($id_user, $limit)
-	{
-		// Kalau user id kosong, abikan!
-		if ( empty($id_user) OR $id_user == 'undefined' ) {
-			echo json_encode( ['status' => false] );
-			die();
+	// CHAT
+		public function get_chats($id_user, $limit)
+		{
+			// Kalau user id kosong, abikan!
+			if ( empty($id_user) OR $id_user == 'undefined' ) {
+				echo json_encode( ['status' => false] );
+				die();
+			}
+
+			// Nah mari mulai
+			// Mendapatkan semua id_user milik admin
+			$all_id_user_admin = $this->db->get('admin')->result_array();
+
+			// Mendapatkan chats
+			$this->load->model('ChatModel');
+			$data = $this->ChatModel->get_chat($id_user, $all_id_user_admin, $limit);
+			// Buat date format
+			foreach ($data as $key => $val) {
+				$data[$key]['time'] = date('d/m/Y, H:i', $val['time']) . ' WIB';
+				// kalau gak ada foto, kasih PP default
+				if ( empty($data[$key]['photo']) ) {
+					$data[$key]['photo'] = 'user_no_image.jpg';
+				}
+			}
+			echo json_encode($data);
+		}
+		public function get_contact($limit)
+		{
+			$this->load->model('ChatModel');
+			$admin_all = $this->db->get('admin')->result_array();
+			$teratas = $this->ChatModel->get_contact($limit, $admin_all);
+			
+			$contacts = [];
+			foreach ($teratas as $key => $val) {
+				$contacts[$key] = $this->AuthModel->get_user($val['id_user']);
+				$latest_msg = $this->ChatModel->get_latest_msg($val['id_user']);
+				$contacts[$key]['latest_msg'] = substr($latest_msg['msg'], 0, 34).'...';
+				$contacts[$key]['latest_msg_time_int'] = $latest_msg['time'];
+				$contacts[$key]['latest_msg_time'] = date('d/m/Y', $latest_msg['time']) . ' WIB';
+				$contacts[$key]['unread_msg_for_admin'] = $this->ChatModel->count_unread_msg_for_admin( $val['id_user'], $contacts[$key]['terakhir_dibaca_panitia'] );
+			}
+
+			// Urutkan berdasarkan latest_msg_time_int terbaru
+			
+			//Method1: sorting the array using the usort function and a "callback that you define"
+			$keys = array_column($contacts, 'latest_msg_time_int');
+			array_multisort($keys, SORT_DESC, $contacts);
+
+			echo json_encode($contacts);
+
 		}
 
-		// Nah mari mulai
-		// Mendapatkan semua id_user milik admin
-		$all_id_user_admin = $this->db->get('admin')->result_array();
+		// Ini untuk admin
+		public function clear_unread_msg_for_admin($id_user='')
+		{
+			$data = [
+				'terakhir_dibaca_panitia' => time()
+			];
+			$this->db->where('id_user', $id_user);
+			$this->db->update('user', $data);
+		}
 
-		// Mendapatkan chats
-		$this->load->model('ChatModel');
-		$data = $this->ChatModel->get_chat($id_user, $all_id_user_admin, $limit);
-		// Buat date format
-		foreach ($data as $key => $val) {
-			$data[$key]['time'] = date('d/m/Y, H:i', $val['time']) . ' WIB';
-			// kalau gak ada foto, kasih PP default
-			if ( empty($data[$key]['photo']) ) {
-				$data[$key]['photo'] = 'user_no_image.jpg';
+		public function count_unread_msg_for_admin($id_user='')
+		{
+			$this->load->model('ChatModel');
+			$data = $this->AuthModel->get_user($id_user);
+			echo $this->ChatModel->count_unread_msg_for_admin( $data['id_user'], $data['terakhir_dibaca_panitia'] );
+		}
+
+		// Ini untuk user
+		public function count_unread_msg_for_user($id_user='')
+		{
+			$this->load->model('ChatModel');
+			$data = $this->AuthModel->get_user($id_user);
+			echo $this->ChatModel->count_unread_msg_for_user( $data['id_user'], $data['terakhir_dibaca_user'] );
+		}
+		public function clear_unread_msg_for_user($id_user='')
+		{
+			$data = [
+				'terakhir_dibaca_user' => time()
+			];
+			$this->db->where('id_user', $id_user);
+			$this->db->update('user', $data);
+		}
+
+		
+		public function get_online_terakhir($id_user)
+		{
+			$this->load->model('AuthModel');
+			$data = $this->AuthModel->get_user( $id_user )['terakhir_online'];
+
+			// Kalau kurang dari 1 menit, maka statusnya "online"
+			if ( time() - $data <= 60 ) {
+				echo '<strong class="text-success">online</strong>'; die;
+			}
+			
+			$data = 'Offline ' . $this->UtilModel->time_elapsed_string('@' . $data);
+			echo ($data);
+
+		}
+		public function get_admin_online_terakhir()
+		{
+			$this->load->model('AuthModel');
+
+			$ids_of_admin = $this->db->get('admin')->result_array();
+			$data = $this->AuthModel->get_admin_online_terakhir( $ids_of_admin );
+			$time_ago = $this->UtilModel->time_elapsed_string('@' . $data['terakhir_online']);
+
+			// Kalau kurang dari 1 menit, maka statusnya "online"
+			if ( time() - $data['terakhir_online'] <= 60 ) {
+				echo "<strong class=\"text-success\">" . $data['username'] . " online</strong>"; die;
+			}
+
+			echo $data['username'] . ' offline ' . $time_ago;
+
+		}
+		public function send_chat()
+		{
+			$this->load->model('ChatModel');
+			$post = $this->input->post();
+			if ( empty($post['msg']) ) {
+				return;
+			}
+			if ( $this->ChatModel->send_chat($post) ) {
+				$r = [
+					'status' => true
+				];
+				echo json_encode($r);
 			}
 		}
-		echo json_encode($data);
-	}
-	public function get_contact($limit)
-	{
-		$this->load->model('ChatModel');
-		$admin_all = $this->db->get('admin')->result_array();
-		$teratas = $this->ChatModel->get_contact($limit, $admin_all);
-		
-		foreach ($teratas as $key => $val) {
-			$data['contact'][$key] = $this->AuthModel->get_user($val['id_user']);
-			$latest_msg = $this->ChatModel->get_latest_msg($val['id_user']);
-			$data['contact'][$key]['latest_msg'] = substr($latest_msg['msg'], 0, 34).'...';
-			$data['contact'][$key]['latest_msg_time'] = date('d/m/Y', $latest_msg['time']) . ' WIB';
-		}
-
-		
-		echo json_encode($data['contact']);
-
-	}
-	public function send_chat()
-	{
-		$this->load->model('ChatModel');
-		$post = $this->input->post();
-		if ( empty($post['msg']) ) {
-			return;
-		}
-		if ( $this->ChatModel->send_chat($post) ) {
-			$r = [
-				'status' => true
-			];
-			echo json_encode($r);
-		}
-	}
+	// CHAT ENDS
 
 	public function create_captcha()
 	{
