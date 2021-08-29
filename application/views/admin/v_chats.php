@@ -1,23 +1,23 @@
-<div class="row p-5">
+<div class="row d-flex justify-content-center">
   
   <div class="col-md-4 mb-3">
     <div class="card" style="height: 100%!important;">
       <div class="card-header">
-        <h3 class="card-title">Daftar User</h3>
+        <h3 class="card-title"></h3>
 
         <div class="card-tools">
           <div class="input-group input-group" style="width: 200px;">
-            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+            <input type="text" id="input_cari_contact" class="form-control float-right" placeholder="Cari">
 
             <div class="input-group-append">
-              <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+              <button type="submit" class="btn btn-default" onclick="get_contact( 1000, $('#input_cari_contact').val() )"><i class="fas fa-search"></i></button>
             </div>
           </div>
         </div>
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0">
-        <ul class="contacts-list">
+        <ul class="contacts-list" id="contacts-list">
           <center class="mt-4">
             <img class="mr-2" src="<?php echo base_url() ?>assets/widi/img/loader.gif">
             <i class="text-muted">Memuat kontak...</i>

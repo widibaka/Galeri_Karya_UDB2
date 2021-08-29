@@ -53,23 +53,28 @@ class Api extends CI_Controller {
 		}
 		public function get_contact($limit)
 		{
+			// filter
+			$filter = (!empty($this->input->get('filter'))) ? strtoupper($this->input->get('filter')) : '';
+
 			$this->load->model('ChatModel');
 			$admin_all = $this->db->get('admin')->result_array();
 			$teratas = $this->ChatModel->get_contact($limit, $admin_all);
 			
 			$contacts = [];
 			foreach ($teratas as $key => $val) {
-				$contacts[$key] = $this->AuthModel->get_user($val['id_user']);
-				$latest_msg = $this->ChatModel->get_latest_msg($val['id_user']);
-				$contacts[$key]['latest_msg'] = substr($latest_msg['msg'], 0, 34).'...';
-				$contacts[$key]['latest_msg_time_int'] = $latest_msg['time'];
-				$contacts[$key]['latest_msg_time'] = date('d/m/Y', $latest_msg['time']) . ' WIB';
-				$contacts[$key]['unread_msg_for_admin'] = $this->ChatModel->count_unread_msg_for_admin( $val['id_user'], $contacts[$key]['terakhir_dibaca_panitia'] );
+				$temp_data = $this->AuthModel->get_user($val['id_user']);
+				// filtering
+				if ( strpos( strtoupper($temp_data['username']), $filter ) !== false OR $filter == '' ) {
+					$contacts[$key] = $temp_data;
+					$latest_msg = $this->ChatModel->get_latest_msg($val['id_user']);
+					$contacts[$key]['latest_msg'] = substr($latest_msg['msg'], 0, 34).'...';
+					$contacts[$key]['latest_msg_time_int'] = $latest_msg['time'];
+					$contacts[$key]['latest_msg_time'] = date('d/m/Y', $latest_msg['time']) . ' WIB';
+					$contacts[$key]['unread_msg_for_admin'] = $this->ChatModel->count_unread_msg_for_admin( $val['id_user'], $contacts[$key]['terakhir_dibaca_panitia'] );
+				}
 			}
 
 			// Urutkan berdasarkan latest_msg_time_int terbaru
-			
-			//Method1: sorting the array using the usort function and a "callback that you define"
 			$keys = array_column($contacts, 'latest_msg_time_int');
 			array_multisort($keys, SORT_DESC, $contacts);
 
@@ -133,12 +138,12 @@ class Api extends CI_Controller {
 			$data = $this->AuthModel->get_admin_online_terakhir( $ids_of_admin );
 			$time_ago = $this->UtilModel->time_elapsed_string('@' . $data['terakhir_online']);
 
-			// Kalau kurang dari 1 menit, maka statusnya "online"
-			if ( time() - $data['terakhir_online'] <= 60 ) {
+			// Kalau kurang dari 30 detik, maka statusnya "online"
+			if ( time() - $data['terakhir_online'] <= 30 ) {
 				echo "<strong class=\"text-success\">" . $data['username'] . " online</strong>"; die;
 			}
 
-			echo $data['username'] . ' offline ' . $time_ago;
+			echo 'Panitia' . ' offline ' . $time_ago;
 
 		}
 		public function send_chat()

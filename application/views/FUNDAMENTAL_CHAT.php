@@ -149,10 +149,10 @@
 				});
 		}
 
-		function get_contact(limit, callback = function(){}) {		
+		function get_contact(limit, filter, callback = function(){}) {		
 			// Lalu mulai ajax get
 			$.ajax({
-			  url: "<?php echo base_url() ?>api/get_contact/" + limit, 
+			  url: "<?php echo base_url() ?>api/get_contact/" + limit + "?filter="+filter, 
 			  success: function(response){
 			  		let data = JSON.parse(response);
 			  		let content = ``;

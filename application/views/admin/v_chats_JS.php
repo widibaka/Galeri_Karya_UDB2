@@ -1,12 +1,12 @@
 
 
 <script type="text/javascript">
-	get_contact(1000)
+	get_contact( 1000, $('#input_cari_contact').val() );
 
 	get_online_terakhir( $('[name="id_user_penerima"]').val() )
 	setInterval(function() {
 		// refresh setiap 5 detik
-		get_contact(1000)
+		get_contact( 1000, $('#input_cari_contact').val() )
 
 		// hanya ketika admin membuka salah satu kontak
 		if ( $('[name="id_user_penerima"]').val() != '' ) {
