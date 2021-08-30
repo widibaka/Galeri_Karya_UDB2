@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class KaryaModel extends CI_Model {
-	public $table = 'karya';
+	public $table = 'galeri_karya';
 	public function get_karya( $limit, $current_page, $search = NULL )
 	{
 		$this->db->order_by( 'time', 'DESC' );
@@ -85,6 +85,14 @@ class KaryaModel extends CI_Model {
 	public function update($data)
 	{
 		$this->db->where( 'id_karya', $data['id_karya'] );
+		return $this->db->update( $this->table, $data );
+	}
+	public function blokir_karya($id_user)
+	{
+		$this->db->where( 'id_user', $id_user );
+		$data = [
+			'published' => 0,
+		];
 		return $this->db->update( $this->table, $data );
 	}
 

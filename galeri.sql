@@ -12,36 +12,36 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Dumping structure for table db_galeri_udb.admin
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
+-- Dumping structure for table db_galeri_udb.galeri_admin
+DROP TABLE IF EXISTS `galeri_admin`;
+CREATE TABLE IF NOT EXISTS `galeri_admin` (
   `id_user` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_galeri_udb.admin: ~2 rows (approximately)
-DELETE FROM `admin`;
-/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` (`id_user`) VALUES
+-- Dumping data for table db_galeri_udb.galeri_admin: ~2 rows (approximately)
+DELETE FROM `galeri_admin`;
+/*!40000 ALTER TABLE `galeri_admin` DISABLE KEYS */;
+INSERT INTO `galeri_admin` (`id_user`) VALUES
 	('1628687545'),
 	('1628687549');
-/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+/*!40000 ALTER TABLE `galeri_admin` ENABLE KEYS */;
 
--- Dumping structure for table db_galeri_udb.chat
-DROP TABLE IF EXISTS `chat`;
-CREATE TABLE IF NOT EXISTS `chat` (
+-- Dumping structure for table db_galeri_udb.galeri_chat
+DROP TABLE IF EXISTS `galeri_chat`;
+CREATE TABLE IF NOT EXISTS `galeri_chat` (
   `id_chat` int(100) NOT NULL AUTO_INCREMENT,
   `id_user` int(20) NOT NULL DEFAULT 0,
   `id_user_penerima` int(20) DEFAULT 0,
   `msg` text COLLATE utf8mb4_unicode_ci DEFAULT '',
   `time` int(20) DEFAULT 0,
   PRIMARY KEY (`id_chat`)
-) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_galeri_udb.chat: ~124 rows (approximately)
-DELETE FROM `chat`;
-/*!40000 ALTER TABLE `chat` DISABLE KEYS */;
-INSERT INTO `chat` (`id_chat`, `id_user`, `id_user_penerima`, `msg`, `time`) VALUES
+-- Dumping data for table db_galeri_udb.galeri_chat: ~138 rows (approximately)
+DELETE FROM `galeri_chat`;
+/*!40000 ALTER TABLE `galeri_chat` DISABLE KEYS */;
+INSERT INTO `galeri_chat` (`id_chat`, `id_user`, `id_user_penerima`, `msg`, `time`) VALUES
 	(1, 1628866787, 1628866787, 'Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! Halo! ', 1),
 	(2, 1628687545, 1628866787, 'Halo juga', 3),
 	(3, 1628687545, 1628866787, ' HHHHH 2', 5),
@@ -165,12 +165,47 @@ INSERT INTO `chat` (`id_chat`, `id_user`, `id_user_penerima`, `msg`, `time`) VAL
 	(121, 1628868428, 1628868428, 'nandemo ii kara, ecchi na hanashi demo WWWW', 1630254552),
 	(122, 1628687545, 1628866787, 'po', 1630254580),
 	(123, 1628866787, 1628866787, 'apa sih? sok kenal', 1630254659),
-	(124, 1628866787, 1628866787, 'govlok', 1630254669);
-/*!40000 ALTER TABLE `chat` ENABLE KEYS */;
+	(124, 1628866787, 1628866787, 'govlok', 1630254669),
+	(125, 1628866787, 1628866787, 'p', 1630291743),
+	(126, 1628687545, 1628866787, 'samlekom', 1630291805),
+	(127, 1628687545, 1628866787, 'ada apa bapak?', 1630291823),
+	(128, 1628687545, 1628866787, 'status online', 1630291921),
+	(129, 1628687545, 1628866787, 'OOP PHP', 1630291933),
+	(130, 1628687545, 1628866787, 'yeeey', 1630291947),
+	(131, 1628687545, 1628866787, 'telolet om', 1630291968),
+	(132, 1628866787, 1628866787, 'ini dari tadi ngomongin apa sih', 1630291981),
+	(133, 1628866787, 1628866787, 'bodo amat lah', 1630291998),
+	(134, 1628866787, 1628866787, 'gg', 1630292032),
+	(135, 1628687545, 1628866787, 'lha pie', 1630292046),
+	(136, 1628687545, 1628866787, 'gelut ye?', 1630292054),
+	(137, 1628687545, 1628866787, 'ra beres', 1630292094),
+	(138, 1628687545, 1628868428, 's', 1630292231),
+	(139, 1628687545, 1628866787, 'vv', 1630292273),
+	(140, 1628687545, 1628866787, 'aa', 1630292404),
+	(141, 1628687545, 1628866787, 'bugging', 1630292419),
+	(142, 1628687545, 1628866787, 'Mangga atau mempelam adalah nama sejenis buah, demikian pula nama pohonnya. Mangga termasuk ke dalam ...', 1630292432),
+	(143, 1628687545, 1628866787, 'svv', 1630292652),
+	(144, 1628687545, 1628866787, 'Mangga atau mempelam adalah nama sejenis buah, demikian pula nama pohonnya. Mangga termasuk ke dalam ...', 1630292719),
+	(145, 1628866787, 1628866787, 'hachigatsu nanoka', 1630292743),
+	(146, 1628866787, 1628866787, 'v', 1630294705),
+	(147, 1628687545, 1628866787, 'this', 1630330346),
+	(148, 1628687545, 1628868428, 'this', 1630330351),
+	(149, 1628687545, 1628866787, 'a', 1630330360),
+	(150, 1628687545, 1628866787, 'b', 1630330361),
+	(151, 1628687545, 1628866787, 'c', 1630330363),
+	(152, 1628687545, 1628866787, 'd', 1630330364),
+	(153, 1628687545, 1628866787, 'e', 1630330365),
+	(154, 1628687545, 1628866787, 'f', 1630330366),
+	(155, 1628687545, 1628866787, 'g', 1630330367),
+	(156, 1628687545, 1628866787, 'h', 1630330369),
+	(157, 1628687545, 1628866787, 'i', 1630330370),
+	(158, 1628687545, 1628866787, 'j', 1630330371),
+	(159, 1628687545, 1628866787, 'k', 1630330373);
+/*!40000 ALTER TABLE `galeri_chat` ENABLE KEYS */;
 
--- Dumping structure for table db_galeri_udb.karya
-DROP TABLE IF EXISTS `karya`;
-CREATE TABLE IF NOT EXISTS `karya` (
+-- Dumping structure for table db_galeri_udb.galeri_karya
+DROP TABLE IF EXISTS `galeri_karya`;
+CREATE TABLE IF NOT EXISTS `galeri_karya` (
   `id_karya` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_user` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -186,10 +221,10 @@ CREATE TABLE IF NOT EXISTS `karya` (
   PRIMARY KEY (`id_karya`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_galeri_udb.karya: ~7 rows (approximately)
-DELETE FROM `karya`;
-/*!40000 ALTER TABLE `karya` DISABLE KEYS */;
-INSERT INTO `karya` (`id_karya`, `id_user`, `judul`, `deskripsi`, `youtube`, `link`, `time`, `dihapus`, `published`, `loves`, `id_kategori`, `tim`) VALUES
+-- Dumping data for table db_galeri_udb.galeri_karya: ~7 rows (approximately)
+DELETE FROM `galeri_karya`;
+/*!40000 ALTER TABLE `galeri_karya` DISABLE KEYS */;
+INSERT INTO `galeri_karya` (`id_karya`, `id_user`, `judul`, `deskripsi`, `youtube`, `link`, `time`, `dihapus`, `published`, `loves`, `id_kategori`, `tim`) VALUES
 	('1628687548_1629796492', '1628687548', 'Project Android 1', 'Mangga atau mempelam adalah nama sejenis buah, demikian pula nama pohonnya. Mangga termasuk ke dalam marga Mangifera, yang terdiri dari 35-40 anggota dari suku Anacardiaceae.<br>', 'https://youtu.be/20ZWyCOFG6g, https://www.youtube.com/embed/tMWkeBIohBs, https://www.youtube.com/watch?v=35WcRmWlHks', 'https://youtu.be/20ZWyCOFG6g', 1629875549, 0, 1, 9, 1, 'Aku, Kamu, Dia'),
 	('1628687548_1629819781', '1628687548', 'Project Android 2', '<p><b>Halo</b></p>', '', '', 1629821124, 1, 0, 0, 1, 'Loa, Lenore, Hector'),
 	('1628687548_1629821550', '1628687548', 'Project Android 2', '<p>Mangga atau mempelam adalah nama sejenis buah, demikian pula nama pohonnya. Mangga termasuk ke dalam marga Mangifera, yang terdiri dari 35-40 anggota dari suku Anacardiaceae.<br></p>', '', '', 1630093523, 0, 1, 4, 1, '1'),
@@ -197,53 +232,74 @@ INSERT INTO `karya` (`id_karya`, `id_user`, `judul`, `deskripsi`, `youtube`, `li
 	('1628687548_1629877288', '1628687548', 'Project Android 3', '<p>Mangga atau mempelam adalah nama sejenis buah, demikian pula nama pohonnya. Mangga termasuk ke dalam marga Mangifera, yang terdiri dari 35-40 anggota dari suku Anacardiaceae.<br></p>', '', '1', 1630093516, 0, 1, 1, 1, '1'),
 	('1628687548_1629877320', '1628687548', 'SIBARMATI', '<p>3</p>', '3', '3', 1629877329, 1, 0, 0, 1, '3'),
 	('1628687548_1629877487', '1628687548', 'SIBARMATI3333', '<p>s</p>', 's', '', 1629877500, 1, 0, 0, 1, 's'),
-	('1628868428_1630088976', '1628868428', 'KOKO HEKMATYAR', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 'https://www.youtube.com/watch?v=J_IsnEZcl4E, https://youtu.be/PJIKigzBNw0, https://youtu.be/7ZX9TMg80ks, https://youtu.be/hB6fWrObqk4', 'https://koreksoftware.tech', 1630089320, 0, 1, 0, 1, 'Widi, Baka, Yuli');
-/*!40000 ALTER TABLE `karya` ENABLE KEYS */;
+	('1628868428_1630088976', '1628868428', 'KOKO HEKMATYAR', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 'https://www.youtube.com/watch?v=J_IsnEZcl4E, https://youtu.be/PJIKigzBNw0, https://youtu.be/7ZX9TMg80ks, https://youtu.be/hB6fWrObqk4', 'https://koreksoftware.tech', 1630089320, 0, 0, 1, 1, 'Widi, Baka, Yuli');
+/*!40000 ALTER TABLE `galeri_karya` ENABLE KEYS */;
 
--- Dumping structure for table db_galeri_udb.kategori
-DROP TABLE IF EXISTS `kategori`;
-CREATE TABLE IF NOT EXISTS `kategori` (
+-- Dumping structure for table db_galeri_udb.galeri_kategori
+DROP TABLE IF EXISTS `galeri_kategori`;
+CREATE TABLE IF NOT EXISTS `galeri_kategori` (
   `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id_kategori`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_galeri_udb.kategori: ~1 rows (approximately)
-DELETE FROM `kategori`;
-/*!40000 ALTER TABLE `kategori` DISABLE KEYS */;
-INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
+-- Dumping data for table db_galeri_udb.galeri_kategori: ~1 rows (approximately)
+DELETE FROM `galeri_kategori`;
+/*!40000 ALTER TABLE `galeri_kategori` DISABLE KEYS */;
+INSERT INTO `galeri_kategori` (`id_kategori`, `nama_kategori`) VALUES
 	(1, 'Android');
-/*!40000 ALTER TABLE `kategori` ENABLE KEYS */;
+/*!40000 ALTER TABLE `galeri_kategori` ENABLE KEYS */;
 
--- Dumping structure for table db_galeri_udb.user
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
+-- Dumping structure for table db_galeri_udb.galeri_notifikasi
+DROP TABLE IF EXISTS `galeri_notifikasi`;
+CREATE TABLE IF NOT EXISTS `galeri_notifikasi` (
+  `id_notifikasi` int(11) NOT NULL AUTO_INCREMENT,
+  `judul` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `teks` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `time` int(20) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id_notifikasi`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table db_galeri_udb.galeri_notifikasi: ~3 rows (approximately)
+DELETE FROM `galeri_notifikasi`;
+/*!40000 ALTER TABLE `galeri_notifikasi` DISABLE KEYS */;
+INSERT INTO `galeri_notifikasi` (`id_notifikasi`, `judul`, `teks`, `time`) VALUES
+	(5, 'SIBARMATI', '123', 1630349764),
+	(7, 'Project Android 1', '0', 1630350011);
+/*!40000 ALTER TABLE `galeri_notifikasi` ENABLE KEYS */;
+
+-- Dumping structure for table db_galeri_udb.galeri_user
+DROP TABLE IF EXISTS `galeri_user`;
+CREATE TABLE IF NOT EXISTS `galeri_user` (
   `id_user` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `email` varchar(220) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `username` varchar(220) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `password` varchar(220) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `hp` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `bukti_mahasiswa` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `waktu_daftar` int(20) DEFAULT 0,
   `terakhir_online` int(20) DEFAULT 0,
   `admin` int(1) DEFAULT 0,
   `terakhir_dibaca_user` int(20) DEFAULT 0,
   `terakhir_dibaca_panitia` int(20) DEFAULT 0,
+  `diblokir` int(1) DEFAULT 0,
+  `notifikasi_dibaca` int(50) DEFAULT 0,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_galeri_udb.user: ~5 rows (approximately)
-DELETE FROM `user`;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id_user`, `email`, `username`, `password`, `hp`, `photo`, `waktu_daftar`, `terakhir_online`, `admin`, `terakhir_dibaca_user`, `terakhir_dibaca_panitia`) VALUES
-	('1628687545', 'widi@admin', 'Widi Dwi N', '321', '8552222222', '16286875451630099725.jpeg', 0, 1630259960, 1, 0, 0),
-	('1628687548', 'widibaka55@gmail.com', 'widibaka', '321', '8552222222', '16286875481630093438.jpeg', 0, 1630096171, 0, 0, 0),
-	('1628687549', 'ali@admin', 'Ali Basuki', '321', '8552222222', '16286875491630088594.jpeg', 0, 1630097268, 1, 0, 0),
-	('1628866787', 'ari@gg.com', 'ARI', '123', '89979665445', '16288667871630086945.jpeg', 0, 1630254654, 0, 1630254652, 1630254678),
-	('1628868428', 'koko@gmail.com', 'KOKO', '123', '81226203761', '16288684281630088877.jpeg', 0, 1630254528, 0, 1630254534, 1630259896);
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+-- Dumping data for table db_galeri_udb.galeri_user: ~5 rows (approximately)
+DELETE FROM `galeri_user`;
+/*!40000 ALTER TABLE `galeri_user` DISABLE KEYS */;
+INSERT INTO `galeri_user` (`id_user`, `email`, `username`, `password`, `hp`, `photo`, `bukti_mahasiswa`, `waktu_daftar`, `terakhir_online`, `admin`, `terakhir_dibaca_user`, `terakhir_dibaca_panitia`, `diblokir`, `notifikasi_dibaca`) VALUES
+	('1628687545', 'widi@admin', 'Widi Dwi N', '321', '8552222222', '16286875451630338826.jpeg', '', 0, 1630353649, 1, 0, 0, 0, 2),
+	('1628687548', 'widibaka55@gmail.com', 'widibaka', '321', '8552222222', '16286875481630093438.jpeg', '', 0, 1630096171, 0, 0, 0, 0, 0),
+	('1628687549', 'ali@admin', 'Ali Basuki', '321', '8552222222', '16286875491630088594.jpeg', '', 0, 1630097268, 1, 0, 0, 0, 0),
+	('1628866787', 'ari@gg.com', 'ARI', '123', '89979665445', '16288667871630086945.jpeg', '', 0, 1630330011, 0, 1630294748, 1630330423, 0, 0),
+	('1628868428', 'koko@gmail.com', 'KOKO', '123', '81226203761', '16288684281630088877.jpeg', '', 0, 1630345763, 0, 1630345760, 1630330421, 0, 0);
+/*!40000 ALTER TABLE `galeri_user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;

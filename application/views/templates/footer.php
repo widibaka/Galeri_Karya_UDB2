@@ -33,7 +33,7 @@
       <div class="modal-content" style="height: 80vh;">
         <div class="modal-header">
           <h5 class="modal-title">Chat Dengan Panitia</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="close_chatbox_for_user()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -101,7 +101,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="notification_wrapper">
         <div class="col-12 rounded py-1 notification notification_unread">
           <h4 class="mt-2">
             Dapat 50 Loves Dari Panitia
@@ -111,63 +111,7 @@
         </div>
         <div class="dropdown-divider"></div>
         <!-- /.notification -->
-        <div class="col-12 rounded py-1 notification">
-          <h4 class="mt-2">
-            Siapa Saja Bisa Berkarya
-          </h4>
-          <p class="text-sm">Siapa saja warga Universitas Duta Bangsa boleh mendaftar dan memajang karya mereka di Galeri Karya UDB.</p>
-          <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
-        </div>
-        <div class="dropdown-divider"></div>
-        <!-- /.notification -->
-        <div class="col-12 rounded py-1 notification">
-          <h4 class="mt-2">
-            3 Karya Setiap Akun
-          </h4>
-          <p class="text-sm">Setiap akun memiliki kesempatan untuk memajang maksimal 3 karya.</p>
-          <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
-        </div>
-        <div class="dropdown-divider"></div>
-        <!-- /.notification -->
-        <div class="col-12 rounded py-1 notification">
-          <h4 class="mt-2">
-            Selamat Datang
-          </h4>
-          <p class="text-sm">Selamat datang di Galeri Karya Universitas Duta Bangsa Surakarta. Di sini menggunakan Intro JS kami akan membimbing Anda dengan tutorial.</p>
-          <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
-        </div>
-        <div class="dropdown-divider"></div>
-        <!-- /.notification -->
-        <span class="hidden_notif" style="display: none;">
-          <div class="col-12 rounded py-1 notification">
-            <h4 class="mt-2">
-              Siapa Saja Bisa Berkarya
-            </h4>
-            <p class="text-sm">Siapa saja warga Universitas Duta Bangsa boleh mendaftar dan memajang karya mereka di Galeri Karya UDB.</p>
-            <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
-          </div>
-          <div class="dropdown-divider"></div>
-          <!-- /.notification -->
-          <div class="col-12 rounded py-1 notification">
-            <h4 class="mt-2">
-              3 Karya Setiap Akun
-            </h4>
-            <p class="text-sm">Setiap akun memiliki kesempatan untuk memajang maksimal 3 karya.</p>
-            <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
-          </div>
-          <div class="dropdown-divider"></div>
-          <!-- /.notification -->
-          <div class="col-12 rounded py-1 notification">
-            <h4 class="mt-2">
-              Selamat Datang
-            </h4>
-            <p class="text-sm">Selamat datang di Galeri Karya Universitas Duta Bangsa Surakarta. Di sini menggunakan Intro JS kami akan membimbing Anda dengan tutorial.</p>
-            <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 4 Jam Lalu</p>
-          </div>
-          <div class="dropdown-divider"></div>
-          <!-- /.notification -->
-        </span>
-        <a role="button" class="btn btn-outline-primary w-100" onclick="$('.hidden_notif').slideDown(400)">Muat Lebih Banyak</a>
+        
       </div>
       <!-- <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -188,6 +132,8 @@
 <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
+<!-- Intro JS -->
+<script src="<?php echo base_url() ?>assets/plugins/intro.js/intro.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
 <!-- SweetAlert2 -->
@@ -195,7 +141,23 @@
 <!-- Fancybox -->
 <script src="<?php echo base_url() ?>assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
 <script>
-  
+  // introJs().setOptions({
+  //   disableInteraction: true,
+  //   steps: [{
+  //     title: 'Welcome',
+  //     intro: 'Hello World! 👋'
+  //   },
+  //   {
+  //     element: document.querySelector('#notification-badge'),
+  //     intro: 'This step focuses on an image'
+  //   },
+  //   {
+  //     title: 'Farewell!',
+  //     element: document.querySelector('#pushmenu'),
+  //     intro: 'And this is our final step!'
+  //   }]
+  // }).start();
+
   // Fancybox Options
   $('[data-fancybox="gallery"]').fancybox({
     buttons: [
@@ -253,11 +215,6 @@
     }, 700)
   }
 
-  function notification_bell(){
-    $('#modal-notification').modal('toggle');
-    $('#notification-badge').hide();
-    $('#notification-badge').parent().removeClass('shaking');
-  }
   $(document).ready(function() {
     // SWEETALERT
     <?php if ( $this->session->flashdata('msg') ): ?>
@@ -326,7 +283,7 @@
   set_terakhir_online();
   setInterval(function () {
     set_terakhir_online()
-  }, 60000)
+  }, 30000)
 
 
 </script>
@@ -344,7 +301,7 @@
     // Jika tertutup maka badge-for-chat-btn diisi angka,
     // Jika terbuka maka refresh chat setiap 5 detik
     var KONDISI_CHATBOX = 'tertutup';
-    function close_chatbox() {
+    function close_chatbox_for_user() {
        KONDISI_CHATBOX = 'tertutup';
     }
 
@@ -394,14 +351,79 @@
       check_new_chat_msg(unread_msg)
     })
 
-
-
-
-    
-
   </script>
 <?php endif ?>
 
+  <script type="text/javascript">
+    function count_unread_notification( id_user, callback ) {
+      $.ajax({
+        url: '<?php echo base_url() ?>api/count_unread_notification/'+id_user,
+        success: function(data) {
+          callback(data);
+        }
+      })
+    }
+    function clear_unread_notification(id_user) {
+        $.ajax({
+          url: "<?php echo base_url() ?>api/clear_unread_notification/" + id_user,
+        });
+    }
+
+    // Ini yang terjadi ketika notifikasi dibuka
+    function open_notification(limit){
+      $('#modal-notification').modal('toggle');
+      $('#notification-badge').hide();
+      $('#notification-badge').parent().removeClass('shaking');
+
+      clear_unread_notification( '<?php echo $this->session->userdata('id_user') ?>' );
+
+      $.ajax({
+        url: '<?php echo base_url() ?>api/get_notification/'+limit,
+        success: function(data) {
+          let content = ``
+          data = JSON.parse(data);
+          for (var i = 0; i < data.length; i++) {
+            content += `
+                <div class="col-12 rounded py-1 notification">
+                  <h4 class="mt-2">
+                    ${data[i].judul}
+                  </h4>
+                  <p class="text-sm">${data[i].teks}</p>
+                  <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> ${data[i].time}</p>
+                </div>
+                <div class="dropdown-divider"></div>
+                <!-- /.notification -->
+            `;
+          }
+          content += `<a role="button" class="btn btn-outline-primary w-100" onclick="$('.hidden_notif').slideDown(400)">Muat Lebih Banyak</a>`;
+          $("#notification_wrapper").html(content);
+        }
+      })
+    }
+
+    // Check unread notifikasi setiap 10 detik
+    count_unread_notification( '<?php echo $this->session->userdata('id_user') ?>', function (data) {
+      if ( parseInt(data) <= 0 ) { // <-- kalau tidak ada unread notification
+        $('#notification-badge').hide();
+        $('#notification-badge').parent().removeClass('shaking'); // <-- hilangkan getarnya
+      }else{
+        $('#notification-badge').html(data);
+        $('#notification-badge').show();
+      }
+    } )
+    setInterval(function () {
+      count_unread_notification( '<?php echo $this->session->userdata('id_user') ?>', function (data) {
+        if ( parseInt(data) <= 0 ) { // <-- kalau tidak ada unread notification
+          $('#notification-badge').hide();
+          $('#notification-badge').parent().removeClass('shaking'); // <-- hilangkan getarnya
+        }else{
+          $('#notification-badge').html(data);
+          $('#notification-badge').show();
+        }
+      } )
+    }, 10000)
+    
+  </script>
 
 
 

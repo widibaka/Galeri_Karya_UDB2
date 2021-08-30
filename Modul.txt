@@ -55,10 +55,16 @@ Edit Nomor WA
 ==============================================================
 ==============================================================
 
+#
+
 #Detail Karya ditambahin *People Also See (other posts)
 YASIRPEDIA dan MATIN MASUK KE KARYA WEB!!
 #SEarch Karya menurut kategori
-#BUAT GALERI PER USER
+#BUAT GALERI PER USER dan publicly
+SEO untuk share link jangan lupa. OG meta data
+Saat membuka karya, ada tombol next dan previous
+
+Kalau melanggar syarat dan ketentuan, maka akun akan diblokir. Dipublikasikan di notifikasi biar jadi pelajaran untuk yang lain.
 
 Notifikasi chat dihitung dari berapa chat yang masuk semenjak waktu offline
 

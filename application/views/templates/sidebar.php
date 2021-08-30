@@ -74,10 +74,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>admin/akun_aktif" class="nav-link do_transition" menu_title="Blacklist Akun">
+              <a href="<?php echo base_url() ?>admin/akun_diblokir" class="nav-link do_transition" menu_title="Akun Diblokir">
                 <i class="nav-icon fa fa-user-alt-slash"></i>
                 <p>
-                  Blacklist Akun
+                  Akun Diblokir
                 </p>
               </a>
             </li>

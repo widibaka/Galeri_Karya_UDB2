@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AuthModel extends CI_Model {
-	public $table = 'user';
+	public $table = 'galeri_user';
 	public function check_user($data='')
 	{
 		$this->db->where('email', $data['email']);
@@ -12,6 +12,28 @@ class AuthModel extends CI_Model {
 		unset( $data_new['password'] );
 		return $data_new;
 	}
+
+	public function get_user_aktif()
+	{
+		$this->db->order_by('waktu_daftar', 'DESC');
+		$this->db->where('diblokir', 0);
+		$this->db->not_like('email', '@admin'); // <-- cari yang bukan admin
+		$this->db->select('id_user, email, username, password, hp, photo, bukti_mahasiswa, waktu_daftar, terakhir_online');
+		$data_new = $this->db->get( $this->table )->result_array();
+		// unset( $data_new['password'] );
+		return $data_new;
+	}
+	public function get_user_diblokir()
+	{
+		$this->db->order_by('waktu_daftar', 'DESC');
+		$this->db->where('diblokir', 1);
+		$this->db->not_like('email', '@admin'); // <-- cari yang bukan admin
+		$this->db->select('id_user, email, username, password, hp, photo, bukti_mahasiswa, waktu_daftar, terakhir_online');
+		$data_new = $this->db->get( $this->table )->result_array();
+		// unset( $data_new['password'] );
+		return $data_new;
+	}
+
 	public function get_user($id_user='')
 	{
 		$this->db->where('id_user', $id_user);
@@ -71,6 +93,22 @@ class AuthModel extends CI_Model {
 	{
 		$data = [
 			'terakhir_online' => time(),
+		];
+		$this->db->where('id_user', $id_user);
+		return $this->db->update($this->table, $data);
+	}
+	public function blokir_akun($id_user)
+	{
+		$data = [
+			'diblokir' => 1,
+		];
+		$this->db->where('id_user', $id_user);
+		return $this->db->update($this->table, $data);
+	}
+	public function buka_blokir_akun($id_user)
+	{
+		$data = [
+			'diblokir' => 0,
 		];
 		$this->db->where('id_user', $id_user);
 		return $this->db->update($this->table, $data);

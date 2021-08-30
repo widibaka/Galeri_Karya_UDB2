@@ -5,7 +5,7 @@
  */
 class ChatModel extends CI_Model
 {
-	public $table = 'chat';
+	public $table = 'galeri_chat';
 	public function get_chat($id_user='', $id_user_of_admins=array(), $limit)
 	{
 		// Dicari yang saling jawab menjawab dari semua admin dan user yang bersangkutan.
@@ -64,7 +64,7 @@ class ChatModel extends CI_Model
 		$this->db->select('msg, time');
 		$this->db->order_by('time', 'DESC');
 		$this->db->limit(1);
-		$this->db->where('id_user', $id_user);
+		$this->db->where('id_user_penerima', $id_user);
 		return $this->db->get($this->table)->row_array();
 	}
 

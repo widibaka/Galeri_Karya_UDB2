@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class KategoriModel extends CI_Model {
-	public $table = 'kategori';
+	public $table = 'galeri_kategori';
 	public function get_kategori( $id_kategori )
 	{
 		$this->db->where( 'id_kategori', $id_kategori );

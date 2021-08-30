@@ -24,6 +24,35 @@ class Api extends CI_Controller {
 		echo 'false';
 		
 	}
+	// Notifications 
+		public function count_unread_notification($id_user='')
+		{
+			$this->load->model('NotifikasiModel');
+			$data = $this->AuthModel->get_user($id_user);
+			$notifikasi_dibaca = $data['notifikasi_dibaca'];
+
+			$notification_counts = $this->NotifikasiModel->count_all();
+
+			//hitung
+			echo $notification_counts - $notifikasi_dibaca;
+		}
+		public function clear_unread_notification($id_user='')
+		{
+			$this->load->model('NotifikasiModel');
+			$notification_counts = $this->NotifikasiModel->count_all();
+			$data = [
+				'notifikasi_dibaca' => $notification_counts
+			];
+			$this->db->where('id_user', $id_user);
+			$this->db->update('galeri_user', $data);
+		}
+		public function get_notification($limit)
+		{
+			$this->load->model('NotifikasiModel');
+			$data = $this->NotifikasiModel->get_for_users($limit);
+			echo json_encode($data);
+		}
+	// Notifications ENDS
 
 	// CHAT
 		public function get_chats($id_user, $limit)
@@ -36,7 +65,7 @@ class Api extends CI_Controller {
 
 			// Nah mari mulai
 			// Mendapatkan semua id_user milik admin
-			$all_id_user_admin = $this->db->get('admin')->result_array();
+			$all_id_user_admin = $this->db->get('galeri_admin')->result_array();
 
 			// Mendapatkan chats
 			$this->load->model('ChatModel');
@@ -57,7 +86,7 @@ class Api extends CI_Controller {
 			$filter = (!empty($this->input->get('filter'))) ? strtoupper($this->input->get('filter')) : '';
 
 			$this->load->model('ChatModel');
-			$admin_all = $this->db->get('admin')->result_array();
+			$admin_all = $this->db->get('galeri_admin')->result_array();
 			$teratas = $this->ChatModel->get_contact($limit, $admin_all);
 			
 			$contacts = [];
@@ -89,7 +118,7 @@ class Api extends CI_Controller {
 				'terakhir_dibaca_panitia' => time()
 			];
 			$this->db->where('id_user', $id_user);
-			$this->db->update('user', $data);
+			$this->db->update('galeri_user', $data);
 		}
 
 		public function count_unread_msg_for_admin($id_user='')
@@ -112,8 +141,9 @@ class Api extends CI_Controller {
 				'terakhir_dibaca_user' => time()
 			];
 			$this->db->where('id_user', $id_user);
-			$this->db->update('user', $data);
+			$this->db->update('galeri_user', $data);
 		}
+		
 
 		
 		public function get_online_terakhir($id_user)
@@ -134,7 +164,7 @@ class Api extends CI_Controller {
 		{
 			$this->load->model('AuthModel');
 
-			$ids_of_admin = $this->db->get('admin')->result_array();
+			$ids_of_admin = $this->db->get('galeri_admin')->result_array();
 			$data = $this->AuthModel->get_admin_online_terakhir( $ids_of_admin );
 			$time_ago = $this->UtilModel->time_elapsed_string('@' . $data['terakhir_online']);
 

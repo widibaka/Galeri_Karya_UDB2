@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/jquery-ui/jquery-ui.min.css">
   <!-- Fancybox -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/fancybox/dist/jquery.fancybox.min.css">
+  <!-- IntroJS -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/intro.js/introjs.min.css">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2/sweetalert2.min.css">
