@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2/sweetalert2.min.css">
 </head>
 <body class="hold-transition login-page" style="
-background: url('<?php echo base_url() ?>assets/widi/vectors/97Z_dec32.jpg');
+background: url('<?php echo base_url() ?>assets/widi/sun-tornado2.svg');
 /*background: rgb(106,1,68);
 background: linear-gradient(131deg, rgba(106,1,68,1) 0%, rgba(124,1,105,1) 38%, rgba(0,146,255,1) 100%);*/
 background-size: cover;
@@ -35,19 +35,19 @@ background-attachment: fixed;
 
 <div class="login-box" style="background: transparent;">
   <div class="login-logo">
-    <a href="#" class="text-white"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+    <a href="#" class="text-dark"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg text-white">Login untuk memulai sesi</p>
+      <p class="login-box-msg text-dark">Login untuk memulai sesi</p>
 
      <!-- <form action="" method="post"> -->
      <?php echo form_open('', ''); ?>
         <div class="input-group mb-3">
           <input name="email" type="email" class="form-control" placeholder="Email" required="">
           <div class="input-group-append">
-            <div class="input-group-text text-white">
+            <div class="input-group-text text-dark">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
@@ -55,7 +55,7 @@ background-attachment: fixed;
         <div class="input-group mb-3">
           <input name="password" type="password" class="form-control" placeholder="Password" required="">
           <div class="input-group-append">
-            <div class="input-group-text text-white">
+            <div class="input-group-text text-dark">
               <span class="fas fa-lock"></span>
             </div>
           </div>
@@ -71,12 +71,12 @@ background-attachment: fixed;
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-outline-warning btn-block">Login</button>
+            <button type="submit" class="btn btn-outline-danger btn-block">Login</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-      <center class="text-white">
+      <center class="text-dark">
         <p>atau</p>
       </center>
       <div class="social-auth-links text-center mt-2 mb-3">
@@ -90,7 +90,7 @@ background-attachment: fixed;
         <!-- <a href="forgot-password.html">Lupa Password</a> -->
       </p>
       <p class="mb-0">
-        <a href="<?php echo base_url() ?>auth/register" class="text-center text-warning do_transition">Mendaftar akun baru</a>
+        <a href="<?php echo base_url() ?>auth/register" class="text-center text-danger do_transition">Mendaftar akun baru</a>
       </p>
     </div>
     <!-- /.card-body -->

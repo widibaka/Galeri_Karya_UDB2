@@ -14,7 +14,7 @@ class Notifikasi extends CI_Controller {
 		}
 		
 	}
-	public function index($current_page=1)
+	public function index()
 	{
 		if ( $this->input->post() ) {
 			$this->NotifikasiModel->set_notifikasi( $this->input->post() );

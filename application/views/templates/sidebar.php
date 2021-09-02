@@ -4,7 +4,7 @@
   <aside class="main-sidebar sidebar-light-maroon elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="<?php echo base_url() ?>assets/custom/img/JualPanenLogo.png" alt="AdminLTE Logo" class="brand-image img-rounded elevation-3" style="opacity: .8">
+      <img src="<?php echo base_url() ?>assets/custom/img/Logojpg.jpg" alt="Logo" class="brand-image img-rounded elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Galeri Karya UDB</span>
     </a>
 
@@ -43,7 +43,7 @@
           </li> <!-- sidebar item -->
           <?php if ( empty($this->session->userdata('admin')) ): ?>
             <li class="nav-item">
-              <a href="<?php echo base_url() ?>galeri_saya" class="nav-link do_transition" menu_title="Galeri Saya">
+              <a href="<?php echo base_url() ?>galeri_saya" class="nav-link do_transition" menu_title="Galeri Saya" id="galeri_saya">
                 <!-- <i class="nav-icon fa fa-snowman"></i> -->
                 <i class="nav-icon fa fa-th-large"></i>
                 <p>
@@ -85,7 +85,7 @@
               <a href="<?php echo base_url() ?>admin/chats" class="nav-link do_transition" menu_title="Chats">
                 <i class="nav-icon fa fa-comments"></i>
                 <p>
-                  Chats
+                  Chats <span class="badge bg-danger">1</span>
                 </p>
               </a>
             </li>
@@ -100,9 +100,18 @@
             <li class="nav-item">
               <a href="<?php echo base_url() ?>admin/admin_manager" class="nav-link do_transition" menu_title="Admin">
                 <!-- <i class="nav-icon fa fa-snowman"></i> -->
-                <i class="nav-icon fa fa-th-large"></i>
+                <i class="nav-icon fa fa-user-tie"></i>
                 <p>
                   Admin
+                </p>
+              </a>
+            </li> <!-- sidebar item -->
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>admin/settings" class="nav-link do_transition" menu_title="Settings">
+                <!-- <i class="nav-icon fa fa-snowman"></i> -->
+                <i class="nav-icon fa fa-cogs"></i>
+                <p>
+                  Settings
                 </p>
               </a>
             </li> <!-- sidebar item -->
@@ -145,6 +154,40 @@
               </a>
             </li>
           <?php endif ?>
+
+          <li class="nav-header">Lomba</li>
+          <li class="nav-item">
+            <a href="<?php echo base_url() ?>ranking_lomba" class="nav-link do_transition" menu_title="Ranking Lomba">
+              <i class="nav-icon fa fa-chart-bar"></i>
+              <p>
+                Ranking Lomba
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url() ?>syarat_ketentuan" class="nav-link do_transition" menu_title="Syarat & Ketentuan">
+              <i class="nav-icon fa fa-gavel"></i>
+              <p>
+                Syarat & Ketentuan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" onclick="$('#modal-pamflet_event').modal('show')" class="nav-link ">
+              <i class="nav-icon fa fa-file-alt"></i>
+              <p>
+                Tampilkan Pamflet
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" onclick="$('#modal-credits').modal('show')"  class="nav-link">
+              <i class="nav-icon fa fa-chess-knight"></i>
+              <p>
+                Credits
+              </p>
+            </a>
+          </li>
           
         </ul>
       </nav>

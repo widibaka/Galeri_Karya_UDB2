@@ -14,6 +14,18 @@ class Api extends CI_Controller {
 		$this->load->model('UtilModel');
 	}
 
+	public function get_ranking_lomba()
+	{
+		$this->load->model('KategoriModel');
+		$data['main_data'] = $this->KaryaModel->get_karya_dan_peringkat_lomba();
+
+		foreach ($data['main_data'] as $key => $val) {
+			$data['main_data'][$key]['kreator'] = $this->AuthModel->get_user($val['id_user']);
+			$data['main_data'][$key]['nama_kategori'] = $this->KategoriModel->get_kategori($val['id_kategori']);
+		}
+		$this->load->view('v_ranking_lomba_CONTENT', $data);
+	}
+
 	public function set_terakhir_online($id_user='')
 	{
 		$this->load->model('AuthModel');
@@ -50,6 +62,9 @@ class Api extends CI_Controller {
 		{
 			$this->load->model('NotifikasiModel');
 			$data = $this->NotifikasiModel->get_for_users($limit);
+			foreach ($data as $key => $val) {
+				$data[$key]['time'] = $this->UtilModel->time_elapsed_string('@'.$val['time']);
+			}
 			echo json_encode($data);
 		}
 	// Notifications ENDS
@@ -92,15 +107,19 @@ class Api extends CI_Controller {
 			$contacts = [];
 			foreach ($teratas as $key => $val) {
 				$temp_data = $this->AuthModel->get_user($val['id_user']);
-				// filtering
-				if ( strpos( strtoupper($temp_data['username']), $filter ) !== false OR $filter == '' ) {
-					$contacts[$key] = $temp_data;
-					$latest_msg = $this->ChatModel->get_latest_msg($val['id_user']);
-					$contacts[$key]['latest_msg'] = substr($latest_msg['msg'], 0, 34).'...';
-					$contacts[$key]['latest_msg_time_int'] = $latest_msg['time'];
-					$contacts[$key]['latest_msg_time'] = date('d/m/Y', $latest_msg['time']) . ' WIB';
-					$contacts[$key]['unread_msg_for_admin'] = $this->ChatModel->count_unread_msg_for_admin( $val['id_user'], $contacts[$key]['terakhir_dibaca_panitia'] );
+				// Kalau data user masih ada
+				if ( !empty($temp_data) ) {
+					// filtering
+					if ( strpos( strtoupper($temp_data['username']), $filter ) !== false OR $filter == '' ) {
+						$contacts[$key] = $temp_data;
+						$latest_msg = $this->ChatModel->get_latest_msg($val['id_user']);
+						$contacts[$key]['latest_msg'] = substr($latest_msg['msg'], 0, 34).'...';
+						$contacts[$key]['latest_msg_time_int'] = $latest_msg['time'];
+						$contacts[$key]['latest_msg_time'] = date('d/m/Y', $latest_msg['time']) . ' WIB';
+						$contacts[$key]['unread_msg_for_admin'] = $this->ChatModel->count_unread_msg_for_admin( $val['id_user'], $contacts[$key]['terakhir_dibaca_panitia'] );
+					}
 				}
+				
 			}
 
 			// Urutkan berdasarkan latest_msg_time_int terbaru
@@ -264,38 +283,6 @@ class Api extends CI_Controller {
 			$this->KaryaModel->add($post);
 			$fid++;
 		}
-	}
-
-	public function mkdir($value='')
-	{
-		mkdir( 'assets/img_karya/' . $value );
-	}
-
-	public function coba_upload($value='')
-	{
-		$this->load->view('upload_form', array('error' => ' ' ));
-	}
-
-	public function do_upload()
-	{
-	        $config['upload_path']          = './uploads/';
-	        $config['allowed_types']        = 'gif|jpg|png|mkv|mp4';
-	        $config['max_size']             = 666600000;
-
-	        $this->load->library('upload', $config);
-
-	        if ( ! $this->upload->do_upload('userfile'))
-	        {
-	                $error = array('error' => $this->upload->display_errors());
-
-	                $this->load->view('upload_form', $error);
-	        }
-	        else
-	        {
-	                $data = array('upload_data' => $this->upload->data());
-
-	                $this->load->view('upload_success', $data);
-	        }
 	}
 
 	public function upload_gambar()

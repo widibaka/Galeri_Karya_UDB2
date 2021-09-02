@@ -51,32 +51,36 @@ Edit Nomor WA
   +Anggota
  +Gambar Karya
  +Youtube Video
+ 
+Saat membuka karya, ada tombol next dan previous
+#BUAT GALERI PER USER dan publicly
+PERINGKAT LOMBA OTOMATIS FREEZING, KETIKA MENCAPAI TANGGAL YANG TERTERA DI SETTINGS. PAKAI CRON JOB.
+LALU MENCATAT 10 ID KARYA DENGAN LOVE TERBANYAK.
+Kalau sudah lewat eventnya, cronjob akan menonaktifkan event lomba di settings
+INTO JS HANYA SAAT USER PERTAMA KALI LOGIN
+MODALBOX DI DEPAN DAN ISINYA GAMBAR PAMFLET BAGUS
 ==============================================================
 ==============================================================
 ==============================================================
+CRON JOB http://localhost:83/Galeri_Karya_UDB/admin/api/check_hitung_mundur_event
+
+NGODING PAKAI STAND JOJO
 
 #
+
+
+
+
+GACHA BISA DIAMBIL, TAPI OPSIONAL. Muncul di setiap setelah bikin karya baru.
+
+ACTIVITY: ISINYA BLOKIRAN SAMA YANG DAPET GACHA
 
 #Detail Karya ditambahin *People Also See (other posts)
 YASIRPEDIA dan MATIN MASUK KE KARYA WEB!!
 #SEarch Karya menurut kategori
-#BUAT GALERI PER USER dan publicly
 SEO untuk share link jangan lupa. OG meta data
-Saat membuka karya, ada tombol next dan previous
 
 Kalau melanggar syarat dan ketentuan, maka akun akan diblokir. Dipublikasikan di notifikasi biar jadi pelajaran untuk yang lain.
-
-Notifikasi chat dihitung dari berapa chat yang masuk semenjak waktu offline
-
-#Status Lomba:
- Tabel Menampilkan Ranking Lomba: Ranking 1,2,3
-  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
- Tabel Menampilkan Ranking Lomba User
-  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
-
-
-
-#Notifikasi dari panitia lomba modal box
 
 #Chat dengan panitia modal box + Jumlah notifikasi + Status online
 

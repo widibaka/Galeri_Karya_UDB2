@@ -48,39 +48,50 @@
 
 
       // Kalau ada .text-danger / Love nya merah
-      // Disable the button first
-      $(this).addClass('disabled');
-      $('#loader_wishlist_btn').show()
-      $('#content_of_wishlist_btn').hide()
+      if ( confirm("Yakin ingin menghapus love yang Anda berikan?") ) {
+        // Disable the button first
+        $(this).addClass('disabled');
+        $('#loader_wishlist_btn').show()
+        $('#content_of_wishlist_btn').hide()
 
-      // Kurangi wishlist count
-      $('.wishlist_count').each(function () {
-        var wc = parseInt( $(this).html() );
-        $(this).html(wc - 1);
-      })
+        // Kurangi wishlist count
+        $('.wishlist_count').each(function () {
+          var wc = parseInt( $(this).html() );
+          $(this).html(wc - 1);
+        })
+        
+
+        var this_element = $(this);
+        // Do some ajax here
+        $.ajax({
+          url: "<?php echo base_url() ?>api/remove_love/<?php echo $data_karya['id_karya'] ?>", 
+          success: function(response){
+            setTimeout(function () {
+              $('#loader_wishlist_btn').hide()
+              $('#content_of_wishlist_btn').show()
+              $('#content_of_wishlist_btn .hati').removeClass('text-danger');
+              // Enable back the button di saat terakhir proses
+              this_element.removeClass('disabled');
+
+              // Store ke Localstorage, tapi nilainya false
+              localStorage.setItem("<?php echo $data_karya['id_karya'] ?>", "false");
+
+            }, 1400)
+            
+          }
+        });
+      }
       
-
-      var this_element = $(this);
-      // Do some ajax here
-      $.ajax({
-        url: "<?php echo base_url() ?>api/remove_love/<?php echo $data_karya['id_karya'] ?>", 
-        success: function(response){
-          setTimeout(function () {
-            $('#loader_wishlist_btn').hide()
-            $('#content_of_wishlist_btn').show()
-            $('#content_of_wishlist_btn .hati').removeClass('text-danger');
-            // Enable back the button di saat terakhir proses
-            this_element.removeClass('disabled');
-
-            // Store ke Localstorage, tapi nilainya false
-            localStorage.setItem("<?php echo $data_karya['id_karya'] ?>", "false");
-
-          }, 1400)
-          
-        }
-      });
     }
   })
+
+  function kembalikan_btn_love_dari_loading() {
+    $('#loader_wishlist_btn').hide()
+    $('#content_of_wishlist_btn').show()
+    $('#content_of_wishlist_btn .hati').removeClass('text-danger');
+    // Enable back the button di saat terakhir proses
+    $('.btn-hati').removeClass('disabled');
+  }
 
   function get_captcha() {
     // buat loading dulu

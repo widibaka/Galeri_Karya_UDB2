@@ -18,8 +18,34 @@ class Browse_karya extends CI_Controller {
 
 		$search = $this->input->get('search');
 		$per_page = ( empty($this->input->get('per_page')) ) ? 10 : $this->input->get('per_page') ;
+
+		switch ( $this->input->get('urut') ) {
+			case 'terbaru':
+				$this->db->order_by( 'time', 'DESC' );
+				break;
+			case 'terlama':
+				$this->db->order_by( 'time', 'ASC' );
+				break;
+			case 'love_terbanyak':
+				$this->db->order_by( 'loves', 'DESC' );
+				break;
+			case 'love_tersedikit':
+				$this->db->order_by( 'loves', 'ASC' );
+				break;
+			default:
+				$this->db->order_by( 'time', 'DESC' );
+				break;
+		}
+
+		if ( !empty($this->input->get('id_kategori')) ) {
+			$this->db->where( 'id_kategori', $this->input->get('id_kategori') );
+		}
+
+
 		// $limit di ->get_karya sama dengan $per_page;
 		$data['data_karya'] = $this->KaryaModel->get_karya( $per_page, $current_page, $search );
+
+		$data['kategori'] = $this->KategoriModel->get_all_kategori();
 		
 		/* Pagination Starts */
 			$this->load->library('pagination');
@@ -100,5 +126,6 @@ class Browse_karya extends CI_Controller {
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('v_galeri_terbaru', $data);
 		$this->load->view('templates/footer', $data);
+		$this->load->view('v_galeri_terbaru_JS', $data);
 	}
 }

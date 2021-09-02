@@ -15,7 +15,7 @@ class Chats extends CI_Controller {
 		}
 		
 	}
-	public function index($current_page=1)
+	public function index()
 	{
 		$data['title'] = 'Chats';
 		$data['userdata'] = $this->AuthModel->get_user(

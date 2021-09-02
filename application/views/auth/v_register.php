@@ -24,11 +24,13 @@
 
 
   <style type="text/css">
-    
+    .card {
+      margin-bottom: 50px;
+    }
   </style>
 </head>
 <body class="hold-transition register-page" style="
-background: url('<?php echo base_url() ?>assets/widi/vectors/97Z_dec32.jpg');
+background: url('<?php echo base_url() ?>assets/widi/sun-tornado2.svg');
 /*background: rgb(106,1,68);
 background: linear-gradient(131deg, rgba(106,1,68,1) 0%, rgba(124,1,105,1) 38%, rgba(0,146,255,1) 100%);*/
 background-size: cover;
@@ -74,33 +76,35 @@ background-attachment: fixed;
 </head>
 <div class="register-box" style="background: transparent; min-height: 200px;">
   <div class="register-logo">
-    <a class="text-white" href="#"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+    <a class="text-dark" href="#"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
   </div>
 
-  <div class="card" id="welcome" style=" margin-bottom: 100px;">
+  <div class="card" id="welcome" style="">
     <div class="card-body register-card-body">
-      <p class="login-box-msg text-white">Halo! Selamat datang di Lomba Karya UDB. Anda diharuskan mengisi form pendaftaran yang akan disediakan. <br><br>Untuk lanjut mendaftar, silakan klik tombol di bawah ini.</p>
+      <p class="login-box-msg text-dark">Selamat datang, mahasiswa UDB! Di Lomba Karya UDB. Anda diharuskan mengisi form pendaftaran yang akan disediakan. <br><br>Untuk lanjut mendaftar, silakan klik tombol di bawah ini.</p>
       <center>
         <div class="col-sm-12 col-md-4">
-          <button class="btn btn-outline-warning btn-block" onclick="step1_2()">
+          <button class="btn btn-outline-danger btn-block" onclick="step1_2()">
             <strong>Let's Go!</strong>
           </button>
         </div>
       </center>
       
       <hr>
-      <a href="login" id="show_login" class="text-center text-warning do_transition">Saya ingin login saja</a>
+      <a href="login" id="show_login" class="text-center text-danger do_transition">Saya ingin login saja</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
 
-  <div class="card" id="profile" style="display: none; margin-bottom: 100px;">
+
+  <div class="card" id="profile" style="display: none;">
     <div class="card-body register-card-body">
-      <p class="login-box-msg text-white">Profile</p>
-      <p class="login-box-msg text-white">Siapkan nama akun Anda. Jika mau, Anda juga bisa menambahkan gambar profil. Pastikan gunakan email yang aktif agar dapat melakukan validasi email</p> 
+      <p class="login-box-msg text-dark">Profile</p>
+      <p class="login-box-msg text-dark">Siapkan nama akun Anda. Jika mau, Anda juga bisa menambahkan gambar profil <strong class="text-danger">(Maks. 2MB, format jpg, png, atau gif)</strong>. <br><br>Pastikan gunakan email dan nomor ponsel yang aktif.</p> 
       <!-- Memulai form -->
       <!-- <form action="" method="post" id="form_registrasi"> -->
-      <?php echo form_open('', ' id="form_registrasi"'); ?>
+      <?php echo form_open('', ' id="form_registrasi" enctype="multipart/form-data"'); ?>
+      <input type="hidden" name="id_user" value="<?php echo strval( time() . rand(1,100) ) ?>">
       <div class="text-center pb-3">
         <center class="container2">
           <div class="col-12">
@@ -109,7 +113,7 @@ background-attachment: fixed;
               width: 142px;
               background-size: cover;
               background-position: center;
-              background-image: url('<?php echo base_url() ?>assets/widi/img/user_no_image.jpg');
+              background-image: url('<?php echo base_url() ?>assets/uploads/foto_profil/user_no_image.jpg');
             " data-toggle="modal" data-target="#modal-default" id="preview_gambar">
               <div class="overlay2">
                 <span class="fa fa-edit"></span>
@@ -127,7 +131,7 @@ background-attachment: fixed;
           <input name="username" type="text" class="form-control" placeholder="Nama" required="">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-user text-white"></span>
+              <span class="fas fa-user text-dark"></span>
             </div>
           </div>
         </div>
@@ -138,16 +142,16 @@ background-attachment: fixed;
           <input name="email" type="email" class="form-control" placeholder="Email" required="">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope text-white"></span>
+              <span class="fas fa-envelope text-dark"></span>
             </div>
           </div>
         </div>
 
         <small class="badge badge-danger invalid-warning" id="hp_empty" style="display: none;">Mohon isi nomor HP</small> 
         <div class="input-group mb-3">
-          <span class="text-white mr-1 badge badge-success" style="font-size: 13pt">+62</span> <input name="hp" type="text" class="form-control" placeholder="812XXXXXXXXX" required="">
+          <span class="text-dark mr-1 badge badge-success" style="font-size: 13pt">+62</span> <input name="hp" type="text" class="form-control" placeholder="812XXXXXXXXX" required="">
           <div class="input-group-append">
-            <div class="input-group-text text-white">
+            <div class="input-group-text text-dark">
               <span class="fas fa-phone"></span>
             </div>
           </div>
@@ -156,33 +160,34 @@ background-attachment: fixed;
       <div class="row">
         <div class="col-3">
           <a role="button" class="btn btn-hover_glass w-100" onclick="step2_1()">
-            <span class="fa fa-arrow-left text-white"></span>
+            <span class="fa fa-arrow-left text-dark"></span>
           </a>
         </div>
         <div class="col-6">
         </div>
         <div class="col-3">
           <a role="button" class="btn btn-hover_glass w-100" onclick="step2_3()">
-            <span class="fa fa-arrow-right text-white"></span>
+            <span class="fa fa-arrow-right text-dark"></span>
           </a>
         </div>
       </div>
       <hr>
-      <a href="login" id="show_login" class="text-center text-warning do_transition">Saya ingin login saja</a>
+      <a href="login" id="show_login" class="text-center text-danger do_transition">Saya ingin login saja</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
 
-  <div class="card" id="privasi" style="display: none; margin-bottom: 100px;">
+
+  <div class="card" id="privasi" style="display: none;">
     <div class="card-body register-card-body">
-      <p class="login-box-msg text-white">Privasi itu Penting</p>
-      <p class="login-box-msg text-white">Anda bisa menerapkan password. Kami tidak akan mengintip, janji!</p>
+      <p class="login-box-msg text-dark">Privasi itu Penting</p>
+      <p class="login-box-msg text-dark">Anda bisa menerapkan password. Kami tidak akan mengintip, janji!</p>
         <small class="badge badge-danger invalid-warning" id="password_empty" style="display: none;">Mohon isi password</small>
         <div class="input-group mb-3">
           <input name="password" type="password" class="form-control" placeholder="Password" required="">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock text-white"></span>
+              <span class="fas fa-lock text-dark"></span>
             </div>
           </div>
         </div>
@@ -192,7 +197,7 @@ background-attachment: fixed;
           <input name="password2" type="password" class="form-control" placeholder="Ketik lagi password" required="">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock text-white"></span>
+              <span class="fas fa-lock text-dark"></span>
             </div>
           </div>
         </div>
@@ -200,26 +205,40 @@ background-attachment: fixed;
         <div class="row">
         <div class="col-3">
           <a role="button" class="btn btn-hover_glass w-100" onclick="step3_2()">
-            <span class="fa fa-arrow-left text-white"></span>
+            <span class="fa fa-arrow-left text-dark"></span>
           </a>
         </div>
         <div class="col-6">
         </div>
         <div class="col-3">
           <a role="button" class="btn btn-hover_glass w-100" onclick="step3_4()">
-            <span class="fa fa-arrow-right text-white"></span>
+            <span class="fa fa-arrow-right text-dark"></span>
           </a>
         </div>
       </div>
       <hr>
-      <a href="login.html" id="show_login" class="text-center text-warning do_transition">Saya ingin login saja</a>
+      <a href="login" id="show_login" class="text-center text-danger do_transition">Saya ingin login saja</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
 
-  <div class="card" id="finish" style="display: none; margin-bottom: 100px;">
+
+  <div class="card" id="finish" style="display: none;">
     <div class="card-body register-card-body">
-      <p class="login-box-msg text-white">Pastikan seluruh data telah terisi dengan betul. Jika Anda sudah yakin, silakan klik tombol buat akun di bawah ini.</p>
+      <p class="login-box-msg text-dark">Upload bukti mahasiswa (Kartu Tanda Mahasiswa, atau bukti lain).</p>
+
+      <div class="form-group">
+        <!-- <label for="customFile">Custom File</label> -->
+        <img src="" id="preview_BuktiMahasiswa" style="width:100%;">
+        <div class="custom-file">
+          <input accept="image/*" type='file' id="InputBuktiMahasiswa" class="custom-file-input btn-lg">
+          <label class="custom-file-label" for="InputBuktiMahasiswa">Pilih bukti mahasiswa</label>
+        </div>
+      </div>
+
+      <textarea style="display: none;" id="b64_bukti_mahasiswa" name="image_bukti_mahasiswa"></textarea>
+
+      <p class="login-box-msg text-dark">Pastikan seluruh data telah terisi dengan betul. Jika Anda sudah yakin, silakan klik tombol buat akun di bawah ini.</p>
 
       
 
@@ -229,25 +248,27 @@ background-attachment: fixed;
       <div class="row">
         <div class="col-3">
           <a role="button" class="btn btn-hover_glass w-100" onclick="step4_3()">
-            <span class="fa fa-arrow-left text-white"></span>
+            <span class="fa fa-arrow-left text-dark"></span>
           </a>
         </div>
         <div class="col-4">
         </div>
         <div class="col-5">
           <!-- redirecting('<?php echo base_url() ?>assets/index.html') -->
-          <button class="btn w-100 text-white" onclick="buat_akun()" style="background: rgba(255, 255, 255, .5)">
+          <button class="btn w-100 text-dark" onclick="buat_akun()" style="background: rgba(255, 255, 255, .5)">
             <span class="fa fa-check text-success"></span> Buat akun
           </button>
         </div>
       </div>
       <hr>
-      <a href="login.html" id="show_login" class="text-center text-warning do_transition">Saya ingin login saja</a>
+      <a href="login" id="show_login" class="text-center text-danger do_transition">Saya ingin login saja</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
+  <br>
 </div>
 <!-- /.register-box -->
+
 
 
 <div class="modal fade" id="modal-default">
@@ -343,8 +364,24 @@ background-attachment: fixed;
     }
     
   }
+  function readFile2() {
+    
+    if (this.files && this.files[0]) {
+      
+      var FR= new FileReader();
+      
+      FR.addEventListener("load", function(e) {
+        document.getElementById("b64_bukti_mahasiswa").innerHTML = e.target.result;
+        preview_BuktiMahasiswa.src = e.target.result;
+      }); 
+      
+      FR.readAsDataURL( this.files[0] );
+    }
+    
+  }
 
   document.getElementById("imgInp").addEventListener("change", readFile);
+  document.getElementById("InputBuktiMahasiswa").addEventListener("change", readFile2);
 
   $('#hapusGambarProfil').click(function () {
     preview_gambar.style.backgroundImage = "url('<?php echo base_url() ?>assets/widi/img/user_no_image.jpg')"

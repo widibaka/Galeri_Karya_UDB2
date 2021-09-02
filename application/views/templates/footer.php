@@ -1,4 +1,4 @@
-
+      <div class="col-12" style="height: 120px;"></div>
     </section>
     <!-- /.content -->
   </div>
@@ -23,7 +23,7 @@
     // Fasilitas chat dengan panitia hanya ada untuk member yang sudah login:: Admin dan Tamu tidak bisa
     empty($this->session->userdata('admin')) AND !empty($this->session->userdata('id_user'))
  ): // kalau admin, tombol chat dihilangkan ?>
-  <button class="chat-button btn btn-primary shadow" onclick="open_chat_for_user()" data-toggle="modal" data-target="#modal-default">
+  <button class="chat-button btn btn-primary shadow" onclick="open_chat_for_user()" data-toggle="modal" data-target="#modal-default" id="button_chat_for_user">
     <span class="fa fa-comments"></span> 
   </button>
   <span class="badge badge-danger badge-for-chat-btn" style="display: none;">...</span>
@@ -102,14 +102,14 @@
         </button>
       </div>
       <div class="modal-body" id="notification_wrapper">
-        <div class="col-12 rounded py-1 notification notification_unread">
+        <!-- <div class="col-12 rounded py-1 notification notification_unread">
           <h4 class="mt-2">
             Dapat 50 Loves Dari Panitia
           </h4>
           <p class="text-sm">Anda mendapatkan 50 loves dari panitia berkat donasi yang Anda berikan untuk mendukung event ini.</p>
           <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> 2 Jam Lalu</p>
         </div>
-        <div class="dropdown-divider"></div>
+        <div class="dropdown-divider"></div> -->
         <!-- /.notification -->
         
       </div>
@@ -117,6 +117,65 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div> -->
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div class="modal fade modal-pamflet_event" id="modal-pamflet_event" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0 overflow-hidden" id="pamflet_event_wrapper">
+        <img style="width: 100%;" src="<?php echo base_url() ?>assets/uploads/pamflet_event/<?php echo $this->SettingsModel->get_settings()['pamflet_event'] ?>">        
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div class="modal fade modal-credits" id="modal-credits" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0 overflow-hidden" id="pamflet_event_wrapper">
+        <div class="container text-center p-3">
+          <div class="form-group mt-2 p-3">
+            <h6>Event ini diselenggarakan oleh HMPTI UDB (Himpunan Mahasiswa Progdi Teknik Informatika Universitas Duta Bangsa)</h6>
+          </div>
+          <div class="form-group mt-4">
+            <label>Panitia Event</label>
+            <h5>Rio</h5>
+            <h5>Ahmad</h5>
+          </div>
+          <div class="form-group mt-4">
+            <label>Panitia Event</label>
+            <h5>Rio</h5>
+            <h5>Ahmad</h5>
+          </div>
+          <div class="form-group mt-4">
+            <label>Web Programmer</label>
+            <h5>Widi Dwi Nurcahyo</h5>
+          </div>
+          <div class="form-group mt-4 mb-5">
+            <label>Asisten Web Programmer</label>
+            <h5>Muhammad Ali Dasuki</h5>
+          </div>
+          
+        </div>      
+      </div>
     </div>
     <!-- /.modal-content -->
   </div>
@@ -141,32 +200,65 @@
 <!-- Fancybox -->
 <script src="<?php echo base_url() ?>assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
 <script>
-  // introJs().setOptions({
-  //   disableInteraction: true,
-  //   steps: [{
-  //     title: 'Welcome',
-  //     intro: 'Hello World! 👋'
-  //   },
-  //   {
-  //     element: document.querySelector('#notification-badge'),
-  //     intro: 'This step focuses on an image'
-  //   },
-  //   {
-  //     title: 'Farewell!',
-  //     element: document.querySelector('#pushmenu'),
-  //     intro: 'And this is our final step!'
-  //   }]
-  // }).start();
+  // Check browser support
+  if (typeof(Storage) !== "undefined") {
+        // Retrieve, kalau sudah ada maka btn-hati dibuat merah
+        if ( localStorage.getItem("pertama_berkunjung") != "true" ) {
+          $('#modal-pamflet_event').modal('show');
+          localStorage.setItem("pertama_berkunjung", "true");
+        }
+  } else {
+    alert("Sorry, your browser does not support Web Storage...")
+  }
+  
+  <?php // Hanya jika user login pertama
+    if (  empty($this->session->userdata('admin')) AND !empty($this->session->userdata('id_user')) ): ?>
+    // Check browser support
+    if (typeof(Storage) !== "undefined") {
+          // Retrieve, kalau sudah ada maka btn-hati dibuat merah
+          if ( localStorage.getItem("pertama_login") != "true" ) {
+            introJs().setOptions({
+              disableInteraction: true,
+              exitOnOverlayClick: false,
+              steps: [{
+                title: 'Selamat Datang',
+                intro: 'Mari berkenalan dengan Galeri Karya UDB!'
+              },
+              {
+                element: document.querySelector('#notification_button'),
+                intro: 'Ini tombol notifikasi yang akan menampilkan pengumuman yang diberikan oleh panitia resmi. Jadi jangan termakan hoax ya? :)'
+              },
+              {
+                element: document.querySelector('#pencarian_karya'),
+                intro: 'Anda bisa menyaring karya-karya yang Anda inginkan memakai ini.'
+              },
+              {
+                element: document.querySelector('#button_chat_for_user'),
+                intro: 'Jika ingin bertanya sesuatu, jangan ragu untuk chat panitia ya!'
+              },
+              {
+                title: 'Tur selesai!',
+                element: document.querySelector('#button_chat_for_user'),
+                intro: 'Sampai jumpa dan selamat berkarya.'
+              }]
+            }).start();
+            localStorage.setItem("pertama_login", "true");
+          }
+    } else {
+      alert("Sorry, your browser does not support Web Storage...")
+    }
+  <?php endif ?>
+  
 
   // Fancybox Options
   $('[data-fancybox="gallery"]').fancybox({
     buttons: [
         "zoom",
         //"share",
-        // "slideShow",
-        "fullScreen",
-        "download",
-        // "thumbs",
+        "slideShow",
+        // "fullScreen",
+        // "download",
+        "thumbs",
         "close"
     ],
     animationEffect: "fade",
@@ -289,7 +381,9 @@
 </script>
 
 <?php 
-    $this->load->view('FUNDAMENTAL_CHAT');
+    if ( !empty($this->session->userdata('id_user')) ) {
+      $this->load->view('FUNDAMENTAL_CHAT');
+    }
 ?>
 
 <!-- WADUH SEMAKIN PUSING INI CHAT INI... JANGAN SAMPAI LUPA YA! -->
@@ -320,29 +414,32 @@
       }
     }
 
-    // Status online milik admin
-    setInterval(function() {
-      if ( KONDISI_CHATBOX == 'terbuka' ) {
-        // refresh setiap 5 detik
-        get_admin_online_terakhir()
-        count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
-          // Kalau ada pesan baru, maka refresh
-          if ( unread_msg != 0 ) {
-            refresh_chat();
-            clear_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>' );
-          }
-        })
-      }else if ( KONDISI_CHATBOX == 'tertutup' ){
-        // hitung pesan baru
-        count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
-          // Kalau ada pesan baru, maka tambah notifikasi pesan baru
-          check_new_chat_msg(unread_msg);
-        })
-      }
-      
+    <?php 
+     // hanya ketika ada user yang login
+      if ( !empty($this->session->userdata('id_user')) ): ?>
+      // Status online milik admin
+      setInterval(function() {
+        if ( KONDISI_CHATBOX == 'terbuka' ) {
+          // refresh setiap 5 detik
+          get_admin_online_terakhir()
+          count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
+            // Kalau ada pesan baru, maka refresh
+            if ( unread_msg != 0 ) {
+              refresh_chat();
+              clear_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>' );
+            }
+          })
+        }else if ( KONDISI_CHATBOX == 'tertutup' ){
+          // hitung pesan baru
+          count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
+            // Kalau ada pesan baru, maka tambah notifikasi pesan baru
+            check_new_chat_msg(unread_msg);
+          })
+        }
+        
 
-    }, 5000)
-
+      }, 5000)
+    <?php endif ?>
 
 
     // hitung pesan baru saat awal load halaman
@@ -371,7 +468,7 @@
 
     // Ini yang terjadi ketika notifikasi dibuka
     function open_notification(limit){
-      $('#modal-notification').modal('toggle');
+      $('#modal-notification').modal('show');
       $('#notification-badge').hide();
       $('#notification-badge').parent().removeClass('shaking');
 
@@ -380,22 +477,35 @@
       $.ajax({
         url: '<?php echo base_url() ?>api/get_notification/'+limit,
         success: function(data) {
-          let content = ``
           data = JSON.parse(data);
-          for (var i = 0; i < data.length; i++) {
-            content += `
-                <div class="col-12 rounded py-1 notification">
-                  <h4 class="mt-2">
-                    ${data[i].judul}
-                  </h4>
-                  <p class="text-sm">${data[i].teks}</p>
-                  <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> ${data[i].time}</p>
-                </div>
-                <div class="dropdown-divider"></div>
-                <!-- /.notification -->
-            `;
+          // console.log(data.length)
+          let content = ``
+          // kalau kosong, gak ada notifikasi
+          if ( data.length == 0 ) {
+            content = '<i class="text-muted">Tidak ada notifikasi.</i>';
           }
-          content += `<a role="button" class="btn btn-outline-primary w-100" onclick="$('.hidden_notif').slideDown(400)">Muat Lebih Banyak</a>`;
+
+          // Atau else:
+          else{
+            for (var i = 0; i < data.length; i++) {
+              content += `
+                  <div class="col-12 rounded py-1 notification">
+                    <h4 class="mt-2">
+                      ${data[i].judul}
+                    </h4>
+                    <p class="text-sm">${data[i].teks}</p>
+                    <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> ${data[i].time}</p>
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <!-- /.notification -->
+              `;
+            }
+            // Tombol load more
+            if ( data.length >= 10 ) {
+              content += `<a role="button" class="btn btn-outline-primary w-100" onclick="open_notification(${limit+10})">Muat Lebih Banyak</a>`;
+            }
+          }
+
           $("#notification_wrapper").html(content);
         }
       })

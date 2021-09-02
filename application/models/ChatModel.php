@@ -26,7 +26,7 @@ class ChatModel extends CI_Model
 		$this->db->select( 'id_chat, ' . $this->table .'.id_user, msg, time, username, photo' );
 
 		$this->db->from($this->table);
-		$this->db->join('user', $this->table .'.id_user = user.id_user');
+		$this->db->join('galeri_user', $this->table .'.id_user = galeri_user.id_user');
 		return $this->db->get()->result_array();
 	}
 	public function send_chat($data)

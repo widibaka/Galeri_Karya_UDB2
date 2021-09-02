@@ -56,7 +56,7 @@
 							<?php foreach ($val as $key => $value): ?>
 							<?php if ( $key == 'time' ): ?>
 								<td>
-									<?php echo date('d/m/Y H:i:s') ?>
+									<?php echo date('d/m/Y H:i:s', $value) ?>
 								</td>
 							<?php elseif ( $key == 'id_notifikasi' ) : ?>
 								<!-- nothing -->

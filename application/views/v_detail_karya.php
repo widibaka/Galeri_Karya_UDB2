@@ -1,3 +1,14 @@
+<?php if ( $kreator['diblokir'] == 1 ): ?>
+  <div class="alert alert-danger col-sm-12 col-md-6 text-center">
+    <img src="<?php echo base_url() ?>assets/emoji/sad.png" style="width: 40px;"> Akun pemilik karya ini telah diblokir karena melanggar syarat dan ketentuan event ini.
+  </div>
+<?php return 0; endif; ?>
+
+<?php if ( $data_karya['published'] == 0 ): ?>
+  <div class="alert alert-danger col-sm-12 col-md-6 text-center">
+    <img src="<?php echo base_url() ?>assets/emoji/sad.png" style="width: 40px;"> Karya ini berhenti dipublikasikan.
+  </div>
+<?php return 0; endif; ?>
 
 <!-- Default box -->
 <div class="card card-solid">
@@ -104,27 +115,21 @@
 
       </div>
       <div class="col-12 col-sm-6">
-
-        <h5 class="mb-3">Kategori: 
-          <a href="#" title="Lihat karya dengan kategori ini">
-            <?php echo $this->KategoriModel->get_kategori( $data_karya['id_kategori'] ) ?>
-          </a>
-        </h5>
-        <hr>
-
-        <center class="p-3 glassy_thing rounded-lg">
-          <div class="image mb-2">
-            <div class="image img-circle elevation-2" alt="User Image" style="
-              height: 120px;
-              width: 120px;
-              background-size: cover;
-              background-position: center;
-              background-image: url('<?php echo base_url() . 'assets/uploads/foto_profil/' . $kreator['photo'] ?>');
-            ">
+        <a href="<?php echo base_url() ?>galeri_user/u/<?php echo $kreator['id_user'] ?>" class="text-dark">
+          <center class="p-3 glassy_thing rounded-lg">
+            <div class="image mb-2">
+              <div class="image img-circle elevation-2" alt="User Image" style="
+                height: 120px;
+                width: 120px;
+                background-size: cover;
+                background-position: center;
+                background-image: url('<?php echo base_url() . 'assets/uploads/foto_profil/' . $kreator['photo'] ?>');
+              ">
+              </div>
             </div>
-          </div>
-          <h5>@<?php echo $kreator['username'] ?></h5>
-        </center>
+            <h5>@<?php echo $kreator['username'] ?></h5>
+          </center>
+        </a>
 
         <!-- HP -->
         <div class="bg-success py-2 px-3 mt-3 text-center rounded-lg">
@@ -155,6 +160,13 @@
           </div>
         </div>
 
+        <hr>
+
+        <h5 class="mb-3">Kategori: 
+          <a href="<?php echo base_url() ?>?search=&id_kategori=<?php echo $data_karya['id_kategori'] ?>" title="Lihat karya dengan kategori ini">
+            <?php echo $this->KategoriModel->get_kategori( $data_karya['id_kategori'] ) ?>
+          </a>
+        </h5>
         <hr>
 
         <h5 class="my-3">Deskripsi</h5>
@@ -212,6 +224,28 @@
 </div>
 <!-- /.card -->
 
+<?php 
+  $previous_id_karya = $this->KaryaModel->get_previous_karya( $data_karya['time'] )['id_karya'];
+  $next_id_karya = $this->KaryaModel->get_next_karya( $data_karya['time'] )['id_karya'];
+?>
+<div class="col-12" style="height: 150px;">
+  
+  <?php if ( !empty($next_id_karya) ): ?>
+    <a class="btn btn-warning mb-4 float-left shadow do_transition" href="<?php echo base_url() ?>detail_karya/i/<?php echo $next_id_karya ?>">
+      <i class="fa fa-arrow-left"></i> 
+      Berikutnya
+    </a>
+  <?php endif ?>
+
+  <?php if ( !empty($previous_id_karya) ): ?>
+    <a class="btn btn-warning mb-4 float-right shadow do_transition" href="<?php echo base_url() ?>detail_karya/i/<?php echo $previous_id_karya ?>">
+      Sebelumnya 
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  <?php endif ?>
+  
+</div>
+
 
 
 <div class="modal fade modal-captcha" id="modal-captcha" data-backdrop="static">
@@ -219,7 +253,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Anda bukan robot, 'kan?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="kembalikan_btn_love_dari_loading()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>

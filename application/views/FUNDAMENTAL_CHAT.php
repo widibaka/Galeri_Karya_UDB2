@@ -77,8 +77,10 @@
 				  		
 				  		$('.wadah-untuk-chat-messages').html(content);
 				  		// tambah tombol load more
-				  		let tombol_loadmore = `<a role="button" class="btn btn-block btn-default w-100" id="load_more" onclick="load_more(100)">Muat Lebih Banyak</a>`;
-				  		$('.wadah-untuk-chat-messages').append(tombol_loadmore);
+				  		if ( data.length >= GLOBAL_limit_chat-1 ) {
+				  		  let tombol_loadmore = `<a role="button" class="btn btn-block btn-default w-100" id="load_more" onclick="load_more(100)">Muat Lebih Banyak</a>`;
+				  		  $('.wadah-untuk-chat-messages').append(tombol_loadmore);
+				  		}
 
 				  		$('.overlay').hide();
 

@@ -10,7 +10,7 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <!-- Notifications Dropdown Menu -->
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" id="notification_button">
       <a class="nav-link shaking" href="javascript:void(0)" onclick="open_notification(10)">
         <i class="far fa-bell"></i>
         <span class="badge badge-warning navbar-badge" id="notification-badge" style="display: none;">0</span>

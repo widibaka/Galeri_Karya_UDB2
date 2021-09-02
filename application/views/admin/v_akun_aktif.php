@@ -51,10 +51,16 @@
 							<tr>
 							<td><?php echo $number; $number++; ?></td>
 							<?php foreach ($val as $key => $value): ?>
-							<?php if ( $key == 'photo' OR $key == 'bukti_mahasiswa' ): ?>
+							<?php if ( $key == 'photo' ): ?>
 								<td>
 									<a data-fancybox href="<?php echo base_url() ?>assets/uploads/foto_profil/<?php echo $value ?>">
 										<img style="height: 90px;" src="<?php echo base_url() ?>assets/uploads/foto_profil/<?php echo $value ?>">
+									</a>
+								</td>
+							<?php elseif ( $key == 'bukti_mahasiswa' ): ?>
+								<td>
+									<a data-fancybox href="<?php echo base_url() ?>assets/uploads/bukti_mahasiswa/<?php echo $value ?>">
+										<img style="height: 90px;" src="<?php echo base_url() ?>assets/uploads/bukti_mahasiswa/<?php echo $value ?>">
 									</a>
 								</td>
 							<?php elseif ( $key == 'waktu_daftar' OR $key == 'terakhir_online' ) : ?>

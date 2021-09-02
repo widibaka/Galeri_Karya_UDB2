@@ -54,9 +54,9 @@
   background-color: transparent;
   height: 40pt;
   width: 40pt;
-  border: solid 2pt #dbdbdb;
+  border: solid 2pt #fff;
   border-radius: 50%;
-  color: #dbdbdb;
+  color: #fff;
 }
 .steps .dash {
   position: relative;
@@ -64,7 +64,7 @@
   height: 40pt;
   width: 25pt;
   border-radius: 50%;
-  color: #dbdbdb;
+  color: #fff;
 }
 .icon_inside_circle {
   font-size: 20pt;

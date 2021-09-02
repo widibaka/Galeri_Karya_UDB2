@@ -1,3 +1,10 @@
+<?php if ( $userdata['diblokir'] == 1 ): ?>
+  <div class="alert alert-danger">
+    <img src="<?php echo base_url() ?>assets/emoji/sad.png" style="width: 40px;"> Akun ini telah diblokir karena melanggar syarat dan ketentuan event ini. Silakan chat panitia melalui fitur kanan bawah untuk mendapatkan keterangan.
+  </div>
+
+<?php return 0; endif; ?>
+
 <div class="row container-fluid">
   <div class="col-12 mb-4">
     <div class="col-md-8 offset-md-2">
@@ -62,9 +69,11 @@
           <div class="card-body text-dark">
             <a href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>" class="text-dark do_transition">
               <strong><?php echo $val['judul'] ?></strong>
-              <br>
-              <small><?php echo substr(strip_tags($val['deskripsi']), 0, 100) ?> ... <strong><a class="text-dark" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">selengkapnya</a></strong></small>
-              <br>
+              <span class="d-none d-md-inline">
+                <br>
+                <small class="d-none d-md-inline"><?php echo substr(strip_tags($val['deskripsi']), 0, 100) ?> ... <strong><a class="text-dark" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">selengkapnya</a></strong></small>
+                <br>
+              </span>
               <small><i class="fa fa-heart text-danger"></i> <?php echo $val['loves'] ?></small>
               <br>
               <small><i class="fa fa-clock text-gray"></i> <?php echo date('d M Y, H:i', $val['time']) ?> WIB</small>

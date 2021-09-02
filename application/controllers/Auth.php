@@ -114,19 +114,69 @@ class Auth extends CI_Controller {
 	{
 		$post = $this->input->post();
 		if ( $post ) {
-		echo '<pre>'; var_dump( $post ); die;
+		
 			$check_result = $this->AuthModel->check_user( $post );
 			if ($check_result) {
 				$this->session->set_flashdata('msg', 'error#Email ini sudah terdaftar');
 				redirect(base_url().$this->uri->uri_string());
 				return 0;
 			}
+
 			if ( $post['password'] != $post['password2'] ) {
 				$this->session->set_flashdata('msg', 'error#Password pertama dan kedua tidak sama');
 				redirect(base_url().$this->uri->uri_string());
 				return 0;
 			}
-			$this->AuthModel->register( $this->input->post() );
+
+			// Kalau validasi berhasil semua:
+
+			// .Handling image
+			if ( !empty($post['image']) ) {
+				$file = $this->UtilModel->simpan_gambar_base64( 
+					$post['image'], 
+					$post['id_user'] . time()
+				);
+
+					// mengecilkan ukuran foto
+				$this->load->model('ResizeImage');
+				$this->ResizeImage->dir( $file['dir'] );
+
+				$this->ResizeImage->resizeTo(500, 500, 'default');
+
+				$this->ResizeImage->saveImage( 'assets/uploads/foto_profil/' . $file['filename'] );
+
+				unlink($file['dir']); // delete temporary file
+
+				// Set foto untuk dimasukkan ke database
+				$post['photo'] = $file['filename'];
+			}
+			if ( !empty($post['image_bukti_mahasiswa']) ) {
+				$file = $this->UtilModel->simpan_gambar_base64( 
+					$post['image_bukti_mahasiswa'], 
+					$post['id_user'] . time()
+				);
+
+					// mengecilkan ukuran foto
+				$this->load->model('ResizeImage');
+				$this->ResizeImage->dir( $file['dir'] );
+
+				$this->ResizeImage->resizeTo(500, 500, 'default');
+
+				$this->ResizeImage->saveImage( 'assets/uploads/bukti_mahasiswa/' . $file['filename'] );
+
+				unlink($file['dir']); // delete temporary file
+
+				// Set foto untuk dimasukkan ke database
+				$post['bukti_mahasiswa'] = $file['filename'];
+
+			}
+
+			// hapus yang tidak diperlukan
+			unset($post['image_bukti_mahasiswa']);
+			unset($post['image']);
+
+			// .Handling data
+			$this->AuthModel->register( $post );
 			$this->session->set_flashdata('msg', 'success#Akun Anda berhasil dibuat. Silakan login.');
 			redirect(base_url().'auth/login');
 			return 0;

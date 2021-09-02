@@ -55,7 +55,6 @@ class AuthModel extends CI_Model {
 	{
 		unset($data['password2']);
 		$data['waktu_daftar'] = time();
-		$data['id_user'] = strval( time() . rand(1,100) );
 		$this->db->insert($this->table, $data);
 	}
 	public function edit_profil($id_user='', $data)
@@ -81,7 +80,7 @@ class AuthModel extends CI_Model {
 		$filename = $this->get_user( $id_user )['photo'];
 		
 		// kalau tidak ada gambar, maka yaudah
-		if ( !empty($filename) ) {
+		if ( !empty($filename OR $filename == 'user_no_image.jpg' ) ) {
 			unlink( $dir . $filename );
 			return true;
 		}
