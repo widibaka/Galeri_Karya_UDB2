@@ -76,7 +76,7 @@ background-attachment: fixed;
 </head>
 <div class="register-box" style="background: transparent; min-height: 200px;">
   <div class="register-logo">
-    <a class="text-dark" href="#"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+    <a class="text-dark" href="<?php echo base_url() ?>"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
   </div>
 
   <div class="card" id="welcome" style="">

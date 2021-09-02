@@ -35,7 +35,7 @@ background-attachment: fixed;
 
 <div class="login-box" style="background: transparent;">
   <div class="login-logo">
-    <a href="#" class="text-dark"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+    <a href="<?php echo base_url() ?>" class="text-dark"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

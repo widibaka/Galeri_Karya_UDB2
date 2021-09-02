@@ -59,6 +59,16 @@ LALU MENCATAT 10 ID KARYA DENGAN LOVE TERBANYAK.
 Kalau sudah lewat eventnya, cronjob akan menonaktifkan event lomba di settings
 INTO JS HANYA SAAT USER PERTAMA KALI LOGIN
 MODALBOX DI DEPAN DAN ISINYA GAMBAR PAMFLET BAGUS
+Kalau melanggar syarat dan ketentuan, maka akun akan diblokir. Dipublikasikan di notifikasi biar jadi pelajaran untuk yang lain.
+
+#Chat dengan panitia modal box + Jumlah notifikasi + Status online
+
+KTIKA DIBLOKIR, AKUN AKAN DI-UNPUBLISH SEMUA KARYANYA, DAN DILARANG MENAMBAH KARYA
+
+UNREAD MESSAGE DIHITUNG DARI YANG > timestamp waktu unread sejak waktu logout, yang disimpan di column baru tabel user
+MEMAKAI WAKTU TERAKHIR ONLINE YANG TERBARU SEBELUM DIPERBARUI
+
+#ADD ADMIN
 ==============================================================
 ==============================================================
 ==============================================================
@@ -80,16 +90,6 @@ YASIRPEDIA dan MATIN MASUK KE KARYA WEB!!
 #SEarch Karya menurut kategori
 SEO untuk share link jangan lupa. OG meta data
 
-Kalau melanggar syarat dan ketentuan, maka akun akan diblokir. Dipublikasikan di notifikasi biar jadi pelajaran untuk yang lain.
-
-#Chat dengan panitia modal box + Jumlah notifikasi + Status online
-
-KTIKA DIBLOKIR, AKUN AKAN DI-UNPUBLISH SEMUA KARYANYA, DAN DILARANG MENAMBAH KARYA
-
-UNREAD MESSAGE DIHITUNG DARI YANG > timestamp waktu unread sejak waktu logout, yang disimpan di column baru tabel user
-WAKTU LOGOUT DI-SET SAAT LOGIN, MEMAKAI WAKTU TERAKHIR ONLINE YANG TERBARU SEBELUM DIPERBARUI
-
-#ADD ADMIN
 
 ==================================================================
 
@@ -111,4 +111,4 @@ Blacklist Akun
 
 ========================================
 
-Minta tolong divisi komunikasi bikin desain banner ini
+Minta tolong divisi komunikasi bikin desain pamflet
