@@ -3,21 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Galeri_saya extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -26,14 +11,17 @@ class Galeri_saya extends CI_Controller {
 			redirect( base_url() . 'auth/login' );
 		}
 		$this->load->model('KaryaModel');
+		$this->load->model('KategoriModel');
 	}
 	public function index($current_page = 1)
 	{
 		$data['title'] = 'Galeri Saya';
-		$data['userdata'] = $this->session->userdata();
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
 
 		$search = $this->input->get('search');
-		$per_page = ( empty($this->input->get('per_page')) ) ? 10 : $this->input->get('per_page') ;
+		$per_page = ( empty($this->input->get('per_page')) ) ? 10 : $this->input->get('per_page');
 		// $limit di ->get_karya sama dengan $per_page;
 
 		$id_user = $this->session->userdata('id_user');
@@ -125,6 +113,14 @@ class Galeri_saya extends CI_Controller {
 	{
 		$post = [];
 		if ( !empty($this->input->post()) ) {
+
+			// Check apakah lebih dari tiga karya
+			if ( $this->KaryaModel->count_karya_user( $this->session->userdata('id_user') ) >= 3 ) {
+				$this->session->set_flashdata( 'msg', 'error#Maaf, Galeri Anda dibatasi hingga 3 (tiga) karya saja.' );
+				redirect( base_url() . 'galeri_saya' );
+				return 0;
+			}
+
 			foreach ($this->input->post() as $key => $value) {
 				if ( $key != 'deskripsi' ) {
 					$post[$key] = htmlentities($value);
@@ -140,6 +136,7 @@ class Galeri_saya extends CI_Controller {
 
 			// Create directory untuk upload gambar
 			mkdir( 'assets/img_karya/' . $post['id_karya'] );
+			mkdir( 'assets/img_karya/' . $post['id_karya'] . '/thumb' );
 
 			// Masukkan ke database
 			$this->KaryaModel->add($post);
@@ -149,7 +146,10 @@ class Galeri_saya extends CI_Controller {
 		}
 		
 		$data['title'] = 'Galeri Saya';
-		$data['userdata'] = $this->session->userdata();
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
+		$data['kategori'] = $this->KategoriModel->get_all_kategori();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -172,8 +172,6 @@ class Galeri_saya extends CI_Controller {
 			}
 			// Lengkapi dan publikasikan
 			$post['time'] = time();
-			$post['published'] = 1;
-
 			
 			// Entah kenapa ada parameter "files" karena summernote JS. Hapus aja
 			unset($post['files']);
@@ -187,7 +185,10 @@ class Galeri_saya extends CI_Controller {
 		}
 		
 		$data['title'] = 'Iklan Saya';
-		$data['userdata'] = $this->session->userdata();
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
+		$data['kategori'] = $this->KategoriModel->get_all_kategori();
 		$data['data_karya'] = $this->KaryaModel->get_karya_byID( $id_karya );
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);

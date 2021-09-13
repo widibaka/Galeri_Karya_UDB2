@@ -3,39 +3,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Browse_karya extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function __construct()
 	{
 		parent::__construct();
-		// if ( !$this->session->userdata('username') ) {
-		// 	$this->session->set_flashdata( 'msg', 'error#Session Anda telah habis' );
-		// 	redirect( base_url() . 'auth/login' );
-		// }
 		$this->load->model('KaryaModel');
+		$this->load->model('KategoriModel');
 	}
 	public function index($current_page=1)
 	{
 		$data['title'] = 'Browse Karya';
-		$data['userdata'] = $this->session->userdata();
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
 
 		$search = $this->input->get('search');
 		$per_page = ( empty($this->input->get('per_page')) ) ? 10 : $this->input->get('per_page') ;
+
+		switch ( $this->input->get('urut') ) {
+			case 'terbaru':
+				$this->db->order_by( 'time', 'DESC' );
+				break;
+			case 'terlama':
+				$this->db->order_by( 'time', 'ASC' );
+				break;
+			case 'love_terbanyak':
+				$this->db->order_by( 'loves', 'DESC' );
+				break;
+			case 'love_tersedikit':
+				$this->db->order_by( 'loves', 'ASC' );
+				break;
+			default:
+				$this->db->order_by( 'time', 'DESC' );
+				break;
+		}
+
+		if ( !empty($this->input->get('id_kategori')) ) {
+			$this->db->where( 'id_kategori', $this->input->get('id_kategori') );
+		}
+
+
 		// $limit di ->get_karya sama dengan $per_page;
 		$data['data_karya'] = $this->KaryaModel->get_karya( $per_page, $current_page, $search );
+
+		$data['kategori'] = $this->KategoriModel->get_all_kategori();
 		
 		/* Pagination Starts */
 			$this->load->library('pagination');
@@ -116,5 +126,6 @@ class Browse_karya extends CI_Controller {
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('v_galeri_terbaru', $data);
 		$this->load->view('templates/footer', $data);
+		$this->load->view('v_galeri_terbaru_JS', $data);
 	}
 }

@@ -17,12 +17,6 @@ Edit Nama
 Edit Password
 Edit Nomor WA
 
-#Status Lomba:
- Tabel Menampilkan Ranking Lomba: Ranking 1,2,3
-  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
- Tabel Menampilkan Ranking Lomba User
-  Rank | Judul Karya | Akun | Anggota Tim | Jumlah Love
-
 #Browse Karya:
   Judul Karya
   Deskripsi (dibatasi 200 kata)
@@ -30,14 +24,9 @@ Edit Nomor WA
   Tanggal
   Nama Akun
 
-#Galeri Saya
- Menampilkan Koleksi => Max 3 Karya per akun
- Hapus Karya (soft delete)
-
 #Tambah Karya:
   Judul Karya
   Tanggal
-  Tombol Like
   Kategori
   Deskripsi
   Tim Penggagas:
@@ -45,7 +34,9 @@ Edit Nomor WA
   +Gambar Karya modal box
   +Youtube Video (Multiple)modal box
 
-#Sertifikat (Berdasarkan Karya, Anggotanya siapa saja)
+#Galeri Saya
+ Menampilkan Koleksi => Max 3 Karya per akun
+ Hapus Karya (soft delete)
 
 #Detil karya:
  Statistik Karya:
@@ -60,11 +51,44 @@ Edit Nomor WA
   +Anggota
  +Gambar Karya
  +Youtube Video
-
-#Notifikasi dari panitia lomba modal box
+ 
+Saat membuka karya, ada tombol next dan previous
+#BUAT GALERI PER USER dan publicly
+PERINGKAT LOMBA OTOMATIS FREEZING, KETIKA MENCAPAI TANGGAL YANG TERTERA DI SETTINGS. PAKAI CRON JOB.
+LALU MENCATAT 10 ID KARYA DENGAN LOVE TERBANYAK.
+Kalau sudah lewat eventnya, cronjob akan menonaktifkan event lomba di settings
+INTO JS HANYA SAAT USER PERTAMA KALI LOGIN
+MODALBOX DI DEPAN DAN ISINYA GAMBAR PAMFLET BAGUS
+Kalau melanggar syarat dan ketentuan, maka akun akan diblokir. Dipublikasikan di notifikasi biar jadi pelajaran untuk yang lain.
 
 #Chat dengan panitia modal box + Jumlah notifikasi + Status online
 
+KTIKA DIBLOKIR, AKUN AKAN DI-UNPUBLISH SEMUA KARYANYA, DAN DILARANG MENAMBAH KARYA
+
+UNREAD MESSAGE DIHITUNG DARI YANG > timestamp waktu unread sejak waktu logout, yang disimpan di column baru tabel user
+MEMAKAI WAKTU TERAKHIR ONLINE YANG TERBARU SEBELUM DIPERBARUI
+
+#ADD ADMIN
+==============================================================
+==============================================================
+==============================================================
+CRON JOB http://localhost:83/Galeri_Karya_UDB/admin/api/check_hitung_mundur_event
+
+NGODING PAKAI STAND JOJO
+
+#
+
+
+
+
+GACHA BISA DIAMBIL, TAPI OPSIONAL. Muncul di setiap setelah bikin karya baru.
+
+ACTIVITY: ISINYA BLOKIRAN SAMA YANG DAPET GACHA
+
+#Detail Karya ditambahin *People Also See (other posts)
+YASIRPEDIA dan MATIN MASUK KE KARYA WEB!!
+#SEarch Karya menurut kategori
+SEO untuk share link jangan lupa. OG meta data
 
 
 ==================================================================
@@ -80,7 +104,11 @@ Tanggal Penetapan Pemenang
 Statistik Views
 Statistik Loves
 
+Konfirmasi Akun
+Blacklist Akun
+
+#Sertifikat (Berdasarkan Karya, Anggotanya siapa saja)
 
 ========================================
 
-Minta tolong divisi komunikasi bikin desain banner ini
+Minta tolong divisi komunikasi bikin desain pamflet

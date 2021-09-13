@@ -7,6 +7,19 @@
 	  bsCustomFileInput.init();
 	});
 
+	// SImpan perubahan
+	function simpan_perubahan() {
+		show_loader( $('#simpan_perubahan_btn'), 'Mengunggah...' )
+		setTimeout(function () {
+			$('#image_upload').submit()
+		}, 500)
+	}
+
+	// modal ubah photo
+	function modal_edit_photo() {
+		$("#modal-edit-photo").modal('show');
+	}
+
 
 	// Toggle edit profil
 	function toggle_edit_profil() {
@@ -31,7 +44,9 @@
 	    
 	    FR.addEventListener("load", function(e) {
 	      document.getElementById("b64").innerHTML = e.target.result;
+
 	      preview_gambar.style.backgroundImage = "url('"+ e.target.result +"')"
+	      
 	      $('#modal-edit-photo').modal('hide')
 	      // Munculkan simpan_perubahan_btn
 	      $('#simpan_perubahan_btn').show()
@@ -45,7 +60,7 @@
 	document.getElementById("imgInp").addEventListener("change", readFile);
 
 	$('#hapusGambarProfil').click(function () {
-	  preview_gambar.style.backgroundImage = "url('<?php echo base_url() ?>assets/widi/img/user_no_image.jpg')"
+	  preview_gambar.style.backgroundImage = "url('<?php echo base_url() ?>assets/uploads/foto_profil/user_no_image.jpg')"
 	  b64.value = ""
 	  $('#imgInp').next('label').html('Pilih berkas gambar');
 	  $('#modal-edit-photo').modal('hide')

@@ -12,7 +12,7 @@
 
 /* Menerapkan glassmorphism */
 .card {
-  background: rgba( 255, 255, 255, 0.15 );
+  background: rgba( 255, 255, 255, 0.35 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 25.0px );
   -webkit-backdrop-filter: blur( 25.0px );
@@ -54,9 +54,9 @@
   background-color: transparent;
   height: 40pt;
   width: 40pt;
-  border: solid 2pt #dbdbdb;
+  border: solid 2pt #fff;
   border-radius: 50%;
-  color: #dbdbdb;
+  color: #fff;
 }
 .steps .dash {
   position: relative;
@@ -64,7 +64,7 @@
   height: 40pt;
   width: 25pt;
   border-radius: 50%;
-  color: #dbdbdb;
+  color: #fff;
 }
 .icon_inside_circle {
   font-size: 20pt;
@@ -173,7 +173,7 @@
   -webkit-backdrop-filter: blur( 7.0px );
 }*/
 .modal-chat .modal-content {
-  background: rgba( 255, 255, 255, 0.23 )!important;
+  background: rgba( 255, 255, 255, 0.9 )!important;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   min-height: 500px;
   backdrop-filter: blur( 7.0px );
@@ -257,21 +257,6 @@
   background-color: #ffffff;
 }
 
-/* Chat Button */
-.chat-button {
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 77px;
-  height: 77px;
-  border-radius: 50%;
-  font-size: 24pt;
-}
-
 /* Notification shaking */
 .shaking {
   /* Start the shake animation and make the animation last for 0.5 seconds */
@@ -333,13 +318,58 @@
 .wadah {
   position: relative;
   overflow: hidden;
+  transition: all 200ms ease;
 }
-.wadah .overlay {
+.wadah:hover {
+  opacity: .8;
+}
+
+/* icon-play-vid */
+.youtube-vid{
+  position: relative;
+  transition: all 200ms ease;
+}
+.youtube-vid:hover{
+  opacity: .8;
+}
+.icon-play-vid {
+  opacity: .7;
   position: absolute;
-  right: 5px;
-  bottom: 5px;
-  padding: 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 200ms ease;
 }
-.wadah:hover .overlay {
-  display: visible;
+.youtube-vid:hover .icon-play-vid {
+  opacity: 1;
+}
+
+/* Contact di menu chat */
+.contacts-list .contact-item:hover {
+  background-color: rgba(0, 0, 0, .2);
+}
+.contacts-list .active {
+  background-color: rgba(0, 0, 0, .2);
+}
+
+
+/* Chat Button */
+.chat-button {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+  font-size: 24pt;
+}
+.badge-for-chat-btn {
+  font-size: 13pt;
+  position: fixed;
+  bottom: 83px;
+  right: 30px;
 }
