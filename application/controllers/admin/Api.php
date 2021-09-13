@@ -80,7 +80,7 @@ class Api extends CI_Controller
 			$settings = $this->SettingsModel->get_settings();
 			// Kalau sudah lewat tanggal, maka kunci pemenang
 			if ( time() > strtotime($settings['tanggal_berakhirnya_event']) ) {
-				$this->nonaktifkan_event();
+				// $this->nonaktifkan_event();
 				$this->kunci_pemenang_lomba();
 				echo "Pemenang berhasil didapatkan";
 			}else{
