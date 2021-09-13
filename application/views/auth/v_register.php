@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8">
   <title>Galeri Karya UDB | Registrasi</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -81,20 +81,6 @@ background-attachment: fixed;
 
   <div class="card" id="welcome">
     <div class="card-body register-card-body">
-      <p class="login-box-msg text-dark">Upload bukti mahasiswa (Kartu Tanda Mahasiswa, atau bukti lain).</p>
-
-      <small class="badge badge-danger invalid-warning" id="BuktiMahasiswa_empty" style="display: none;">Mohon upload bukti mahasiswa UDB</small>
-      <div class="form-group">
-        <!-- <label for="customFile">Custom File</label> -->
-        <img src="" id="preview_BuktiMahasiswa" style="width:100%;">
-        <div class="custom-file">
-          <input accept="image/*" type='file' id="InputBuktiMahasiswa" class="custom-file-input btn-lg" required="">
-          <label class="custom-file-label" for="InputBuktiMahasiswa">Pilih bukti mahasiswa</label>
-        </div>
-      </div>
-
-      <textarea style="display: none;" id="b64_bukti_mahasiswa" name="image_bukti_mahasiswa"></textarea>
-
       <p class="login-box-msg text-dark">Pastikan seluruh data telah terisi dengan betul. Jika Anda sudah yakin, silakan klik tombol buat akun di bawah ini.</p>
       <center>
         <div class="col-sm-12 col-md-4">
@@ -241,11 +227,12 @@ background-attachment: fixed;
     <div class="card-body register-card-body">
       <p class="login-box-msg text-dark">Upload bukti mahasiswa (Kartu Tanda Mahasiswa, atau bukti lain).</p>
 
+      <small class="badge badge-danger invalid-warning" id="BuktiMahasiswa_empty" style="display: none;">Mohon upload bukti mahasiswa UDB</small>
       <div class="form-group">
         <!-- <label for="customFile">Custom File</label> -->
         <img src="" id="preview_BuktiMahasiswa" style="width:100%;">
         <div class="custom-file">
-          <input accept="image/*" type='file' id="InputBuktiMahasiswa" class="custom-file-input btn-lg">
+          <input accept="image/*" type='file' id="InputBuktiMahasiswa" class="custom-file-input btn-lg" required="">
           <label class="custom-file-label" for="InputBuktiMahasiswa">Pilih bukti mahasiswa</label>
         </div>
       </div>
