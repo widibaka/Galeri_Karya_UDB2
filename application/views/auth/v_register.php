@@ -81,7 +81,8 @@ background-attachment: fixed;
 
   <div class="card" id="welcome">
     <div class="card-body register-card-body">
-      <p class="login-box-msg text-dark">Pastikan seluruh data telah terisi dengan betul. Jika Anda sudah yakin, silakan klik tombol buat akun di bawah ini.</p>
+      <p class="login-box-msg text-dark">Halo mahasiswa UDB! Sudah siapkah Anda menunjukkan pada dunia karya-karya menakjubkan Anda? </p>
+      <p class="login-box-msg text-dark">Jika iya, klik tombol di bawah ini untuk registrasi.</p>
       <center>
         <div class="col-sm-12 col-md-4">
           <button class="btn btn-outline-danger btn-block" onclick="step1_2()">
