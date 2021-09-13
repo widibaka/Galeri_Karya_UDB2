@@ -41,8 +41,8 @@
           <div class="direct-chat direct-chat-primary">
 
             <center class="mt-1 pt-3 pm-3 pl-3">
-              <?php echo form_open('', 'id="form_input_chat"') ?>
-              <input type="hidden" name="id_user_penerima" required="">
+              <?php echo form_open('' , 'id="form_input_chat"') ?>
+                <input type="hidden" name="id_user_penerima" required="">
                 <div class="input-group">
                   <input type="text" name="msg" placeholder="Tulis pesan ..." class="form-control" autocomplete="off" required="">
                   <span class="input-group-append">
@@ -146,14 +146,18 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
+        Credits
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body p-0 overflow-hidden" id="pamflet_event_wrapper">
-        <div class="container text-center p-3">
-          <div class="form-group mt-2 p-3">
-            <h6>Event ini diselenggarakan oleh HMPTI UDB (Himpunan Mahasiswa Progdi Teknik Informatika Universitas Duta Bangsa)</h6>
+        <div class="container text-center">
+          <div class="form-group mt-2">
+            <img src="<?php echo base_url()  . 'assets/custom/img/logo_hmptiudb.png'; ?>" alt="" width="120">
+          </div>
+          <div class="form-group p-2">
+            <h6>Event ini diselenggarakan oleh HMPTI <br> (Himpunan Mahasiswa Progdi Teknik Informatika) <br>Universitas Duta Bangsa Surakarta</h6>
           </div>
           <div class="form-group mt-4">
             <label>Panitia Event</label>
@@ -173,9 +177,9 @@
             <label>Asisten Web Programmer</label>
             <h5>Muhammad Ali Dasuki</h5>
           </div>
-          
-        </div>      
-      </div>
+
+         </div>      
+      </div>      
     </div>
     <!-- /.modal-content -->
   </div>
@@ -296,9 +300,10 @@
   }
 
   // Turunkan preloader
-  function turunkan_preloader() {
-    $(".preloader").animate({height:"100vh"}, 130)
-    $(".preloader").children().show()
+  function turunkan_preloader(callback = function() {}) {
+    $(".preloader").children().show();
+    $(".preloader").css({height:"100vh"}, 130);
+    callback();
   }
   function redirecting(href) {
     turunkan_preloader()
@@ -380,6 +385,7 @@
 
 </script>
 
+
 <?php 
     if ( !empty($this->session->userdata('id_user')) ) {
       $this->load->view('FUNDAMENTAL_CHAT');
@@ -403,6 +409,7 @@
       get_chats( '<?php echo $this->session->userdata('id_user'); ?>', GLOBAL_limit_chat );
       clear_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>' );
       KONDISI_CHATBOX = 'terbuka';
+      $("#form_input_chat").find('.form-control').focus();
     }
 
     function check_new_chat_msg(unread_msg) {
@@ -436,7 +443,7 @@
             check_new_chat_msg(unread_msg);
           })
         }
-        
+
 
       }, 5000)
     <?php endif ?>
@@ -532,7 +539,7 @@
         }
       } )
     }, 10000)
-    
+
   </script>
 
 

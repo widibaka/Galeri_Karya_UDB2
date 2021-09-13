@@ -21,8 +21,16 @@
 		    ['para', ['ul', 'ol', 'paragraph']],
 		    ['height', ['height']]
 		  ],
-		  height: 200,
+		  height: 500,
 	  });
+
+	  // Buat modalbox biar gak ketutupan backdrop
+	  $('[aria-label="Insert Link"]').on('shown.bs.modal', function (event) {
+	    $('.modal-backdrop').hide();
+	  });
+	  $('[aria-label="Help"]').on('shown.bs.modal', function (event) {
+	    $('.modal-backdrop').hide();
+		});
 
 	})
 </script>

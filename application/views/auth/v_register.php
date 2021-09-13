@@ -30,7 +30,7 @@
   </style>
 </head>
 <body class="hold-transition register-page" style="
-background: url('<?php echo base_url() ?>assets/widi/sun-tornado2.svg');
+background: url('<?php echo base_url() ?>assets/widi/spectrum-gradient.svg');
 /*background: rgb(106,1,68);
 background: linear-gradient(131deg, rgba(106,1,68,1) 0%, rgba(124,1,105,1) 38%, rgba(0,146,255,1) 100%);*/
 background-size: cover;
@@ -76,12 +76,26 @@ background-attachment: fixed;
 </head>
 <div class="register-box" style="background: transparent; min-height: 200px;">
   <div class="register-logo">
-    <a class="text-dark" href="<?php echo base_url() ?>"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+    <a class="text-white" href="<?php echo base_url() ?>"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
   </div>
 
-  <div class="card" id="welcome" style="">
+  <div class="card" id="welcome">
     <div class="card-body register-card-body">
-      <p class="login-box-msg text-dark">Selamat datang, mahasiswa UDB! Di Lomba Karya UDB. Anda diharuskan mengisi form pendaftaran yang akan disediakan. <br><br>Untuk lanjut mendaftar, silakan klik tombol di bawah ini.</p>
+      <p class="login-box-msg text-dark">Upload bukti mahasiswa (Kartu Tanda Mahasiswa, atau bukti lain).</p>
+
+      <small class="badge badge-danger invalid-warning" id="BuktiMahasiswa_empty" style="display: none;">Mohon upload bukti mahasiswa UDB</small>
+      <div class="form-group">
+        <!-- <label for="customFile">Custom File</label> -->
+        <img src="" id="preview_BuktiMahasiswa" style="width:100%;">
+        <div class="custom-file">
+          <input accept="image/*" type='file' id="InputBuktiMahasiswa" class="custom-file-input btn-lg" required="">
+          <label class="custom-file-label" for="InputBuktiMahasiswa">Pilih bukti mahasiswa</label>
+        </div>
+      </div>
+
+      <textarea style="display: none;" id="b64_bukti_mahasiswa" name="image_bukti_mahasiswa"></textarea>
+
+      <p class="login-box-msg text-dark">Pastikan seluruh data telah terisi dengan betul. Jika Anda sudah yakin, silakan klik tombol buat akun di bawah ini.</p>
       <center>
         <div class="col-sm-12 col-md-4">
           <button class="btn btn-outline-danger btn-block" onclick="step1_2()">
@@ -497,10 +511,20 @@ background-attachment: fixed;
 
   // Buat akun
   function buat_akun() {
-    turunkan_preloader()
-    setTimeout(function () {
-      $('#form_registrasi').submit()
-    }, 800)
+    var valid = 1;
+    // kalau belum browse file bukti mahasiswa, maka:
+    if( document.getElementById("InputBuktiMahasiswa").files.length == 0 ){
+      $('#InputBuktiMahasiswa').addClass( 'is-invalid' )
+      $("#BuktiMahasiswa_empty").show(400)
+      valid = 0;
+    }
+
+    if ( valid == 1 ) {
+      turunkan_preloader()
+      setTimeout(function () {
+        $('#form_registrasi').submit()
+      }, 800)
+    }
   }
 
 </script>

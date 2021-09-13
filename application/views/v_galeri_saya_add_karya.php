@@ -28,7 +28,7 @@
 		          </div>
 		          <div class="form-group">
 		            <label for="judul">Judul</label>
-		            <input type="text" class="form-control" name="judul" id="judul" placeholder="Aplikasi Penangkal Hujan" required="">
+		            <input type="text" class="form-control" name="judul" id="judul" placeholder="" required="">
 		          </div>
 		          <div class="form-group">
 		            <label for="youtube">Video Youtube (Opsional)</label>
@@ -38,6 +38,7 @@
 		          <div class="form-group">
 		            <label for="deskripsi">Deskripsi</label>
 		            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi" required=""></textarea>
+								<p class="text-muted"><i>Silakan isi deskripsi karya Anda sebaik mungkin, untuk menarik minat publik melihatnya. Dapat pula Anda tambahkan kelas dan jurusan Anda beserta tim. Jangan lupa gunakan bahasa yang sopan yah? :)</i></p>
 		          </div>
 		          <div class="form-group">
 		            <label for="link">Link (Opsional)</label>

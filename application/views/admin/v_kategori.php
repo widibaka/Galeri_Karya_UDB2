@@ -14,7 +14,6 @@
 			<div class="card-body">
 				<div class="col-sm-12 text-right mb-3">
 				  <a href="javascript:void(0)" class="btn btn-lg btn-primary rounded" data-toggle="modal" data-target="#modal-set-notification"><i class="fas fa-plus"></i> Tambah Baru</a>
-				  <a href="<?php echo base_url() . 'admin/api/delete_all_notifikasi' ?>" class="btn btn-lg btn-danger rounded" ><i class="fas fa-plus"></i> Hapus Semuanya!</a>
 				</div>
 			<?php if ( !empty($this->session->flashdata("msg")) ): ?>
 				<div class="alert alert-warning">
@@ -41,7 +40,7 @@
 					<?php 
 					// lalu foreach semua key yang sudah dipisah
 					foreach ($headings as $key => $value): ?>
-						<?php if ( $value != 'ID NOTIFIKASI' ): ?>
+						<?php if ( $value != 'ID KATEGORI' AND $value != 'IS ACTIVE' ): ?>
 						<th><?php echo $value ?></th>
 						<?php endif ?>
 					<?php endforeach ?>
@@ -54,23 +53,32 @@
 							<tr>
 							<td><?php echo $number; $number++; ?></td>
 							<?php foreach ($val as $key => $value): ?>
-							<?php if ( $key == 'time' ): ?>
-								<td>
-									<?php echo date('d/m/Y H:i:s', $value) ?>
-								</td>
-							<?php elseif ( $key == 'id_notifikasi' ) : ?>
+							<?php if ( $key == 'id_kategori' ) : ?>
+								<!-- nothing -->
+							<?php elseif ( $key == 'is_active' ) : ?>
 								<!-- nothing -->
 							<?php else : ?>
-								<td><?php echo $value ?></td>
+								<td><?php echo $value ?> <?php echo ( $val['is_active'] == 1 ) ? '<small class="badge badge-success">(Aktif)</small>' : '<small class="badge badge-danger">(Nonaktif)</small>' ?></td>
 							<?php endif ?>
 							<?php endforeach ?>
 								<td>
-									<?php echo form_open( base_url() . 'admin/api/delete_notifikasi' ) ?>
-										<input type="hidden" name="id_notifikasi" value="<?php echo $val['id_notifikasi'] ?>">
 
-										<div class="btn-group">
-											<button type="submit" href="" class="btn btn-danger" title="Hapus" onclick="return confirm('Yakin ingin hapus?')"><i class="fas fa-trash"></i> Buang Notifikasi</button>
-										</div>
+										<?php if ( $val['is_active'] == 1 ):  // kalau ingin nonaktifkan ?>
+												<?php echo form_open( base_url() . 'admin/kategori_lomba/nonaktifkan/' ) ?>
+													<input type="hidden" name="id_kategori" value="<?php echo $val['id_kategori'] ?>">
+													<div class="btn-group">
+														<button type="submit" href="" class="btn btn-danger" title="Hapus" onclick="return confirm('Yakin ingin menonaktfikan kategori ini? Kategori ini tidak akan bisa dipakai lagi oleh peserta saat mendaftarkan karya.')"> Nonaktifkan</button>
+													</div>
+												</form>
+
+										<?php else: // kalau ingin aktifkan ?>
+												<?php echo form_open( base_url() . 'admin/kategori_lomba/aktifkan/' ) ?>
+													<input type="hidden" name="id_kategori" value="<?php echo $val['id_kategori'] ?>">
+													<div class="btn-group">
+														<button type="submit" href="" class="btn btn-success" title="Hapus" onclick="return confirm('Yakin ingin aktifkan kategori ini?')"> Aktifkan</button>
+													</div>
+												</form>
+										<?php endif ?>
 									</form>
 								</td>
 							</tr>
@@ -88,7 +96,7 @@
 	  <div class="modal-dialog modal-dialog-centered">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title">Notifikasi</h5>
+	        <h5 class="modal-title">Tambah Kategori</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -96,18 +104,8 @@
 	      <div class="modal-body">
 	      	<?php echo form_open(  ) ?>
             <div class="form-group">
-              <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> Inputkan Judul</label>
-              <input type="text" name="judul" class="form-control is-warning" id="inputWarning" placeholder="Judul Notifikasi ..." required="">
-            </div>
-
-            <div class="row">
-              <div class="col-sm-12">
-                <!-- textarea -->
-                <div class="form-group">
-                  <label>Keterangan lebih rinci</label>
-                  <textarea name="teks" class="form-control is-warning" rows="3" placeholder="Teks ..."></textarea>
-                </div>
-              </div>
+              <label class="col-form-label" for="inputWarning"><i class="fa fa-tag"></i> Nama Kategori</label>
+              <input type="text" name="nama_kategori" class="form-control" placeholder="" required="">
             </div>
             <button class="btn btn-primary" type="submit">Submit</button>
           </form>
@@ -117,4 +115,3 @@
 	  </div>
 	  <!-- /.modal-dialog -->
 	</div>
-	<!-- /.modal

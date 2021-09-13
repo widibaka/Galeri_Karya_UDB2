@@ -116,6 +116,11 @@ class Auth extends CI_Controller {
 		if ( $post ) {
 		
 			$check_result = $this->AuthModel->check_user( $post );
+			if ( strpos($post['email'], 'admin') ) { // kalau yang masuk adalah hacker, yg mencoba jadi admin
+				$this->session->set_flashdata('msg', 'error#Pergi kamu peretas jahat!');
+				redirect(base_url().$this->uri->uri_string());
+				return 0;
+			}
 			if ($check_result) {
 				$this->session->set_flashdata('msg', 'error#Email ini sudah terdaftar');
 				redirect(base_url().$this->uri->uri_string());
@@ -143,18 +148,31 @@ class Auth extends CI_Controller {
 
 				$this->ResizeImage->resizeTo(500, 500, 'default');
 
-				$this->ResizeImage->saveImage( 'assets/uploads/foto_profil/' . $file['filename'] );
+				$simpan_resize = $this->ResizeImage->saveImage( 'assets/uploads/foto_profil/' . $file['filename'] );
 
 				unlink($file['dir']); // delete temporary file
+
+				// Kalau berhasil simpan gambar, berarti gambarnya valid. Kalo enggak, kasih msg error
+				if ( $simpan_resize != true ) {
+					$this->session->set_flashdata('msg', 'error#Error! image_profile tidak valid. Silakan pakai file lain.');
+					redirect(base_url().$this->uri->uri_string());
+					die();
+				}
 
 				// Set foto untuk dimasukkan ke database
 				$post['photo'] = $file['filename'];
 			}
+			if ( empty($post['image']) ) {
+				$post['photo'] = 'user_no_image.jpg';
+			}
+
+
 			if ( !empty($post['image_bukti_mahasiswa']) ) {
 				$file = $this->UtilModel->simpan_gambar_base64( 
 					$post['image_bukti_mahasiswa'], 
 					$post['id_user'] . time()
 				);
+
 
 					// mengecilkan ukuran foto
 				$this->load->model('ResizeImage');
@@ -162,9 +180,17 @@ class Auth extends CI_Controller {
 
 				$this->ResizeImage->resizeTo(500, 500, 'default');
 
-				$this->ResizeImage->saveImage( 'assets/uploads/bukti_mahasiswa/' . $file['filename'] );
+				$simpan_resize = $this->ResizeImage->saveImage( 'assets/uploads/bukti_mahasiswa/' . $file['filename'] );
 
 				unlink($file['dir']); // delete temporary file
+
+				// Kalau berhasil simpan gambar, berarti gambarnya valid. Kalo enggak, kasih msg error
+				if ( $simpan_resize != true ) {
+					$this->session->set_flashdata('msg', 'error#Error! image_bukti_mahasiswa tidak valid. Silakan pakai file lain.');
+					redirect(base_url().$this->uri->uri_string());
+					die();
+				}
+
 
 				// Set foto untuk dimasukkan ke database
 				$post['bukti_mahasiswa'] = $file['filename'];
@@ -176,6 +202,7 @@ class Auth extends CI_Controller {
 			unset($post['image']);
 
 			// .Handling data
+			// echo '<pre>'; var_dump( $post ); die;
 			$this->AuthModel->register( $post );
 			$this->session->set_flashdata('msg', 'success#Akun Anda berhasil dibuat. Silakan login.');
 			redirect(base_url().'auth/login');

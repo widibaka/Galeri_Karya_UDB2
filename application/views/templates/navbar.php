@@ -12,7 +12,7 @@
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown" id="notification_button">
       <a class="nav-link shaking" href="javascript:void(0)" onclick="open_notification(10)">
-        <i class="far fa-bell"></i>
+        <i class="fa fa-bell"></i>
         <span class="badge badge-warning navbar-badge" id="notification-badge" style="display: none;">0</span>
       </a>
     </li>

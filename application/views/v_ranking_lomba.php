@@ -71,14 +71,14 @@
             <td class="align-middle"><span class="badge bg-danger"><?php echo $val['loves'] ?> <span class="fa fa-heart"></span></span></td>
             <td class="align-middle">
               <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-danger bg-danger" style="width: <?php echo $val['loves'] / $top_score * 100 ?>%"></div>
+                <div class="progress-bar progress-bar-danger bg-danger" data-width="<?php echo $val['loves'] / $top_score * 100 ?>%" style="width: 0"></div>
               </div>
             </td>
             <td class="align-middle"><?php echo $val['nama_kategori'] ?></td>
             <td class="align-middle">@<?php echo $val['kreator']['username'] ?></td>
           </tr>
         <?php endforeach; ?>
-        
+
       </tbody>
     </table>
 

@@ -12,9 +12,16 @@ class KategoriModel extends CI_Model {
 	public function get_all_kategori()
 	{
 		$this->db->order_by( 'nama_kategori', 'ASC' );
+		$this->db->where( 'is_active', 1 );
 		return $this->db->get( $this->table )->result_array();
 	}
-	
+	public function get_all_kategori_for_admin()
+	{
+		$this->db->order_by( 'is_active', 'DESC' );
+		$this->db->order_by( 'nama_kategori', 'ASC' );
+		return $this->db->get( $this->table )->result_array();
+	}
+
 	// =====================================================================
 
 	public function add($data)
@@ -23,8 +30,8 @@ class KategoriModel extends CI_Model {
 	}
 	public function update($data)
 	{
-		$this->db->where( 'id_karya', $data['id_karya'] );
+		$this->db->where( 'id_kategori', $data['id_kategori'] );
 		return $this->db->update( $this->table, $data );
 	}
-	
+
 }

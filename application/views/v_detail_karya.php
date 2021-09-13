@@ -115,7 +115,7 @@
 
       </div>
       <div class="col-12 col-sm-6">
-        <a href="<?php echo base_url() ?>galeri_user/u/<?php echo $kreator['id_user'] ?>" class="text-dark">
+        <a href="<?php echo base_url() ?>galeri_user/u/<?php echo $kreator['id_user'] ?>" class="text-dark do_transition">
           <center class="p-3 glassy_thing rounded-lg">
             <div class="image mb-2">
               <div class="image img-circle elevation-2" alt="User Image" style="
@@ -163,7 +163,7 @@
         <hr>
 
         <h5 class="mb-3">Kategori: 
-          <a href="<?php echo base_url() ?>?search=&id_kategori=<?php echo $data_karya['id_kategori'] ?>" title="Lihat karya dengan kategori ini">
+          <a href="<?php echo base_url() ?>?search=&id_kategori=<?php echo $data_karya['id_kategori'] ?>" title="Lihat karya dengan kategori ini" class="do_transition">
             <?php echo $this->KategoriModel->get_kategori( $data_karya['id_kategori'] ) ?>
           </a>
         </h5>
@@ -178,7 +178,7 @@
         <?php if (!empty($data_karya['link'])): ?>
           <h5 class="my-3">Link</h5>
           <div class="deskripsi">
-            <strong><a href="<?php echo $data_karya['link'] ?>"><?php echo substr($data_karya['link'], 0, 50) ?><?php echo (strlen($data_karya['link'])>50) ? '...' : '' ?></a></strong>
+            <strong><a href="<?php echo $data_karya['link'] ?>" class="do_transition"><?php echo substr($data_karya['link'], 0, 50) ?><?php echo (strlen($data_karya['link'])>50) ? '...' : '' ?></a></strong>
           </div>
           <hr>
         <?php endif ?>

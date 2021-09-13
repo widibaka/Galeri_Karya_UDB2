@@ -103,7 +103,7 @@ class ResizeImage
 			header("Content-disposition: attachment; filename= ".$savePath."");
 			readfile($savePath);
 	    }
-	    imagedestroy($this->newImage);
+	    return imagedestroy($this->newImage);
 	}
 	/**
 	 * Resize the image to these set dimensions

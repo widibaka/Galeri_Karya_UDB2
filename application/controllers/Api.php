@@ -103,7 +103,7 @@ class Api extends CI_Controller {
 			$this->load->model('ChatModel');
 			$admin_all = $this->db->get('galeri_admin')->result_array();
 			$teratas = $this->ChatModel->get_contact($limit, $admin_all);
-			
+
 			$contacts = [];
 			foreach ($teratas as $key => $val) {
 				$temp_data = $this->AuthModel->get_user($val['id_user']);
@@ -115,11 +115,11 @@ class Api extends CI_Controller {
 						$latest_msg = $this->ChatModel->get_latest_msg($val['id_user']);
 						$contacts[$key]['latest_msg'] = substr($latest_msg['msg'], 0, 34).'...';
 						$contacts[$key]['latest_msg_time_int'] = $latest_msg['time'];
-						$contacts[$key]['latest_msg_time'] = date('d/m/Y', $latest_msg['time']) . ' WIB';
+						$contacts[$key]['latest_msg_time'] = date('d/m/Y H:i', $latest_msg['time']) . ' WIB';
 						$contacts[$key]['unread_msg_for_admin'] = $this->ChatModel->count_unread_msg_for_admin( $val['id_user'], $contacts[$key]['terakhir_dibaca_panitia'] );
 					}
 				}
-				
+
 			}
 
 			// Urutkan berdasarkan latest_msg_time_int terbaru
@@ -210,80 +210,67 @@ class Api extends CI_Controller {
 			}
 		}
 	// CHAT ENDS
-
-	public function create_captcha()
-	{
-		$this->load->library('image_lib');
-		$this->load->helper('captcha');
-
-		$vals = array(
-		        'img_path'      => './assets/captcha/',
-		        'img_url'       => base_url() . 'assets/captcha/',
-		        'img_width'     => '150',
-		        'img_height'    => '30',
-		        'expiration'    => 7200,
-		        'word_length'   => 3,
-		        'font_size'     => 16,
-		        'img_id'        => 'Imageid',
-		        'pool'          => '123456789ABCDEFGHIJKLMNPRSTUVWXYZ',
-
-		        // White background and border, black text and red grid
-		        'colors'        => array(
-		                'background' => array(255, 255, 255),
-		                'border' => array(255, 255, 255),
-		                'text' => array(0, 0, 0),
-		                'grid' => array(48, 144, 247)
-		        )
-		);
-
-		$data['cap'] = create_captcha($vals);
-		unset($data['cap']['image']);
-		unset($data['cap']['time']);
-
-		$data['cap']['img_path'] = base_url() . 'assets/captcha/' . $data['cap']['filename'];
-
-		echo json_encode($data['cap']);
-	}
-	public function remove_love($id_karya)
-	{
-		$this->KaryaModel->remove_love($id_karya);
-
-		$data = [
-			'status' => 'deleted'
-		];
-
-		echo json_encode( $data );
-	}
-	public function add_love($id_karya)
-	{
-		$this->KaryaModel->add_love($id_karya);
-			
-		$data = [
-			'status' => 'added'
-		];
-
-		echo json_encode( $data );
-	}
-
-	public function dummy_data_karya($jumlah)
-	{
-		$fid = 107;
-		for ($i=0; $i < $jumlah; $i++) { 
-			$post = [
-				'id_karya' => $fid,
-				'id_user' => '1628687548',
-				'judul' => rand(10,10000),
-				'deskripsi' => base64_encode(rand(10,10000)),
-				'harga' => rand(10,10000),
-				'satuan' => 'Kg',
-				'kota' => 'Boyolali',
-				'time' => time(),
-				'dihapus' => 0,
-			];
-			$this->KaryaModel->add($post);
-			$fid++;
+	
+	// Love handling
+		public function convert_gacha2loves($id_karya = null)
+		{
+			$this->KaryaModel->convert_gacha2loves( $id_karya );
 		}
-	}
+
+		public function create_captcha()
+		{
+			$this->load->library('image_lib');
+			$this->load->helper('captcha');
+
+			$vals = array(
+					'img_path'      => './assets/captcha/',
+					'img_url'       => base_url() . 'assets/captcha/',
+					'img_width'     => '150',
+					'img_height'    => '30',
+					'expiration'    => 7200,
+					'word_length'   => 3,
+					'font_size'     => 16,
+					'img_id'        => 'Imageid',
+					'pool'          => '123456789ABCDEFGHIJKLMNPRSTUVWXYZ',
+
+					// White background and border, black text and red grid
+					'colors'        => array(
+							'background' => array(255, 255, 255),
+							'border' => array(255, 255, 255),
+							'text' => array(0, 0, 0),
+							'grid' => array(48, 144, 247)
+					)
+			);
+
+			$data['cap'] = create_captcha($vals);
+			unset($data['cap']['image']);
+			unset($data['cap']['time']);
+
+			$data['cap']['img_path'] = base_url() . 'assets/captcha/' . $data['cap']['filename'];
+
+			echo json_encode($data['cap']);
+		}
+		public function remove_love($id_karya)
+		{
+			$this->KaryaModel->remove_love($id_karya);
+
+			$data = [
+				'status' => 'deleted'
+			];
+
+			echo json_encode( $data );
+		}
+		public function add_love($id_karya)
+		{
+			$this->KaryaModel->add_love($id_karya);
+
+			$data = [
+				'status' => 'added'
+			];
+
+			echo json_encode( $data );
+		}
+	// Love handling ENDS
 
 	public function upload_gambar()
 	{
@@ -322,11 +309,11 @@ class Api extends CI_Controller {
             $this->load->model('ResizeImage');
             $this->ResizeImage->dir( $data['upload_data']['file_path'] . $new_filename . $data['upload_data']['file_ext'] );
             // Untuk ukuran besar
-            $this->ResizeImage->resizeTo(1200, 1200, 'default');
+            $this->ResizeImage->resizeTo(1200, 1200, 'maxwidth');
             $this->ResizeImage->saveImage( $config['upload_path'] . $new_filename . '_new' . $data['upload_data']['file_ext'] );
 
             // Untuk yang ukuran thumbnail
-            $this->ResizeImage->resizeTo(300, 300, 'default');
+            $this->ResizeImage->resizeTo(300, 300, 'maxwidth');
             $this->ResizeImage->saveImage( $config['upload_path'] . 'thumb/' . $new_filename . '_new' . $data['upload_data']['file_ext'] );
 
             unlink( $data['upload_data']['file_path'] . $new_filename . $data['upload_data']['file_ext'] ); // delete temporary file

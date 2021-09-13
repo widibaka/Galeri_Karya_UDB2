@@ -11,7 +11,7 @@
       var day = today.getDay();
       var date = today.getDate();
       var month = today.getMonth();
-  
+
       m = checkTime(m);
       s = checkTime(s);
       document.getElementById('clock').innerHTML = h + ":" + m + ":" + s + '';
@@ -19,12 +19,20 @@
           .getFullYear();
       var t = setTimeout(startTime, 500);
   }
-  
+
   function checkTime(i) {
       if (i < 10) {
           i = "0" + i
       }; // add zero in front of numbers < 10
       return i;
+  }
+
+  // Animating progress bar
+  function animate_progress_bar() {
+    $('.progress .progress-bar').each(function () {
+      let progress_bar_width = $(this).data('width');
+      $(this).animate({width: progress_bar_width});
+    });
   }
 
   function refresh_ranking() {
@@ -35,6 +43,8 @@
         success: function (data) {
           $('#wadah_data').html(data);
           $('#loader_overlay').hide();
+          // terakhir, animasikan progress bar
+          animate_progress_bar();
         }
       });
     }, 500);
@@ -56,7 +66,7 @@
 
     // Get today's date and time
     var now = new Date().getTime();
-      
+
     // Find the distance between now and the count down date
     var distance = countDownDate - now;
 
@@ -66,10 +76,10 @@
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).pad(2);
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).pad(2);
         var seconds = Math.floor((distance % (1000 * 60)) / 1000).pad(2);
-          
+
         // Output the result in an element with id="demo"
         $("#hitung_mundur").html( days + " hari <br>" + hours + ":" + minutes + ":" + seconds );
-          
+
     }else{
       $("#hitung_mundur").html("00:00:00");
     }
@@ -85,4 +95,5 @@
   setInterval(function () {
     do_countdown()
   }, 100);
+
 </script>

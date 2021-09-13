@@ -12,7 +12,7 @@
     <div class="sidebar">
       <?php if ( !empty($userdata['username']) ): ?>
         <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="user-panel mt-3 d-flex">
           <div class="image">
             <div class="image img-circle elevation-2" alt="User Image" style="
               height: 37px;
@@ -63,6 +63,7 @@
             </a>
           </li> -->
 
+
           <?php if ( $this->session->userdata('admin') ): // admin ?>
           <li class="nav-header">Admin</li>
             <li class="nav-item">
@@ -103,6 +104,15 @@
                 <i class="nav-icon fa fa-user-tie"></i>
                 <p>
                   Admin
+                </p>
+              </a>
+            </li> <!-- sidebar item -->
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>admin/kategori_lomba" class="nav-link do_transition" menu_title="Kategori Lomba">
+                <!-- <i class="nav-icon fa fa-snowman"></i> -->
+                <i class="nav-icon fa fa-tags"></i>
+                <p>
+                  Kategori Lomba
                 </p>
               </a>
             </li> <!-- sidebar item -->
@@ -154,32 +164,36 @@
               </a>
             </li>
           <?php endif ?>
+          <?php if ( $this->SettingsModel->get_settings()['aktifkan_event'] == 1 ): ?>
+            <li class="nav-header">Lomba</li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>ranking_lomba" class="nav-link do_transition" menu_title="Ranking Lomba">
+                <i class="nav-icon fa fa-chart-bar"></i>
+                <p>
+                  Ranking Lomba
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url() ?>syarat_ketentuan" class="nav-link do_transition" menu_title="Syarat & Ketentuan">
+                <i class="nav-icon fa fa-gavel"></i>
+                <p>
+                  Syarat & Ketentuan
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void(0)" onclick="$('#modal-pamflet_event').modal('show')" class="nav-link ">
+                <i class="nav-icon fa fa-file-alt"></i>
+                <p>
+                  Tampilkan Pamflet
+                </p>
+              </a>
+            </li>
+          <?php endif ?>
 
-          <li class="nav-header">Lomba</li>
-          <li class="nav-item">
-            <a href="<?php echo base_url() ?>ranking_lomba" class="nav-link do_transition" menu_title="Ranking Lomba">
-              <i class="nav-icon fa fa-chart-bar"></i>
-              <p>
-                Ranking Lomba
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url() ?>syarat_ketentuan" class="nav-link do_transition" menu_title="Syarat & Ketentuan">
-              <i class="nav-icon fa fa-gavel"></i>
-              <p>
-                Syarat & Ketentuan
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:void(0)" onclick="$('#modal-pamflet_event').modal('show')" class="nav-link ">
-              <i class="nav-icon fa fa-file-alt"></i>
-              <p>
-                Tampilkan Pamflet
-              </p>
-            </a>
-          </li>
+
+          <li class="nav-header">Credits</li>
           <li class="nav-item">
             <a href="javascript:void(0)" onclick="$('#modal-credits').modal('show')"  class="nav-link">
               <i class="nav-icon fa fa-chess-knight"></i>
@@ -203,7 +217,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><?php echo $title ?></h1>
+            <h1 class="text-white"><?php echo $title ?></h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->

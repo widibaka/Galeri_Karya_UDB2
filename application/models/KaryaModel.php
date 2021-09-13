@@ -2,7 +2,26 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class KaryaModel extends CI_Model {
-	public $table = 'galeri_karya';
+		public $table = 'galeri_karya';
+
+	public function convert_gacha2loves($id_karya)
+	{
+		$this->db->select( 'id_karya, gacha, loves' );
+		$this->db->where( 'dihapus', 0 );
+
+		$this->db->where( 'id_karya', $id_karya );
+		$this->db->limit( 1 );
+		$data = $this->db->get( $this->table )->row_array();
+
+		// pindahkan jumlah gacha ke loves semuanya
+		$total_loves = $data['loves'] + $data['gacha'];
+		$data['loves'] = $total_loves;
+		$data['gacha'] = 0;
+
+		// update data
+		$this->update($data);
+	}
+
 	// FOR RANKING LOMBA
 		public function check_tabel_pemenang($value='')
 		{
@@ -58,7 +77,7 @@ class KaryaModel extends CI_Model {
 			$this->db->where( 'dihapus', 0 );
 			$this->db->where( 'published', 1 );
 			$this->db->where( 'loves > ', $jumlah_loves );
-			
+
 			return $this->db->get( $this->table )->num_rows()+1; // plus satu karena ranking teratas = 0
 		}
 	// FOR RANKING LOMBA ENDS
