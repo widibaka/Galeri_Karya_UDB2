@@ -19,7 +19,11 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2/sweetalert2.min.css">
 </head>
 <body class="hold-transition login-page" style="
+<<<<<<< Updated upstream
 background: url('<?php echo base_url() ?>assets/widi/vectors/97Z_dec32.jpg');
+=======
+background: url('<?php echo base_url() ?>assets/widi/spectrum-gradient.svg');
+>>>>>>> Stashed changes
 /*background: rgb(106,1,68);
 background: linear-gradient(131deg, rgba(106,1,68,1) 0%, rgba(124,1,105,1) 38%, rgba(0,146,255,1) 100%);*/
 background-size: cover;
@@ -34,7 +38,11 @@ background-attachment: fixed;
 
 <div class="login-box" style="background: transparent;">
   <div class="login-logo">
+<<<<<<< Updated upstream
     <a href="#" class="text-white"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+=======
+    <a href="<?php echo base_url() ?>" class="text-white"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+>>>>>>> Stashed changes
   </div>
   <!-- /.login-logo -->
   <div class="card">

@@ -27,6 +27,7 @@ class Browse_karya extends CI_Controller {
 		// }
 		$this->load->model('KaryaModel');
 	}
+<<<<<<< Updated upstream
 	public function index($current_page=1)
 	{
 		$data['title'] = 'Browse Karya';
@@ -34,14 +35,59 @@ class Browse_karya extends CI_Controller {
 
 		$search = $this->input->get('search');
 		$per_page = ( empty($this->input->get('per_page')) ) ? 10 : $this->input->get('per_page') ;
+=======
+
+	public function kategori_dan_urutan(Type $var = null)
+	{
+		switch ( $this->input->get('urut') ) {
+			case 'terbaru':
+				$this->db->order_by( 'time', 'DESC' );
+				break;
+			case 'terlama':
+				$this->db->order_by( 'time', 'ASC' );
+				break;
+			case 'love_terbanyak':
+				$this->db->order_by( 'loves', 'DESC' );
+				break;
+			case 'love_tersedikit':
+				$this->db->order_by( 'loves', 'ASC' );
+				break;
+			default:
+				$this->db->order_by( 'time', 'DESC' );
+				break;
+		}
+
+		if ( !empty($this->input->get('id_kategori')) ) {
+			$this->db->where( 'id_kategori', $this->input->get('id_kategori') );
+		}
+	}
+	public function index($current_page=1)
+	{
+		$data['title'] = 'Browse Karya';
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
+
+		$search = $this->input->get('search');
+		$per_page = ( empty($this->input->get('per_page')) ) ? 10 : $this->input->get('per_page') ;
+
+		
+
+
+>>>>>>> Stashed changes
 		// $limit di ->get_karya sama dengan $per_page;
+		$this->kategori_dan_urutan(); //<-- check filter sebelum get data karya
 		$data['data_karya'] = $this->KaryaModel->get_karya( $per_page, $current_page, $search );
 		
 		/* Pagination Starts */
 			$this->load->library('pagination');
 
 			$config['base_url'] = base_url() . 'browse_karya/index/';
+			$this->kategori_dan_urutan(); //<-- check filter sebelum get data karya
 			$config['total_rows'] = $this->KaryaModel->count_searched_karya($search);
+			// masukin ke view sekalian ahhh
+			$data['total_rows'] = $config['total_rows'];
+
 			$config['per_page'] = $per_page;
 			$config['use_page_numbers'] = TRUE; //<-- Ini penting
 			// $config['num_links'] = 2;

@@ -22,8 +22,13 @@
 		            <input type="text" class="form-control" name="judul" id="judul" placeholder="Panen Ikan Lele Jumbo" required="">
 		          </div>
 		          <div class="form-group">
+<<<<<<< Updated upstream
 		            <label for="harga">Harga</label>
 		            <input type="text" class="form-control" name="harga" id="harga" placeholder="Rp 20.000" required="">
+=======
+		            <label for="judul">Judul</label>
+		            <input type="text" class="form-control" name="judul" id="judul" placeholder="" required="">
+>>>>>>> Stashed changes
 		          </div>
 		          <div class="form-group">
 		            <label for="satuan">Satuan</label>
@@ -32,6 +37,7 @@
 		          <div class="form-group">
 		            <label for="deskripsi">Deskripsi</label>
 		            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi" required=""></textarea>
+		            <p class="text-muted"><i>Silakan isi deskripsi karya Anda sebaik mungkin, untuk menarik minat publik melihatnya. Dapat pula Anda tambahkan kelas dan jurusan Anda beserta tim. Jangan lupa gunakan bahasa yang sopan yah? :)</i></p>
 		          </div>
 		          <div class="form-group">
 		            <label for="kota">Kota</label>

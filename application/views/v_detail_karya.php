@@ -39,6 +39,7 @@
         </div>
       </div>
       <div class="col-12 col-sm-6">
+<<<<<<< Updated upstream
         <h3 class="my-3">Deskripsi</h3>
         <div class="deskripsi">
 
@@ -47,6 +48,23 @@
         </div>
 
         <hr>
+=======
+        <a href="<?php echo base_url() ?>galeri_user/u/<?php echo $kreator['id_user'] ?>" class="text-dark do_transition">
+          <center class="p-3 glassy_thing rounded-lg">
+            <div class="image mb-2">
+              <div class="image img-circle elevation-2" alt="User Image" style="
+                height: 120px;
+                width: 120px;
+                background-size: cover;
+                background-position: center;
+                background-image: url('<?php echo base_url() . 'assets/uploads/foto_profil/' . $kreator['photo'] ?>');
+              ">
+              </div>
+            </div>
+            <h5>@<?php echo $kreator['username'] ?></h5>
+          </center>
+        </a>
+>>>>>>> Stashed changes
 
         <!-- HP -->
         <div class="bg-success py-2 px-3 mt-4 text-center">
@@ -77,7 +95,40 @@
           </div>
         </div>
 
+<<<<<<< Updated upstream
         <br>
+=======
+        <hr>
+
+        <h5 class="mb-3">Kategori: 
+          <a href="<?php echo base_url() ?>?search=&id_kategori=<?php echo $data_karya['id_kategori'] ?>" title="Lihat karya dengan kategori ini" class="do_transition">
+            <?php echo $this->KategoriModel->get_kategori( $data_karya['id_kategori'] ) ?>
+          </a>
+        </h5>
+        <hr>
+
+        <h5 class="my-3">Deskripsi</h5>
+        <div class="deskripsi">
+          <?php echo $data_karya['deskripsi'] ?>
+        </div>
+        <hr>
+
+        <?php if (!empty($data_karya['link'])): ?>
+          <h5 class="my-3">Link</h5>
+          <div class="deskripsi">
+            <strong><a href="<?php echo $data_karya['link'] ?>" class="do_transition"><?php echo substr($data_karya['link'], 0, 50) ?><?php echo (strlen($data_karya['link'])>50) ? '...' : '' ?></a></strong>
+          </div>
+          <hr>
+        <?php endif ?>
+
+        <h5 class="my-3">Tim</h5>
+        <div class="tim">
+          <?php echo (!empty($data_karya['tim'])) ? $data_karya['tim'] : '(Tidak dicantumkan)' ?>
+        </div>
+        <hr>
+
+        
+>>>>>>> Stashed changes
 
         <span>Share:</span>
         <div class="mt-4 product-share">

@@ -63,12 +63,34 @@ Edit Nomor WA
 
 #Notifikasi dari panitia lomba modal box
 
+<<<<<<< Updated upstream
 #Chat dengan panitia modal box + Jumlah notifikasi + Status online
 
+=======
+UNREAD MESSAGE DIHITUNG DARI YANG > timestamp waktu unread sejak waktu logout, yang disimpan di column baru tabel user
+MEMAKAI WAKTU TERAKHIR ONLINE YANG TERBARU SEBELUM DIPERBARUI
+
+#ADD ADMIN
+#SEarch Karya menurut kategori
+SEO untuk share link jangan lupa. OG meta data
+==============================================================
+==============================================================
+==============================================================
+CRON JOB http://localhost:83/Galeri_Karya_UDB/admin/api/check_hitung_mundur_event
+
+NGODING PAKAI STAND JOJO
+
+#GACHA BISA DIAMBIL, TAPI OPSIONAL. Muncul di setiap setelah bikin karya baru.
+
+#Detail Karya ditambahin *People Also See (other posts)
+YASIRPEDIA dan MATIN MASUK KE KARYA WEB!!
+>>>>>>> Stashed changes
 
 
-==================================================================
+========================== DROPPED ========================================
 
+
+ACTIVITY: ISINYA BLOKIRAN SAMA YANG DAPET GACHA
 #Dashboard
  Ranking Lomba
   Judul Karya | Akun | Anggota Tim | Jumlah Love
@@ -81,6 +103,71 @@ Statistik Views
 Statistik Loves
 
 
-========================================
+================== TO BE DONE ======================
 
+Minta tolong divisi komunikasi bikin desain pamflet
+Tujuan: Menjaring talenta Universitas Duta Bangsa Sebanyak Mungkin dan menunjukkannya pada publik
+Isi Syarat Ketentuan:
+- Berbagai macam kategori dan keterangannya
+    Website:
+      - Blog
+      - Toko Online
+      - Web Application
+      - Sistem Informasi
+      - Atau sejenisnya
+    Mobile:
+      - Application
+      - Game
+      - AI
+      - UI/UX
+      - Atau sejenisnya
+    Elektronik & Robotika:
+      - Arduino
+      - Robot
+      - AI
+      - Atau sejenisnya
+    Desain Sistem:
+      - Rancangan Keamanan Jaringan
+      - Algoritma Asli Buatan Sendiri
+      - Atau sejenisnya
+    Multimedia:
+      - Animasi
+      - Infografis
+      - Desain grafis
+      - Fotografi
+      - Video
+      - Ataupun lainnya
+    Kewirausahaan:
+      - Usaha Diamond ML
+      - Usaha Pakaian
+      - Sampai Software House
+      - Segala jenis wirausaha
+      - Beritahu khalayak tentang usaha yang kamu jalankan, ini kesempatan mendapat lebih banyak pelanggan!
+
+- Apapun yang tidak boleh dilakukan
+- Alur jalannya lomba
+Sekali mendaftar tidak bisa menghapus akun
+Peserta dapat memajang karya maksimal sejumlah 3 (tiga) karya
+Alamat email dan atau kontak whatsapp kemungkinan akan dipajang / dipublikasikan pada halaman karya
+Siapa saja warga Universitas Duta Bangsa boleh mendaftar dan memajang karya mereka di Galeri Karya UDB
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++ WEBSITE HMPTI +++++++++++++++++++++++++++
+
+MODUL UNTUK MEMBERI MASUKAN DI SITUS HMPTI
+MODUL LPJ ONLINE
+MENDAFTAR KE EVENT DIKASIH DUMMY KE HALAMAN LOGIN
+THUMBNAIL DIBUAT BACKGROUND CSS
+RESIZE GAMBAR UPLOAD
+CETAK SERTIFIKAT
+Pencegahan Hacking:
+- CSRF TOKEN
+- XSS FILTER
+Carousel dikasih Fancybox
+Banyakin keterangan supaya anak-anak generasi berikutnya gak bingung ketika memakai sistem ini.
+Anggota Nonaktif
+
+<<<<<<< Updated upstream
 Minta tolong divisi komunikasi bikin desain banner ini
+=======
+>>>>>>> Stashed changes

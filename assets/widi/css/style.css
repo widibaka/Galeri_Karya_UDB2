@@ -12,29 +12,33 @@
 
 /* Menerapkan glassmorphism */
 .card {
+<<<<<<< Updated upstream
   background: rgba( 255, 255, 255, 0.15 );
+=======
+  background: rgba( 255, 255, 255, 0.75 );
+>>>>>>> Stashed changes
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 25.0px );
   -webkit-backdrop-filter: blur( 25.0px );
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  /*border: 1px solid rgba( 255, 255, 255, 0.18 );*/
 }
 .main-sidebar {
-  background: rgba( 255, 255, 255, 0.1 )!important;
+  background: rgba( 255, 255, 255, 0.55 )!important;
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 25.0px );
   -webkit-backdrop-filter: blur( 25.0px );
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .navbar {
-  background: rgba( 255, 255, 255, 0.3 )!important;
+  background: rgba( 255, 255, 255, 0.55 )!important;
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 6.5px );
   -webkit-backdrop-filter: blur( 6.5px );
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .brand-link {
-  background: rgba( 255, 255, 255, 0.3 )!important;
+  background: rgba( 255, 255, 255, 0 )!important;
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 6.5px );
   -webkit-backdrop-filter: blur( 6.5px );
@@ -42,7 +46,9 @@
 }
 
 
-
+.user-panel {
+  border-bottom: none!important;
+}
 
 /* Login and register page */
 .steps {
@@ -84,12 +90,12 @@
 }
 
 .login-box .card {
-  background: rgba( 255, 255, 255, 0.35 );
+  background: rgba( 255, 255, 255, 0.55 );
   backdrop-filter: blur( 25.0px );
   -webkit-backdrop-filter: blur( 25.0px );
 }
 .register-box .card {
-  background: rgba( 255, 255, 255, 0.35 );
+  background: rgba( 255, 255, 255, 0.55 );
   backdrop-filter: blur( 25.0px );
   -webkit-backdrop-filter: blur( 25.0px );
 }
@@ -173,7 +179,11 @@
   -webkit-backdrop-filter: blur( 7.0px );
 }*/
 .modal-chat .modal-content {
+<<<<<<< Updated upstream
   background: rgba( 255, 255, 255, 0.23 )!important;
+=======
+  background: rgba( 255, 255, 255, 1 )!important;
+>>>>>>> Stashed changes
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   min-height: 500px;
   backdrop-filter: blur( 7.0px );
@@ -212,7 +222,7 @@
 
 
 .glassy_thing {
-  background: rgba( 255, 255, 255, 0.35 )!important;
+  background: rgba( 255, 255, 255, 0.55 )!important;
   backdrop-filter: blur( 25.0px )!important;
   -webkit-backdrop-filter: blur( 25.0px )!important;
 }
@@ -343,3 +353,91 @@
 .wadah:hover .overlay {
   display: visible;
 }
+<<<<<<< Updated upstream
+=======
+
+
+/* Chat Button */
+.chat-button {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+  font-size: 24pt;
+}
+.badge-for-chat-btn {
+  font-size: 13pt;
+  position: fixed;
+  bottom: 83px;
+  right: 30px;
+}
+
+/* Heart beating for love gacha */
+
+.heart {
+  color:red;
+}
+.fa-beat {
+  animation:fa-beat 5s ease infinite;
+}
+@keyframes fa-beat {
+  0% {
+    transform:scale(1);
+  }
+  5% {
+    transform:scale(1.25);
+  }
+  20% {
+    transform:scale(1);
+  }
+  30% {
+    transform:scale(1);
+  }
+  35% {
+    transform:scale(1.25);
+  }
+  50% {
+    transform:scale(1);
+  }
+  55% {
+    transform:scale(1.25);
+  }
+  70% {
+    transform:scale(1);
+  }
+}
+
+.gacha_didapatkan {
+  animation:zoom_out_hati 5s ease;
+}
+@keyframes zoom_out_hati {
+  0% {
+    transform:scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform:scale(40);
+    display: none;
+  }
+}
+
+/* Hover konten di Browse Karya */
+.tile_item .card {
+  transition: background 200ms;
+}
+.tile_item .card .widget-user-header {
+  transition: opacity 200ms;
+}
+.tile_item:hover .card {
+  background: rgba( 255, 255, 255, 1 );
+}
+.tile_item:hover .card .widget-user-header {
+  opacity: .8;
+}
+>>>>>>> Stashed changes

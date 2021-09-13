@@ -104,6 +104,7 @@
                 <!-- /.direct-chat-text -->
               </div>
 
+<<<<<<< Updated upstream
               <!-- Message. Default to the left -->
               <div class="direct-chat-msg">
                 <div class="direct-chat-infos clearfix">
@@ -150,6 +151,16 @@
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                   </div>
                   <!-- /.direct-chat-text -->
+=======
+            <center class="mt-1 pt-3 pm-3 pl-3">
+              <?php echo form_open('' , 'id="form_input_chat"') ?>
+                <input type="hidden" name="id_user_penerima" required="">
+                <div class="input-group">
+                  <input type="text" name="msg" placeholder="Tulis pesan ..." class="form-control" autocomplete="off" required="">
+                  <span class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Kirim</button>
+                  </span>
+>>>>>>> Stashed changes
                 </div>
 
                 <!-- Message to the right -->
@@ -315,11 +326,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+<<<<<<< Updated upstream
         <h4 class="modal-title">Notifikasi</h4>
+=======
+        Credits
+>>>>>>> Stashed changes
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+<<<<<<< Updated upstream
       <div class="modal-body" style="font-weight: normal;">
         <div class="container bg-gray rounded p-2 pb-4 notifikasi mb-2">
           Beberapa orang menambahkan iklan Anda {$judul_iklan} ke wishlist mereka.<br>
@@ -376,6 +392,36 @@
           </div> <!-- notifikasi -->
         </span>
         <button class="btn btn-outline-secondary w-100 mb-2" onclick="$('.hidden_notif').toggle(400);">Muat Lebih Banyak</button>
+=======
+      <div class="modal-body p-0 overflow-hidden" id="pamflet_event_wrapper">
+        <div class="container text-center">
+          <div class="form-group mt-2">
+            <img src="<?php echo base_url()  . 'assets/custom/img/logo_hmptiudb.png'; ?>" alt="" width="120">
+          </div>
+          <div class="form-group p-2">
+            <h6>Event ini diselenggarakan oleh HMPTI <br> (Himpunan Mahasiswa Progdi Teknik Informatika) <br>Universitas Duta Bangsa Surakarta</h6>
+          </div>
+          <div class="form-group mt-4">
+            <label>Panitia Event</label>
+            <h5>Rio</h5>
+            <h5>Ahmad</h5>
+          </div>
+          <div class="form-group mt-4">
+            <label>Panitia Event</label>
+            <h5>Rio</h5>
+            <h5>Ahmad</h5>
+          </div>
+          <div class="form-group mt-4">
+            <label>Web Programmer</label>
+            <h5>Widi Dwi Nurcahyo</h5>
+          </div>
+          <div class="form-group mt-4 mb-5">
+            <label>Asisten Web Programmer</label>
+            <h5>Muhammad Ali Dasuki</h5>
+          </div>
+          
+        </div>      
+>>>>>>> Stashed changes
       </div>
     </div>
     <!-- /.modal-content -->
@@ -399,9 +445,10 @@
 <script>
 
   // Turunkan preloader
-  function turunkan_preloader() {
-    $(".preloader").animate({height:"100vh"}, 130)
-    $(".preloader").children().show()
+  function turunkan_preloader(callback = function() {}) {
+    $(".preloader").children().show();
+    $(".preloader").css({height:"100vh"}, 130);
+    callback();
   }
   function redirecting(href) {
     turunkan_preloader()
@@ -467,5 +514,167 @@
   
 
 </script>
+<<<<<<< Updated upstream
+=======
+
+<?php 
+    if ( !empty($this->session->userdata('id_user')) ) {
+      $this->load->view('FUNDAMENTAL_CHAT');
+    }
+?>
+
+<!-- WADUH SEMAKIN PUSING INI CHAT INI... JANGAN SAMPAI LUPA YA! -->
+<!-- Hanya muncul ketika yang login BUKAN admin / member biasa -->
+<?php if ( empty($this->session->userdata('admin')) ): ?>
+  <script type="text/javascript">
+
+    // Membedakan chatbox terbuka dan tertutup
+    // Jika tertutup maka badge-for-chat-btn diisi angka,
+    // Jika terbuka maka refresh chat setiap 5 detik
+    var KONDISI_CHATBOX = 'tertutup';
+    function close_chatbox_for_user() {
+       KONDISI_CHATBOX = 'tertutup';
+    }
+
+    function open_chat_for_user(){
+      get_chats( '<?php echo $this->session->userdata('id_user'); ?>', GLOBAL_limit_chat );
+      clear_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>' );
+      KONDISI_CHATBOX = 'terbuka';
+      $("#form_input_chat").find('.form-control').focus();
+    }
+
+    function check_new_chat_msg(unread_msg) {
+      if ( unread_msg != 0 ) {
+        $('.badge-for-chat-btn').html(unread_msg)
+        $('.badge-for-chat-btn').show()
+      }else{
+        $('.badge-for-chat-btn').hide()
+      }
+    }
+
+    <?php 
+     // hanya ketika ada user yang login
+      if ( !empty($this->session->userdata('id_user')) ): ?>
+      // Status online milik admin
+      setInterval(function() {
+        if ( KONDISI_CHATBOX == 'terbuka' ) {
+          // refresh setiap 5 detik
+          get_admin_online_terakhir()
+          count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
+            // Kalau ada pesan baru, maka refresh
+            if ( unread_msg != 0 ) {
+              refresh_chat();
+              clear_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>' );
+            }
+          })
+        }else if ( KONDISI_CHATBOX == 'tertutup' ){
+          // hitung pesan baru
+          count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
+            // Kalau ada pesan baru, maka tambah notifikasi pesan baru
+            check_new_chat_msg(unread_msg);
+          })
+        }
+        
+
+      }, 5000)
+    <?php endif ?>
+
+
+    // hitung pesan baru saat awal load halaman
+    count_unread_msg_for_user( '<?php echo $this->session->userdata('id_user'); ?>', function (unread_msg) {
+      // Kalau ada pesan baru, maka refresh
+      check_new_chat_msg(unread_msg)
+    })
+
+  </script>
+<?php endif ?>
+
+  <script type="text/javascript">
+    function count_unread_notification( id_user, callback ) {
+      $.ajax({
+        url: '<?php echo base_url() ?>api/count_unread_notification/'+id_user,
+        success: function(data) {
+          callback(data);
+        }
+      })
+    }
+    function clear_unread_notification(id_user) {
+        $.ajax({
+          url: "<?php echo base_url() ?>api/clear_unread_notification/" + id_user,
+        });
+    }
+
+    // Ini yang terjadi ketika notifikasi dibuka
+    function open_notification(limit){
+      $('#modal-notification').modal('show');
+      $('#notification-badge').hide();
+      $('#notification-badge').parent().removeClass('shaking');
+
+      clear_unread_notification( '<?php echo $this->session->userdata('id_user') ?>' );
+
+      $.ajax({
+        url: '<?php echo base_url() ?>api/get_notification/'+limit,
+        success: function(data) {
+          data = JSON.parse(data);
+          // console.log(data.length)
+          let content = ``
+          // kalau kosong, gak ada notifikasi
+          if ( data.length == 0 ) {
+            content = '<i class="text-muted">Tidak ada notifikasi.</i>';
+          }
+
+          // Atau else:
+          else{
+            for (var i = 0; i < data.length; i++) {
+              content += `
+                  <div class="col-12 rounded py-1 notification">
+                    <h4 class="mt-2">
+                      ${data[i].judul}
+                    </h4>
+                    <p class="text-sm">${data[i].teks}</p>
+                    <p class="text-sm" style="opacity:.6;"><i class="far fa-clock mr-1"></i> ${data[i].time}</p>
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <!-- /.notification -->
+              `;
+            }
+            // Tombol load more
+            if ( data.length >= 10 ) {
+              content += `<a role="button" class="btn btn-outline-primary w-100" onclick="open_notification(${limit+10})">Muat Lebih Banyak</a>`;
+            }
+          }
+
+          $("#notification_wrapper").html(content);
+        }
+      })
+    }
+
+    // Check unread notifikasi setiap 10 detik
+    count_unread_notification( '<?php echo $this->session->userdata('id_user') ?>', function (data) {
+      if ( parseInt(data) <= 0 ) { // <-- kalau tidak ada unread notification
+        $('#notification-badge').hide();
+        $('#notification-badge').parent().removeClass('shaking'); // <-- hilangkan getarnya
+      }else{
+        $('#notification-badge').html(data);
+        $('#notification-badge').show();
+      }
+    } )
+    setInterval(function () {
+      count_unread_notification( '<?php echo $this->session->userdata('id_user') ?>', function (data) {
+        if ( parseInt(data) <= 0 ) { // <-- kalau tidak ada unread notification
+          $('#notification-badge').hide();
+          $('#notification-badge').parent().removeClass('shaking'); // <-- hilangkan getarnya
+        }else{
+          $('#notification-badge').html(data);
+          $('#notification-badge').show();
+        }
+      } )
+    }, 10000)
+    
+  </script>
+
+
+
+>>>>>>> Stashed changes
 </body>
 </html>

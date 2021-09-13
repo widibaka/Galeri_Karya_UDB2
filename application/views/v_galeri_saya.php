@@ -15,7 +15,7 @@
   </div>
   <?php if ( empty($data_karya) ): ?>
     <div class="col-12 d-flex justify-content-center">
-      <p class="text-gray">
+      <p class="text-white">
         Tidak ditemukan data <span class="fa fa-sad-tear"></span>
       </p>
     </div>
@@ -25,8 +25,16 @@
 
 
   <div class="mb-3 col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item d-flex justify-content-center overflow-hidden">
+<<<<<<< Updated upstream
     <a class="w-100 btn btn-primary" href="<?php echo base_url() . 'galeri_saya/add_karya' ?>" title="Tambah Iklan" style="font-size: 30pt;">
       <i class="fa fa-plus"></i> <br> Tambah Karya
+=======
+    <a class="w-100 btn btn-warning shadow p-2 do_transition" href="<?php echo base_url() . 'galeri_saya/add_karya' ?>" title="Tambah Iklan">
+      <div style="margin-top: 50%; margin-bottom: 50%;">
+        <i style="font-size: 30pt;" class="fa fa-plus"></i>
+        <p style="font-size: 24pt;">Tambah Karya</p>
+      </div>
+>>>>>>> Stashed changes
     </a>
   </div>
 
@@ -79,7 +87,11 @@
             <?php endif ?>
           </div>
           
+<<<<<<< Updated upstream
           <a class="btn btn-primary btn-flat" href="<?php echo base_url() . 'karya_saya/edit_karya/' . $val['id_karya'] ?>">
+=======
+          <a class="btn btn-success btn-flat do_transition" href="<?php echo base_url() . 'galeri_saya/edit_karya/' . $val['id_karya'] ?>">
+>>>>>>> Stashed changes
             <i class="fa fa-edit"></i> Edit
           </a>
           <a class="btn btn-danger btn-flat" href="<?php echo base_url() . 'karya_saya/del/' . $val['id_karya'] . '/' . base64_encode( base_url() . $this->uri->uri_string() ) ?>" onclick="return confirm('Anda yakin ingin menghapus?')">

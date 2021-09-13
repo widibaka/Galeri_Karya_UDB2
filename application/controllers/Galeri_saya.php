@@ -135,6 +135,9 @@ class Galeri_saya extends CI_Controller {
 			}
 			$post['time'] = time();
 
+			// menentukan jumlah love yang di gacha nanti (sudah ditentukan di awal wkwk)
+			$post['gacha'] = rand( 7, 14 );
+
 			// Entah kenapa ada parameter "files" karena summernote JS. Hapus aja
 			unset($post['files']);
 
@@ -146,6 +149,7 @@ class Galeri_saya extends CI_Controller {
 
 			// Redirect
 			redirect( base_url() . 'galeri_saya/edit_karya/' . $post['id_karya'] );
+
 		}
 		
 		$data['title'] = 'Galeri Saya';
