@@ -11,15 +11,18 @@ class Detail_karya extends CI_Controller {
 		// 	redirect( base_url() . 'auth/login' );
 		// }
 		$this->load->model('KaryaModel');
+		$this->load->model('KategoriModel');
 	}
 	public function i($id_karya)
 	{
+		
 		$url_mundur = $this->input->get( 'url_mundur' );
 		if ( $url_mundur ) {
 			$data['url_mundur'] = $url_mundur;
 		}
-		$data['userdata'] = $this->session->userdata();
-		$data['title'] = 'Detail Iklan';
+		$data['userdata'] = $this->AuthModel->get_user(
+			$this->session->userdata('id_user')
+		);
 
 		$getKarya = $this->KaryaModel->get_karya_byID( $id_karya );
 		if ( $getKarya ) {
@@ -28,11 +31,15 @@ class Detail_karya extends CI_Controller {
 		if ( empty($getKarya) ) {// <-- Kalau karyanya sudah dihapus uploader nya
 			$append = [
 				'id_karya' => $id_karya,
-				'judul' => 'Iklan Dihapus Pemiliknya',
+				'judul' => 'Karya Dihapus Pemiliknya',
 				'dihapus' => 1,
 			];
 			$data['data_karya'] = $append;
 		}
+
+		$data['title'] = $data['data_karya']['judul'];
+
+		$data['kreator'] = $this->AuthModel->get_user( $data['data_karya']['id_user'] );
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);
