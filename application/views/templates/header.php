@@ -63,7 +63,7 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2/sweetalert2.min.css">
 
   <!-- CUSTOM CSS -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/widi/css/style.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/widi/css/style.css?v2">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="
 background: url('<?php echo base_url() ?>assets/widi/spectrum-gradient.svg');

@@ -50,13 +50,13 @@
 							<div style="cursor: pointer;" class="heart col-12">
 								<i class="fa fa-heart fa-4x fa-beat"></i>
 							</div>
-							<?php if( $data_karya['gacha'] > 0 ): ?>
+							<?php if( (int)$data_karya['gacha'] > 0 ): ?>
 								<div class="col-12 mt-3" id="content_get_gacha">
 									Anda berkesempatan mendapatkan love dari Gacha Love. <br><br>
 									<button type="button" id="love_gacha" class="btn btn-warning shadow">Klaim Sekarang</button>
 								</div>
 							<?php endif; ?>
-							<?php if( $data_karya['gacha'] == 0 ): ?>
+							<?php if( (int)$data_karya['gacha'] == 0 ): ?>
 								<div class="col-12 mt-3" id="content_get_gacha">
 									Karya ini memiliki <strong><?php echo $data_karya['loves'] ?></strong> love.
 								</div>

@@ -15,11 +15,9 @@ class Detail_karya extends CI_Controller {
 	}
 	public function i($id_karya)
 	{
+		// tambah jumlah views
+		$this->KaryaModel->tambah_jumlah_views($id_karya);
 		
-		$url_mundur = $this->input->get( 'url_mundur' );
-		if ( $url_mundur ) {
-			$data['url_mundur'] = $url_mundur;
-		}
 		$data['userdata'] = $this->AuthModel->get_user(
 			$this->session->userdata('id_user')
 		);

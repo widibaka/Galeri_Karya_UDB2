@@ -14,16 +14,16 @@
 .card {
   background: rgba( 255, 255, 255, 0.75 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 25.0px );
-  -webkit-backdrop-filter: blur( 25.0px );
+  /* backdrop-filter: blur( 25.0px ); */
+  /* -webkit-backdrop-filter: blur( 25.0px ); */
   border-radius: 10px;
   /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
 }
 .main-sidebar {
   background: rgba( 255, 255, 255, 0.55 )!important;
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 25.0px );
-  -webkit-backdrop-filter: blur( 25.0px );
+  backdrop-filter: blur( 10.0px );
+  -webkit-backdrop-filter: blur( 10.0px );
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .navbar {
@@ -36,12 +36,16 @@
 .brand-link {
   background: rgba( 255, 255, 255, 0 )!important;
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 6.5px );
-  -webkit-backdrop-filter: blur( 6.5px );
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  /* backdrop-filter: blur( 6.5px ); */
+  /* -webkit-backdrop-filter: blur( 6.5px ); */
+  /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+  border-bottom: 0px!important;
 }
 .user-panel {
   border-bottom: none!important;
+}
+.pagination {
+  box-shadow: 2px 2px 15px rgba( 0, 0, 0, 0.3 )!important;
 }
 
 
@@ -178,8 +182,8 @@
   background: rgba( 255, 255, 255, 0.9 )!important;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   min-height: 500px;
-  backdrop-filter: blur( 7.0px );
-  -webkit-backdrop-filter: blur( 7.0px );
+  /* backdrop-filter: blur( 7.0px ); */
+  /* -webkit-backdrop-filter: blur( 7.0px ); */
 }
 .modal-chat .modal-header {
   border: none;
@@ -215,8 +219,8 @@
 
 .glassy_thing {
   background: rgba( 255, 255, 255, 0.55 )!important;
-  backdrop-filter: blur( 25.0px )!important;
-  -webkit-backdrop-filter: blur( 25.0px )!important;
+  /* backdrop-filter: blur( 5.0px )!important; */
+  /* -webkit-backdrop-filter: blur( 5.0px )!important; */
 }
 .bg_transparent {
   background: transparent!important;

@@ -106,8 +106,12 @@ class KaryaModel extends CI_Model {
 		$this->db->select( 'id_karya' );
 		return $this->db->get( $this->table )->num_rows();
 	}
-	public function get_karya_byID($id_karya)
+	public function get_karya_byID($id_karya, $columns='')
 	{
+		if ( !empty($columns) ) {
+			$this->db->select( $columns );
+		}
+		
 		$this->db->where( 'dihapus', 0 );
 		
 		$this->db->where( 'id_karya', $id_karya );
@@ -186,6 +190,14 @@ class KaryaModel extends CI_Model {
 		$this->db->where( 'id_karya', $data['id_karya'] );
 		return $this->db->update( $this->table, $data );
 	}
+	public function tambah_jumlah_views($id_karya)
+	{
+		$columns = 'id_karya, views'; // <--kolom yang diambil
+		$data = $this->get_karya_byID($id_karya, $columns);
+		// tambah view
+		$data['views']++;
+		$this->update( $data );
+	}
 	public function blokir_karya($id_user)
 	{
 		$data = [
@@ -198,7 +210,7 @@ class KaryaModel extends CI_Model {
 	// =======================================================
 	public function add_love($id_karya)
 	{
-		$loves_count = $this->get_karya_byID($id_karya)['loves'];
+		$loves_count = $this->get_karya_byID($id_karya, 'id_karya, loves')['loves'];
 		$loves_count = $loves_count+1;
 		$data = [
 			'loves' => $loves_count
@@ -208,7 +220,7 @@ class KaryaModel extends CI_Model {
 	}
 	public function remove_love($id_karya)
 	{
-		$loves_count = $this->get_karya_byID($id_karya)['loves'];
+		$loves_count = $this->get_karya_byID($id_karya, 'id_karya, loves')['loves'];
 		$loves_count = $loves_count-1;
 		$data = [
 			'loves' => $loves_count
