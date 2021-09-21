@@ -1,3 +1,10 @@
+
+<style>
+  canvas {display: block;position: relative;z-index: 1;pointer-events: none;position: fixed;top: 0;}
+</style>
+<!-- Animasi Celebrate -->
+<canvas id="canvas" width="858" height="880" style="display: none;"></canvas>
+
 <?php if ( $settings['aktifkan_event'] == 0 ): ?>
   <div class="d-flex justify-content-center">
     <div class="card">
@@ -36,7 +43,7 @@
 </div>
 
 <?php if ( empty($main_data) ): ?>
-  <div class="alert alert-danger">
+  <div class="alert alert-danger shadow" style="border-radius: 10px;">
     Tunggu apa lagi, mahasiswa UDB? Ayo pajang karya Anda di Galeri Karya UDB dan amati peringkatnya di sini!
   </div>
 <?php return 0; endif; ?>

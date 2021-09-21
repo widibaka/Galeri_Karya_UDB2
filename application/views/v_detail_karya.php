@@ -63,6 +63,10 @@
               </div>
             
           <?php endforeach ?>
+          <br>
+          <p class="col-12 mt-3 text-muted">
+            <small><i>Klik untuk memperbesar gambar.</i></small>
+          </p>
         </div>
         <hr>
 
@@ -191,24 +195,24 @@
 
         
 
-        <span>Share:</span>
+        <span>Bagikan:</span>
         <div class="mt-4 product-share">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo base_url() . $this->uri->uri_string() ?>" target="_blank" class="text-gray" title="Bagikan ke Facebook">
-            <i class="fab fa-facebook-square fa-2x"></i>
+          <a class="mx-3 text-primary" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo base_url() . $this->uri->uri_string() ?>" target="_blank" title="Bagikan ke Facebook">
+            <i class="fab fa-facebook-square fa-2x"></i> Facebook
           </a>
-          <a href="whatsapp://send?text=<?php echo base_url() . $this->uri->uri_string() ?>" data-action="share/whatsapp/share" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Bagikan ke whatsapp" class="text-gray">
-            <i class="fab fa-whatsapp-square fa-2x"></i>
+          <a class="mx-3 text-success" href="whatsapp://send?text=<?php echo base_url() . $this->uri->uri_string() ?> Kunjungi dan beri love untuk karya keren ini di Galeri Karya UDB dengan cara mengklik link di atas!" data-action="share/whatsapp/share" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Bagikan ke whatsapp">
+            <i class="fab fa-whatsapp-square fa-2x"></i> WhatsApp
           </a>
-          <a href="https://twitter.com/share?url=<?php echo base_url() . $this->uri->uri_string() ?>&text=<?php echo $data_karya['judul'] ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Bagikan ke Twitter" class="text-gray">
-            <i class="fab fa-twitter-square fa-2x"></i>
+          <a class="mx-3 text-info" href="https://twitter.com/share?url=<?php echo base_url() . $this->uri->uri_string() ?>&text=<?php echo $data_karya['judul'] ?> - Kunjungi dan beri love untuk karya keren ini di Galeri Karya UDB!" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Bagikan ke Twitter">
+            <i class="fab fa-twitter-square fa-2x"></i> Twitter
           </a>
 
-          <!-- <a href="https://www.linkedin.com/shareArticle?mini=true&url=<URL>&t=<TITLE>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Linkedin" class="text-gray">
+          <!-- <a href="https://www.linkedin.com/shareArticle?mini=true&url=<URL>&t=<TITLE>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Linkedin">
             <i class="fas fa-linkedin-square fa-2x"></i>
           </a> -->
 
-          <a href="mailto:?subject=<?php echo $data_karya['judul'] ?>&body=<?php echo base_url() . $this->uri->uri_string() ?>" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Bagikan lewat E-Mail" class="text-gray">
-            <i class="fas fa-envelope-square fa-2x"></i>
+          <a class="mx-3 text-danger" href="mailto:?subject=<?php echo $data_karya['judul'] ?>&body=<?php echo base_url() . $this->uri->uri_string() ?> - Kunjungi dan beri love untuk karya keren ini di Galeri Karya UDB!" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Bagikan lewat E-Mail">
+            <i class="fas fa-envelope-square fa-2x"></i> Email
           </a>
 
         </div>

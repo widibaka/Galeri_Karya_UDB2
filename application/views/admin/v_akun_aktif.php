@@ -54,15 +54,19 @@
 							<?php if ( $key == 'photo' ): ?>
 								<td>
 									<a data-fancybox href="<?php echo base_url() ?>assets/uploads/foto_profil/<?php echo $value ?>">
-										<img style="height: 90px;" src="<?php echo base_url() ?>assets/uploads/foto_profil/<?php echo $value ?>">
+										<!-- <img style="height: 90px;" src="<?php echo base_url() ?>assets/uploads/foto_profil/<?php echo $value ?>"> -->
+										<?php echo $value ?>
 									</a>
 								</td>
 							<?php elseif ( $key == 'bukti_mahasiswa' ): ?>
 								<td>
 									<a data-fancybox href="<?php echo base_url() ?>assets/uploads/bukti_mahasiswa/<?php echo $value ?>">
-										<img style="height: 90px;" src="<?php echo base_url() ?>assets/uploads/bukti_mahasiswa/<?php echo $value ?>">
+										<!-- <img style="height: 90px;" src="<?php echo base_url() ?>assets/uploads/bukti_mahasiswa/<?php echo $value ?>"> -->
+										<?php echo $value ?>
 									</a>
 								</td>
+							<?php elseif ( $key == 'password' ) : ?>
+								<td><?php echo substr( $value, 0, 3 ); ?>*(Disensor)</td>
 							<?php elseif ( $key == 'waktu_daftar' OR $key == 'terakhir_online' ) : ?>
 								<td><?php echo date('d/m/Y H:i:s', $value) ?></td>
 							<?php else : ?>

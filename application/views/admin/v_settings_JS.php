@@ -18,12 +18,10 @@
 <script type="text/javascript">
 
 
-
+	// ?aaahhh bodoamat
+	$('#tombol_simpan').show();
 	// kalau ada settings yang diedit, maka munculkan tombol simpan
-	$('.form-control').on( 'change', function () {
-	  $('#tombol_simpan').show();
-	});
-	$('input[type="checkbox"]').on( 'change', function () {
+	$('input').on( 'change', function () {
 	  $('#tombol_simpan').show();
 	});
 

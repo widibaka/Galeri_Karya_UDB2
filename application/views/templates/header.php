@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galeri Karya UDB | <?php echo (!empty($title) ? $title : '') ?></title>
+  <title><?php echo (!empty($title) ? $title : '') ?> - Galeri Karya UDB</title>
 
   <?php if (!empty($data_karya['id_karya'])): ?>
     <?php 

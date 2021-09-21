@@ -63,6 +63,8 @@
 								</td>
 							<?php elseif ( $key == 'id_user' ) : ?>
 								<!-- nothing -->
+							<?php elseif ( $key == 'password' ) : ?>
+								<td><?php echo substr( $value, 0, 3 ); ?>****</td>
 							<?php else : ?>
 								<td><?php echo $value ?></td>
 							<?php endif ?>

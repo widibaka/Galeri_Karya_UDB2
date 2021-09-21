@@ -107,10 +107,10 @@
         
         setTimeout(function () {
           let htmlContent = `
-            <img class="border" id="img" src="${data.img_path}" ans="${data.word}"><br>
-            <input class="" id="word" style="width:150px;" placeholder="Ketik tulisan di atas" autocomplete="off"><br>
-            <button id="kirim" onclick="check_captcha()" class="btn"><i class="fa fa-paper-plane"></i> Submit</button><br>
-            <button id="Reload" onclick="get_captcha()" class="btn"><i class="fa fa-exchange-alt"></i> Reload CAPTCHA</button><br>
+            <img class="border mb-3" id="img" width="100%" src="${data.img_path}" ans="${data.word}"><br>
+            <input class="form-control" id="word" placeholder="Ketik tulisan di atas" autocomplete="off"><br>
+            <button id="kirim" onclick="check_captcha()" class="btn btn-primary mb-3 w-100"><i class="fa fa-paper-plane"></i> Submit</button><br>
+            <button id="Reload" onclick="get_captcha()" class="btn btn-primary mb-3 w-100"><i class="fa fa-exchange-alt"></i> CAPTCHA Tidak Terbaca</button><br>
           `;
           $('.captha-container').html(htmlContent);
         }, 1400)

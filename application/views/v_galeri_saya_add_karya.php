@@ -32,7 +32,7 @@
 		          </div>
 		          <div class="form-group">
 		            <label for="youtube">Video Youtube (Opsional)</label>
-		            <textarea class="form-control" name="youtube" id="youtube" placeholder="https://youtu.be/20ZWyCOFG6g, https://www.youtube.com/embed/tMWkeBIohBs, https://www.youtube.com/watch?v=35WcRmWlHks"></textarea>
+		            <textarea rows="5" class="form-control" name="youtube" id="youtube" placeholder="https://youtu.be/20ZWyCOFG6g, https://www.youtube.com/embed/tMWkeBIohBs, https://www.youtube.com/watch?v=35WcRmWlHks"></textarea>
 		            <p class="text-muted"><i>Isi dengan URL youtube video tentang demo karya Anda / tim. Pisahkan tiap video dengan tanda koma (,)</i></p>
 		          </div>
 		          <div class="form-group">
@@ -42,21 +42,20 @@
 		          </div>
 		          <div class="form-group">
 		            <label for="link">Link (Opsional)</label>
-		            <textarea class="form-control" name="link" id="x" placeholder="Link Google Drive, atau lainnya..."></textarea>
+		            <textarea rows="5" class="form-control" name="link" id="x" placeholder="Link Google Drive, atau lainnya..."></textarea>
 		            <p class="text-muted"><i>Isi dengan link utama aplikasi web Anda, atau link download APK Anda, ataupun lainnya juga boleh.</i></p>
 		          </div>
 		          <div class="form-group">
 		            <label for="tim">Tim</label>
-		            <textarea class="form-control" name="tim" id="tim" placeholder="Adi Nugroho, Budi Budiman, Onno W Purbo" required=""></textarea>
-		            <p class="text-muted"><i>Nama anggota tim pastikan semua benar karena akan dipakai untuk mencetak sertifikat. Jika Anda hanya satu orang (hehe kasihan), maka isikan nama Anda.</i></p>
-		            <p class="text-muted"><i><strong class="text-danger">[!Penting]</strong> Anggota yang akan menerima sertifikat hanya 5 (lima) nama dari urutan pertama. Walau begitu, jumlah anggota tim tetap tidak ditentukan.</i></p>
+		            <textarea rows="5" class="form-control" name="tim" id="tim" placeholder="Adi Nugroho, Budi Budiman, Onno W Purbo" required=""></textarea>
+		            <p class="text-muted"><i><strong class="text-danger">[!Penting]</strong> Nama anggota tim pastikan semua benar karena akan dipakai untuk mencetak sertifikat. Jika Anda hanya satu orang (hehe kasihan), maka isikan nama Anda.</i></p>
 		          </div>
 
 		        </div>
 		        <!-- /.card-body -->
 
 		        <div class="card-footer">
-		          <button type="submit" class="btn btn-lg btn-primary" id="berikutnya_btn">Berikutnya</button>
+		          <button type="submit" class="btn btn-lg btn-primary mb-2" id="berikutnya_btn">Berikutnya</button>
 		        </div>
 		      </form>
 		    </div>

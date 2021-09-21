@@ -72,7 +72,7 @@ class Browse_karya extends CI_Controller {
 			$config['full_tag_open'] = '
 			<div class="container-fluid d-flex justify-content-center mt-3">
 			    <nav aria-label="Page navigation example">
-			      <ul class="pagination">';
+			      <ul class="pagination shadow">';
 
 			$config['full_tag_close'] = '
 					</ul>
@@ -87,7 +87,7 @@ class Browse_karya extends CI_Controller {
 			$config['first_tag_close'] = '
 	        </li>';
 
-			$config['last_link'] = $config['total_rows'] / $per_page;
+			$config['last_link'] = ceil($config['total_rows'] / $per_page);
 
 			$config['last_tag_open'] = '
 			<li class="page-item">';

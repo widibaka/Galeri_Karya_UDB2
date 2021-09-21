@@ -146,7 +146,7 @@ class Auth extends CI_Controller {
 				$this->load->model('ResizeImage');
 				$this->ResizeImage->dir( $file['dir'] );
 
-				$this->ResizeImage->resizeTo(500, 500, 'default');
+				$this->ResizeImage->resizeTo(400, 400, 'default');
 
 				$simpan_resize = $this->ResizeImage->saveImage( 'assets/uploads/foto_profil/' . $file['filename'] );
 
@@ -178,7 +178,7 @@ class Auth extends CI_Controller {
 				$this->load->model('ResizeImage');
 				$this->ResizeImage->dir( $file['dir'] );
 
-				$this->ResizeImage->resizeTo(500, 500, 'default');
+				$this->ResizeImage->resizeTo(400, 400, 'default');
 
 				$simpan_resize = $this->ResizeImage->saveImage( 'assets/uploads/bukti_mahasiswa/' . $file['filename'] );
 

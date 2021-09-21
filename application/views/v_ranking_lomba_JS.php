@@ -1,3 +1,8 @@
+
+
+<script src="<?php echo base_url() ?>assets/widi/celebrate.js"></script>
+
+
 <script type="text/javascript">
   function startTime() {
       var day_name = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
@@ -81,7 +86,10 @@
         $("#hitung_mundur").html( days + " hari <br>" + hours + ":" + minutes + ":" + seconds );
 
     }else{
-      $("#hitung_mundur").html("00:00:00");
+      // Hentikan hitung mundur
+      $("#hitung_mundur").parent().html("<h3>Lomba Selesai<br> Selamat untuk pemenang!</h3>");
+      // tampilkan animasi celebrate
+      $("#canvas").show()
     }
   }
 
@@ -94,6 +102,6 @@
   }, 15000);
   setInterval(function () {
     do_countdown()
-  }, 100);
+  }, 1000);
 
 </script>

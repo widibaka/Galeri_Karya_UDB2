@@ -44,9 +44,6 @@
 .user-panel {
   border-bottom: none!important;
 }
-.pagination {
-  box-shadow: 2px 2px 15px rgba( 0, 0, 0, 0.3 )!important;
-}
 
 
 
@@ -434,4 +431,12 @@
 }
 .tile_item:hover .card .widget-user-header {
   opacity: .8;
+}
+
+/* Buat lebih menarik laah */
+.form-control {
+  transition: all 200ms ease!important;
+}
+.form-control:focus {
+  box-shadow: 0 0 15px rgba(255, 19, 19, 0.5);
 }
