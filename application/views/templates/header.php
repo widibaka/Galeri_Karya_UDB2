@@ -41,7 +41,7 @@
 
   <meta property="og:type" content="competition" />
   <meta property="og:image" content=<?= ( empty($gambar) ) ? '"' . base_url() . 'assets/custom/img/logojpg.jpg"' : '"' . base_url() . $gambar . '"' ?> />
-  <meta property="og:title" content="Galeri Karya UDB" />
+  <meta property="og:title" content="<?php echo (!empty($title) ? $title : '') ?> - Galeri Karya UDB" />
   <meta property="og:description" content="Galeri Karya Universitas Duta Bangsa">
   <meta property="og:url" content="<?= base_url() ?>" />
   <meta property="og:site_name" content="Galeri Karya UDB" />
