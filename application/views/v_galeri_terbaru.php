@@ -63,8 +63,8 @@
           $gambar = $dir . "/" . $scandir[2];
         }
       ?>
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item">
-        <div class="card overflow-hidden">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-2 tile_item mb-3">
+        <div class="card overflow-hidden h-100">
           <a class="do_transition" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">
             <div class="widget-user-header text-white" style="background: url('<?php echo base_url() . $gambar ?>') center center; height: 130pt; background-repeat: none; background-position: center; background-size: cover;">
             </div>
@@ -74,7 +74,7 @@
               <strong><?php echo $val['judul'] ?></strong>
               <span class="d-none d-md-inline">
                 <br>
-                <small class="d-none d-md-inline"><?php echo substr(strip_tags($val['deskripsi']), 0, 100) ?> ... <strong><a class="text-dark" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">selengkapnya</a></strong></small>
+                <small class="d-none d-md-inline"><?php echo substr(strip_tags($val['deskripsi']), 0, 100) ?> ... <strong><a class="text-dark" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>"></a></strong></small>
                 <br>
               </span>
               <small><i class="fa fa-heart text-danger"></i> <?php echo $val['loves'] ?></small>
