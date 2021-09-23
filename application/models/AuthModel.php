@@ -80,7 +80,7 @@ class AuthModel extends CI_Model {
 		$filename = $this->get_user( $id_user )['photo'];
 		
 		// kalau tidak ada gambar, maka yaudah
-		if ( !empty($filename OR $filename == 'user_no_image.jpg' ) ) {
+		if ( !empty($filename OR $filename != 'user_no_image.jpg' ) ) {
 			unlink( $dir . $filename );
 			return true;
 		}
