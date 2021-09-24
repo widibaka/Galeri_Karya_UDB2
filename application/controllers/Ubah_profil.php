@@ -26,7 +26,7 @@ class Ubah_profil extends CI_Controller {
 
 				if ( !empty($post['image']) ) {
 
-					$this->AuthModel->hapus_file_gambar_profil( $this->session->userdata('id_user') );
+					// $this->AuthModel->hapus_file_gambar_profil( $this->session->userdata('id_user') );
 
 					$file = $this->UtilModel->simpan_gambar_base64( 
 						$post['image'], 
@@ -37,11 +37,18 @@ class Ubah_profil extends CI_Controller {
 					$this->load->model('ResizeImage');
 					$this->ResizeImage->dir( $file['dir'] );
 
-					$this->ResizeImage->resizeTo(500, 500, 'default');
+					$this->ResizeImage->resizeTo(400, 400, 'default');
 
-					$this->ResizeImage->saveImage( 'assets/uploads/foto_profil/' . $file['filename'] );
+					$simpan_resize = $this->ResizeImage->saveImage( 'assets/uploads/foto_profil/' . $file['filename'] );
 
 					unlink($file['dir']); // delete temporary file
+
+					// Kalau berhasil simpan gambar, berarti gambarnya valid. Kalo enggak, kasih msg error
+					if ( $simpan_resize != true ) {
+						$this->session->set_flashdata('msg', 'error#Error! image_profile tidak valid. Silakan pakai file lain.');
+						redirect(base_url().$this->uri->uri_string());
+						die();
+					}
 
 					$this->AuthModel->ubah_gambar_profil( $this->session->userdata('id_user'), $file['filename'] );
 				}else if ( empty($post['image']) ) {
