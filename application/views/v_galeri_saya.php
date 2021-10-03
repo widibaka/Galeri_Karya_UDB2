@@ -60,7 +60,7 @@
         }
 
       ?>
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item" style="min-width:230px;">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item" style="min-width:200px;">
         <div class="card overflow-hidden">
           <a class="do_transition" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">
             <div class="widget-user-header text-white" style="background: url('<?php echo base_url() . $gambar ?>') center center; height: 130pt; background-repeat: none; background-position: center; background-size: cover;">
