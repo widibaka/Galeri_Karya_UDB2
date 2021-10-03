@@ -31,7 +31,7 @@
 
 
 
-  <div class="mb-3 col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item d-flex justify-content-center overflow-hidden">
+  <div class="mb-3 col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item d-flex justify-content-center overflow-hidden" style="min-width:230px;">
     <a class="w-100 btn btn-warning shadow p-2 do_transition" href="<?php echo base_url() . 'galeri_saya/add_karya' ?>" title="Tambah Iklan">
       <div style="margin-top: 50%; margin-bottom: 50%;">
         <i style="font-size: 30pt;" class="fa fa-plus"></i>
@@ -60,7 +60,7 @@
         }
 
       ?>
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 tile_item" style="min-width:230px;">
         <div class="card overflow-hidden">
           <a class="do_transition" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">
             <div class="widget-user-header text-white" style="background: url('<?php echo base_url() . $gambar ?>') center center; height: 130pt; background-repeat: none; background-position: center; background-size: cover;">
