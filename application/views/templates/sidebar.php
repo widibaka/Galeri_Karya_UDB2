@@ -212,6 +212,11 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="background: transparent;">
+
+    <section class="container py-2 sponsor">
+      <img id="sponsor1" src="<?php echo base_url() . 'assets/uploads/sponsor/banner_sponsor1.jpg' ?>" alt="">
+      <img id="sponsor2" style="display:none;" src="<?php echo base_url() . 'assets/uploads/sponsor/banner_sponsor2.jpg' ?>" alt="">
+    </section>
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -225,3 +230,4 @@
 
     <!-- Main content -->
     <section class="content">
+    

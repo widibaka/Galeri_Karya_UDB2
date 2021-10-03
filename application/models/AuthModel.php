@@ -23,6 +23,18 @@ class AuthModel extends CI_Model {
 		// unset( $data_new['password'] );
 		return $data_new;
 	}
+
+	public function jumlah_user_aktif()
+	{
+		$this->db->order_by('waktu_daftar', 'DESC');
+		$this->db->where('diblokir', 0);
+		$this->db->not_like('email', '@admin'); // <-- cari yang bukan admin
+		$this->db->select('id_user');
+		$data_new = $this->db->get( $this->table )->num_rows();
+		// unset( $data_new['password'] );
+		return $data_new;
+	}
+
 	public function get_user_diblokir()
 	{
 		$this->db->order_by('waktu_daftar', 'DESC');

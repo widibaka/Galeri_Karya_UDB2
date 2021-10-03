@@ -540,6 +540,11 @@
       } )
     }, 10000)
 
+    setInterval(function() {
+      $('#sponsor1').toggle();
+      $('#sponsor2').toggle();
+    }, 4000)
+
   </script>
 
 

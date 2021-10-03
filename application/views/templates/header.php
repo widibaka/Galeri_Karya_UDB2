@@ -62,6 +62,13 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2/sweetalert2.min.css">
 
+  <style>
+    .sponsor img { 
+      width: 100%;
+      max-width: 997px;
+    }
+  </style>
+
   <!-- CUSTOM CSS -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/widi/css/style.css?v2">
 </head>

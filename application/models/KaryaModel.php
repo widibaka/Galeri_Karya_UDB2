@@ -82,6 +82,31 @@ class KaryaModel extends CI_Model {
 		}
 	// FOR RANKING LOMBA ENDS
 
+	public function hitung_seluruh_view()
+	{
+		$this->db->select_sum('views');
+		$this->db->from( $this->table );
+		return $this->db->get()->row_array()['views'];
+	}
+
+	public function hitung_seluruh_loves()
+	{
+		$this->db->where( 'dihapus', 0 );
+		$this->db->where( 'published', 1 );
+		$this->db->select_sum('loves');
+		$this->db->from( $this->table );
+		return $this->db->get()->row_array()['loves'];
+	}
+
+	public function hitung_seluruh_karya()
+	{
+		$this->db->select('id_karya');
+		$this->db->from( $this->table );
+		$this->db->where( 'dihapus', 0 );
+		$this->db->where( 'published', 1 );
+		return $this->db->get()->num_rows();
+	}
+
 
 	public function get_karya( $limit, $current_page, $search = '' )
 	{
