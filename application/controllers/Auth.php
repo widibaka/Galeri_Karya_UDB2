@@ -27,10 +27,14 @@ class Auth extends CI_Controller {
 				// Check apakah ini seornag admin
 				if ( strpos($check_result['email'], '@admin') != false ) {
 					$check_result['admin'] = 'mantap-mantap';
+					// Memulai session
+					$this->session->set_userdata($check_result);
+					redirect(base_url() . 'admin/chats');
+					die();
 				}
 				// Memulai session
 				$this->session->set_userdata($check_result);
-				redirect(base_url());
+				redirect(base_url() . 'galeri_saya');
 			}
 			if (!$check_result) {
 				$this->session->set_flashdata('msg', 'error#Login gagal');
@@ -95,7 +99,7 @@ class Auth extends CI_Controller {
 			$check_result = $this->AuthModel->check_user_without_password( $pay_load );
 			if ($check_result) {
 				$this->session->set_userdata($check_result);
-				redirect(base_url());
+				redirect(base_url() . 'galeri_saya');
 			}
 			if (!$check_result) {
 				$this->session->set_flashdata('msg', 'error#Login gagal');
