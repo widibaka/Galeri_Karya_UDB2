@@ -27,7 +27,7 @@
   <?php endif ?>
   
 
-  <link rel="icon" type="image/png" href="<?= base_url() ?>assets/custom/img/logojpg.jpg" />
+  <link rel="icon" type="image/png" href="<?= base_url() ?>assets/custom/img/Logojpg.jpg" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=no">
   <meta name="description" content="Galeri Karya Universitas Duta Bangsa">
@@ -40,7 +40,7 @@
   <meta name="geo.placename" content="Indonesia" />
 
   <meta property="og:type" content="competition" />
-  <meta property="og:image" content=<?= ( empty($gambar) ) ? '"' . base_url() . 'assets/custom/img/logojpg.jpg"' : '"' . base_url() . $gambar . '"' ?> />
+  <meta property="og:image" content=<?= ( empty($gambar) ) ? '"' . base_url() . 'assets/custom/img/Logojpg.jpg"' : '"' . base_url() . $gambar . '"' ?> />
   <meta property="og:title" content="<?php echo (!empty($title) ? $title : '') ?> - Galeri Karya UDB" />
   <meta property="og:description" content="Galeri Karya Universitas Duta Bangsa">
   <meta property="og:url" content="<?= base_url() ?>" />
