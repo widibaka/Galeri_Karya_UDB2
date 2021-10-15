@@ -475,6 +475,8 @@
 
     // Ini yang terjadi ketika notifikasi dibuka
     function open_notification(limit){
+      $("#notification_wrapper").html('<img class="mr-2" src="<?php echo base_url() ?>assets/widi/img/loader.gif"> Sebentar ...');
+
       $('#modal-notification').modal('show');
       $('#notification-badge').hide();
       $('#notification-badge').parent().removeClass('shaking');
