@@ -71,7 +71,7 @@
               <strong><?php echo $val['judul'] ?></strong>
               <span class="d-none d-md-inline">
                 <br>
-                <small class="d-none d-md-inline"><?php echo substr(strip_tags($val['deskripsi']), 0, 100) ?> ... <strong><a class="text-dark" href="<?php echo base_url() . 'detail_karya/i/' . $val['id_karya'] ?>">selengkapnya</a></strong></small>
+                <small class="d-none d-md-inline"><?php echo substr(strip_tags($val['deskripsi']), 0, 100) ?> ... </small>
                 <br>
               </span>
               <small><i class="fa fa-heart text-danger"></i> <?php echo $val['loves'] ?></small>

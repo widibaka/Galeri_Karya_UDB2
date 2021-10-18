@@ -70,9 +70,15 @@
 					</div>
 				</div>
 
-		    <div class="card card-success">
+		    <div class="card collapsed-card">
 		      <div class="card-header">
-		        <h3 class="card-title">Edit Karya</h3>
+		        <h3 class="card-title" role="button" data-card-widget="collapse">Edit Karya </h3>
+							<div class="card-tools">
+							<button type="button" class="btn btn-tool" data-card-widget="collapse">
+								<i class="fas fa-plus"></i>
+							</button>
+						</div>
+						
 		      </div>
 		      <!-- /.card-header -->
 					<div class="card-body">
@@ -118,31 +124,33 @@
 		      </div>
 		        <!-- /.card-body -->
 
-							<?php echo form_open() ?>
-								<input name="id_karya" type="hidden" value="<?php echo $data_karya['id_karya'] ?>" required=""></input>
-								<input name="id_user" type="hidden" value="<?php echo $data_karya['id_user'] ?>" required=""></input>
-
-								<div class="card-footer">
-									<?php if ( $data_karya['published'] == 1 ): ?>
-										<input type="hidden" name="published" value="0">
-										<button type="submit" class="btn btn-lg btn-danger do_transition mb-2">
-											<i class="fa fa-eye-slash mr-1"></i> Berhenti Publikasi
-										</button>
-									<?php elseif( $data_karya['published'] == 0 ): ?>
-										<input type="hidden" name="published" value="1">
-										<button type="submit" class="btn btn-lg btn-success do_transition mb-2">
-											<i class="fa fa-eye mr-1"></i> Publikasikan Sekarang
-										</button>
-									<?php endif ?>
-							</form>
+						
 
 
+						<div class="card-footer">
 		          <a class="btn btn-lg btn-primary do_transition mb-2" id="tombol_simpan" onclick="$('#form_data_karya').submit()" style="display: none;">
 		          	<i class="fa fa-save mr-1"></i> Simpan Perubahan
 		          </a>
 		        </div>
 		    </div>
 		    <!-- /.card -->
+
+					<?php echo form_open() ?>
+								<input name="id_karya" type="hidden" value="<?php echo $data_karya['id_karya'] ?>" required=""></input>
+								<input name="id_user" type="hidden" value="<?php echo $data_karya['id_user'] ?>" required=""></input>
+
+									<?php if ( $data_karya['published'] == 1 ): ?>
+										<input type="hidden" name="published" value="0">
+										<button type="submit" class="btn btn-lg btn-danger do_transition mb-2 shadow">
+											<i class="fa fa-eye-slash mr-1"></i> Berhenti Publikasi
+										</button>
+									<?php elseif( $data_karya['published'] == 0 ): ?>
+										<input type="hidden" name="published" value="1">
+										<button type="submit" class="btn btn-lg btn-success do_transition mb-2 shadow">
+											<i class="fa fa-eye mr-1"></i> Publikasikan Sekarang
+										</button>
+									<?php endif ?>
+							</form>
 
 		</div>
 	</div>
