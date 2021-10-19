@@ -128,6 +128,7 @@ background-attachment: fixed;
       </div> <!-- /.user-panel -->
 
         <small class="badge badge-danger invalid-warning" id="username_empty" style="display: none;">Mohon isi nama akun</small>
+        <small for="email">Nama</small><br>
         <div class="input-group mb-3">
           <input name="username" type="text" class="form-control" placeholder="Nama" required="">
           <div class="input-group-append">
@@ -138,7 +139,8 @@ background-attachment: fixed;
         </div>
 
         <small class="badge badge-danger invalid-warning" id="email_empty" style="display: none;">Mohon isi email</small>
-        <small class="badge badge-danger invalid-warning" id="email_invalid" style="display: none;">Alamat email ini tidak valid</small>
+        <small class="badge badge-danger invalid-warning" id="email_invalid" style="display: none;">Email ini tidak valid, gunakan email UDB</small>
+        <small for="email">Email</small><br>
         <div class="input-group mb-3">
           <input name="email" type="email" class="form-control" placeholder="Email" required="">
           <div class="input-group-append">
@@ -149,6 +151,7 @@ background-attachment: fixed;
         </div>
 
         <small class="badge badge-danger invalid-warning" id="hp_empty" style="display: none;">Mohon isi nomor HP</small> 
+        <small for="email">No HP</small><br>
         <div class="input-group mb-3">
           <span class="text-dark mr-1 badge badge-success" style="font-size: 13pt">+62</span> <input name="hp" type="text" class="form-control" placeholder="812XXXXXXXXX" required="">
           <div class="input-group-append">
@@ -184,6 +187,7 @@ background-attachment: fixed;
       <p class="login-box-msg text-dark">Privasi itu Penting</p>
       <p class="login-box-msg text-dark">Anda bisa menerapkan password. Kami tidak akan mengintip, janji!</p>
         <small class="badge badge-danger invalid-warning" id="password_empty" style="display: none;">Mohon isi password</small>
+        <small for="email">Password</small><br>
         <div class="input-group mb-3">
           <input name="password" type="password" class="form-control" placeholder="Password" required="">
           <div class="input-group-append">
@@ -194,6 +198,7 @@ background-attachment: fixed;
         </div>
         <small class="badge badge-danger invalid-warning" id="password2_empty" style="display: none;">Mohon isi password kedua</small>
         <small class="badge badge-danger invalid-warning" id="password2_invalid" style="display: none;">Password ini tidak saling cocok</small>
+        <small for="email">Ketik kembali Password </small><br>
         <div class="input-group mb-3">
           <input name="password2" type="password" class="form-control" placeholder="Ketik lagi password" required="">
           <div class="input-group-append">
@@ -429,6 +434,10 @@ background-attachment: fixed;
       $('[name="email"]').addClass( 'is-invalid' )
       $("#email_empty").show(400)
     } else if ( $('[name="email"]').val().indexOf("@") < 1 ) { // jika ada @, maka email valid
+      valid = 0;
+      $('[name="email"]').addClass( 'is-invalid' )
+      $("#email_invalid").show(400)
+    } else if ( $('[name="email"]').val().endsWith(".ac.id") == false ) { // jika ada @, maka email valid
       valid = 0;
       $('[name="email"]').addClass( 'is-invalid' )
       $("#email_invalid").show(400)
