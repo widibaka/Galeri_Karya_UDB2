@@ -112,7 +112,7 @@
                 <!-- <i class="nav-icon fa fa-snowman"></i> -->
                 <i class="nav-icon fa fa-tags"></i>
                 <p>
-                  Kategori Lomba
+                  Kategori Karya
                 </p>
               </a>
             </li> <!-- sidebar item -->

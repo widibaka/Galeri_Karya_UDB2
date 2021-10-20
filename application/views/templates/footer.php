@@ -157,10 +157,10 @@
             <img src="<?php echo base_url()  . 'assets/custom/img/logo_hmptiudb.png'; ?>" alt="" width="120">
           </div>
           <div class="form-group p-2">
-            <h6>Event ini diselenggarakan oleh HMPTI <br> (Himpunan Mahasiswa Progdi Teknik Informatika) <br>Universitas Duta Bangsa Surakarta</h6>
+            <h6>Platform ini diberdayakan oleh HMPTI <br> (Himpunan Mahasiswa Progdi Teknik Informatika) <br>Universitas Duta Bangsa Surakarta</h6>
           </div>
           <div class="form-group mt-4">
-            <label>Panitia Event</label>
+            <label>Panitia Acara</label>
             <h5>Rio</h5>
             <h5>Ahmad</h5>
           </div>

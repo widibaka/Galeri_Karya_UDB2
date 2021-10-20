@@ -12,6 +12,7 @@
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
+				<p>Jika suatu kategori dinonaktifkan, maka itu tidak akan dapat digunakan oleh pengguna saat submit karya. Namun karya-karya yang sudah memakai kategori tersebut tidak akan terhapus ataupun terubah.</p>
 				<div class="col-sm-12 text-right mb-3">
 				  <a href="javascript:void(0)" class="btn btn-lg btn-primary rounded" data-toggle="modal" data-target="#modal-set-notification"><i class="fas fa-plus"></i> Tambah Baru</a>
 				</div>
