@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.8">
-  <title>Galeri Karya UDB | Log in</title>
+  <title>Galeri Karya Fikom UDB | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
  <!--  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
