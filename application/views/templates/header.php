@@ -73,7 +73,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/widi/css/style.css?v2">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="
-background: url('<?php echo base_url() ?>assets/widi/spectrum-gradient.svg');
+background: url('https://i.postimg.cc/tCD4x52J/5437842.jpg');
 
 /*background: rgb(106,1,68);
 background: linear-gradient(131deg, rgba(106,1,68,1) 0%, rgba(124,1,105,1) 38%, rgba(0,146,255,1) 100%);*/

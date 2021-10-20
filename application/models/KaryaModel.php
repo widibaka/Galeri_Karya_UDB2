@@ -147,6 +147,7 @@ class KaryaModel extends CI_Model {
 	{
 		$this->db->order_by( 'time', 'ASC' );
 		$this->db->where( 'dihapus', 0 );
+		$this->db->where( 'published', 1 );
 		
 		$this->db->where( 'time >', $time_karya );
 		$this->db->limit( 1 );
@@ -156,6 +157,7 @@ class KaryaModel extends CI_Model {
 	{
 		$this->db->order_by( 'time', 'DESC' );
 		$this->db->where( 'dihapus', 0 );
+		$this->db->where( 'published', 1 );
 		
 		$this->db->where( 'time <', $time_karya );
 		$this->db->limit( 1 );

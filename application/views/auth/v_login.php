@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/sweetalert2/sweetalert2.min.css">
 </head>
 <body class="hold-transition login-page" style="
-background: url('<?php echo base_url() ?>assets/widi/spectrum-gradient.svg');
+background: url('https://i.postimg.cc/zDw7wZn7/5437842.jpg');
 /*background: rgb(106,1,68);
 background: linear-gradient(131deg, rgba(106,1,68,1) 0%, rgba(124,1,105,1) 38%, rgba(0,146,255,1) 100%);*/
 background-size: cover;
@@ -35,7 +35,7 @@ background-attachment: fixed;
 
 <div class="login-box" style="background: transparent;">
   <div class="login-logo">
-    <a href="<?php echo base_url() ?>" class="text-white"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+    <a href="<?php echo base_url() ?>" class=""><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

@@ -14,7 +14,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css">
   <!-- custom css -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/widi/css/style.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/widi/css/style.css?v3">
   <!-- custom css -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/plugins/jquery-ui/jquery-ui.min.css">
   <!-- SweetAlert2 -->
@@ -27,10 +27,11 @@
     .card {
       margin-bottom: 50px;
     }
+    
   </style>
 </head>
 <body class="hold-transition register-page" style="
-background: url('<?php echo base_url() ?>assets/widi/spectrum-gradient.svg');
+background: url('https://i.postimg.cc/zDw7wZn7/5437842.jpg');
 /*background: rgb(106,1,68);
 background: linear-gradient(131deg, rgba(106,1,68,1) 0%, rgba(124,1,105,1) 38%, rgba(0,146,255,1) 100%);*/
 background-size: cover;
@@ -48,25 +49,25 @@ background-attachment: fixed;
 </div>
 <div class="steps d-flex justify-content-center">
   <div class="row">
-    <div class="circle step_active step1">
+    <div class="circle step_active step1 shadow">
       <i class="fa fa-smile icon_inside_circle"></i>
     </div>
-    <div class="dash ">
+    <div class="dash">
       <i class="fa fa-minus icon_inside_circle"></i>
     </div>
-    <div class="circle step2">
+    <div class="circle step2 shadow">
       <i class="fa fa-user icon_inside_circle"></i>
     </div>
-    <div class="dash ">
+    <div class="dash">
       <i class="fa fa-minus icon_inside_circle"></i>
     </div>
-    <div class="circle step3">
+    <div class="circle step3 shadow">
       <i class="fa fa-lock icon_inside_circle"></i>
     </div>
-    <div class="dash ">
+    <div class="dash">
       <i class="fa fa-minus icon_inside_circle"></i>
     </div>
-    <div class="circle step4">
+    <div class="circle step4 shadow">
       <i class="fa fa-check icon_inside_circle"></i>
     </div>
   </div>
@@ -76,7 +77,7 @@ background-attachment: fixed;
 </head>
 <div class="register-box" style="background: transparent; min-height: 200px;">
   <div class="register-logo">
-    <a class="text-white" href="<?php echo base_url() ?>"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
+    <a class="" href="<?php echo base_url() ?>"><b>Galeri Karya </b><br>Universitas Duta Bangsa</a>
   </div>
 
   <div class="card" id="welcome">
