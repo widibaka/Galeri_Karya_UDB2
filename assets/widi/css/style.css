@@ -54,12 +54,13 @@
 }
 .steps .circle {
   position: relative;
-  background-color: transparent;
+  background-color: rgba(214, 64, 64, 0.3);
   height: 40pt;
   width: 40pt;
   border: solid 2pt #fff;
   border-radius: 50%;
   color: #fff;
+  
 }
 .steps .dash {
   position: relative;
